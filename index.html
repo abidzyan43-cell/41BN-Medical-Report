@@ -3,364 +3,382 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>41 BN ITBP - Daily Medical Report</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 :root{
---navy:#073f7a;
---blue:#0b5aa5;
---sky:#bfe7ff;
---green:#dff3a8;
---red:#ffd6d2;
---orange:#ffe8b3;
---line:#274c70;
+  --navy:#073f7a;
+  --blue:#0b5aa5;
+  --lightblue:#dff2ff;
+  --green:#dff3a8;
+  --red:#ffd6d2;
+  --orange:#ffe8b3;
+  --border:#555;
 }
 
 body{
-margin:0;
-background:#eef3f8;
-color:#111;
-font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  background:#eef3f8;
+  color:#111;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 header{
-background:linear-gradient(90deg,#063b73,#0b5da8,#063b73);
-color:#fff;
-text-align:center;
-padding:14px 8px;
+  background:linear-gradient(90deg,#063b73,#0b5da8,#063b73);
+  color:white;
+  text-align:center;
+  padding:18px 8px;
 }
 
 header h1{
-margin:0;
-font:700 clamp(21px,4vw,34px) Georgia,serif;
+  margin:0;
+  font:700 clamp(22px,4vw,35px) Georgia,serif;
 }
 
 header p{
-margin:5px 0 0;
-font:700 clamp(18px,3vw,28px) Georgia,serif;
+  margin:7px 0 0;
+  font:700 clamp(19px,3vw,28px) Georgia,serif;
 }
 
 .wrap{
-max-width:1500px;
-margin:auto;
-padding:10px;
+  max-width:1600px;
+  margin:auto;
+  padding:10px;
 }
 
 .hidden{
-display:none!important;
+  display:none!important;
 }
 
 .card{
-background:#fff;
-border:1px solid #ccd6df;
-border-radius:10px;
-padding:15px;
-margin-bottom:14px;
-box-shadow:0 2px 8px #0001;
+  background:white;
+  border:1px solid #ccd6df;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:14px;
+  box-shadow:0 2px 8px #0001;
 }
 
 .login{
-max-width:430px;
-margin:30px auto;
+  max-width:430px;
+  margin:30px auto;
 }
 
 .login h2{
-text-align:center;
-color:var(--navy);
-font-family:Georgia,serif;
+  text-align:center;
+  color:var(--navy);
+  font-family:Georgia,serif;
 }
 
 label{
-display:block;
-font-weight:700;
-margin:8px 0 4px;
+  display:block;
+  font-weight:700;
+  margin:8px 0 4px;
 }
 
-input,select,textarea{
-width:100%;
-padding:9px;
-border:1px solid #b9c4cf;
-border-radius:6px;
-font-size:14px;
-background:white;
+input,
+select,
+textarea{
+  width:100%;
+  padding:9px;
+  border:1px solid #b9c4cf;
+  border-radius:6px;
+  font-size:14px;
+  background:white;
 }
 
 button{
-border:0;
-border-radius:7px;
-padding:10px 14px;
-font-weight:700;
-cursor:pointer;
+  border:0;
+  border-radius:7px;
+  padding:10px 15px;
+  font-weight:700;
+  cursor:pointer;
 }
 
 .blue{
-background:var(--blue);
-color:white;
+  background:var(--blue);
+  color:white;
 }
 
 .red{
-background:#b42318;
-color:white;
+  background:#b42318;
+  color:white;
 }
 
 .gray{
-background:#475569;
-color:white;
+  background:#475569;
+  color:white;
 }
 
 .login button{
-width:100%;
-margin-top:10px;
+  width:100%;
+  margin-top:10px;
 }
 
 .msg{
-display:none;
-margin-top:10px;
-padding:10px;
-border-radius:6px;
-background:#fff3cd;
-color:#664d03;
+  display:none;
+  margin-top:10px;
+  padding:10px;
+  border-radius:6px;
+  background:#fff3cd;
+  color:#664d03;
 }
 
 .toolbar{
-display:flex;
-gap:8px;
-align-items:center;
-flex-wrap:wrap;
-margin-bottom:10px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:10px;
 }
 
 .toolbar span{
-margin-left:auto;
-background:#fff;
-border:1px solid #c8d2dd;
-border-radius:7px;
-padding:8px 10px;
-font-size:13px;
+  margin-left:auto;
+  background:white;
+  border:1px solid #c8d2dd;
+  border-radius:7px;
+  padding:9px 12px;
+  font-size:13px;
 }
 
 .panel-title{
-margin:0 0 10px;
-color:var(--navy);
-font:700 22px Georgia,serif;
+  margin:0 0 12px;
+  color:var(--navy);
+  font:700 22px Georgia,serif;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:9px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
 }
 
 .scroll{
-overflow-x:auto;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
 }
 
 table{
-border-collapse:collapse;
-width:100%;
-min-width:1200px;
+  border-collapse:collapse;
+  width:100%;
+  min-width:1750px;
 }
 
-th,td{
-border:1px solid #555;
-padding:7px;
-text-align:center;
-vertical-align:middle;
+th,
+td{
+  border:1px solid var(--border);
+  padding:7px;
+  text-align:center;
+  vertical-align:middle;
 }
 
 th{
-background:var(--navy);
-color:white;
-font:700 13px Georgia,serif;
+  background:var(--navy);
+  color:white;
+  font:700 13px Georgia,serif;
+  white-space:nowrap;
 }
 
 td{
-background:white;
-font-size:13px;
+  background:white;
+  font-size:13px;
 }
 
 .location{
-text-align:left;
-font-weight:700;
-white-space:nowrap;
+  text-align:left;
+  font-weight:700;
+  white-space:nowrap;
 }
 
 .nil{
-background:var(--green)!important;
-font-weight:700;
+  background:var(--green)!important;
+  font-weight:700;
 }
 
 .admit{
-background:var(--red)!important;
-font-weight:700;
+  background:var(--red)!important;
+  font-weight:700;
 }
 
 .ref{
-background:var(--orange)!important;
-font-weight:700;
+  background:var(--orange)!important;
+  font-weight:700;
 }
 
 .report{
-background:#fff;
-border:1px solid #b7c4d0;
-margin:16px 0;
-box-shadow:0 2px 7px #0001;
+  background:white;
+  border:1px solid #b7c4d0;
+  margin:16px 0;
+  box-shadow:0 2px 7px #0001;
 }
 
 .report-head{
-background:var(--navy);
-color:white;
-text-align:center;
-padding:7px;
-font:700 clamp(19px,3vw,30px) Georgia,serif;
+  background:var(--navy);
+  color:white;
+  text-align:center;
+  padding:9px;
+  font:700 clamp(19px,3vw,30px) Georgia,serif;
 }
 
 .bn{
-text-align:center;
-color:#064a92;
-background:white;
-padding:8px;
-font:700 clamp(20px,3vw,29px) Georgia,serif;
+  text-align:center;
+  color:#064a92;
+  background:white;
+  padding:8px;
+  font:700 clamp(20px,3vw,29px) Georgia,serif;
 }
 
 .date{
-padding:8px 12px;
-border-bottom:2px solid var(--blue);
-font-weight:700;
+  padding:8px 12px;
+  border-bottom:2px solid var(--blue);
+  font-weight:700;
 }
 
 .date b{
-display:inline-block;
-margin-left:8px;
-border:1px solid #1683d8;
-background:#dff2ff;
-padding:4px 12px;
+  display:inline-block;
+  margin-left:8px;
+  border:1px solid #1683d8;
+  background:#dff2ff;
+  padding:4px 12px;
 }
 
 .summary-title{
-background:var(--sky);
-border:1px solid #1774bd;
-text-align:center;
-padding:6px;
-font:700 22px Georgia,serif;
+  background:#bfe7ff;
+  border:1px solid #1774bd;
+  text-align:center;
+  padding:7px;
+  font:700 21px Georgia,serif;
 }
 
 .summary{
-min-width:0;
+  min-width:0;
+  width:100%;
 }
 
 .summary td:first-child{
-background:var(--sky);
-text-align:left;
-font-weight:700;
-width:50%;
+  background:#bfe7ff;
+  text-align:left;
+  font-weight:700;
+  width:50%;
 }
 
 .summary td:last-child{
-text-align:left;
-font-weight:700;
+  text-align:left;
+  font-weight:700;
 }
 
 .issue{
-display:grid;
-grid-template-columns:340px 1fr;
-border:1px solid #1774bd;
-margin-top:10px;
+  display:grid;
+  grid-template-columns:340px 1fr;
+  border:1px solid #1774bd;
+  margin-top:10px;
 }
 
 .issue b{
-background:var(--sky);
-padding:12px;
+  background:#bfe7ff;
+  padding:12px;
 }
 
 .issue span{
-padding:12px;
-background:white;
+  padding:12px;
+  background:white;
 }
 
 .actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin-top:10px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.report-actions{
+  padding:10px;
+  border-top:1px solid #ddd;
 }
 
 .loading{
-text-align:center;
-padding:25px;
-font-weight:700;
-color:#475569;
+  text-align:center;
+  padding:25px;
+  font-weight:700;
+  color:#475569;
 }
 
 .error{
-padding:12px;
-background:#fee2e2;
-color:#991b1b;
-border-radius:7px;
+  padding:12px;
+  background:#fee2e2;
+  color:#991b1b;
+  border-radius:7px;
 }
 
 .empty{
-text-align:center;
-padding:25px;
-color:#64748b;
+  text-align:center;
+  padding:25px;
+  color:#64748b;
 }
 
 .small{
-font-size:12px;
-color:#667085;
+  font-size:12px;
+  color:#667085;
 }
 
 @media(max-width:850px){
 
-.grid{
-grid-template-columns:1fr 1fr;
-}
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
 
-.toolbar span{
-margin-left:0;
-}
+  .toolbar span{
+    margin-left:0;
+  }
 
 }
 
 @media(max-width:520px){
 
-.grid{
-grid-template-columns:1fr;
-}
+  .grid{
+    grid-template-columns:1fr;
+  }
 
-.wrap{
-padding:6px;
-}
+  .wrap{
+    padding:6px;
+  }
 
-.issue{
-grid-template-columns:1fr;
-}
+  .issue{
+    grid-template-columns:1fr;
+  }
+
+  header{
+    padding:15px 5px;
+  }
 
 }
 
 @media print{
 
-.toolbar,
-#adminPanel,
-.actions{
-display:none!important;
-}
+  .toolbar,
+  #adminPanel,
+  .report-actions{
+    display:none!important;
+  }
 
-body{
-background:white;
-}
+  body{
+    background:white;
+  }
 
-.wrap{
-max-width:none;
-padding:0;
-}
+  .wrap{
+    max-width:none;
+    padding:0;
+  }
 
-.report{
-box-shadow:none;
-border:0;
-}
+  .report{
+    box-shadow:none;
+    border:0;
+  }
 
 }
 </style>
@@ -369,348 +387,259 @@ border:0;
 <body>
 
 <header>
-
-<h1>
-DAILY MEDICAL REPORT - ALL COBs &amp; THQs
-</h1>
-
-<p>
-41 BN ITBP
-</p>
-
+  <h1>DAILY MEDICAL REPORT - ALL COBs &amp; THQs</h1>
+  <p>41 BN ITBP</p>
 </header>
 
-
 <main class="wrap">
-
 
 <!-- LOGIN -->
 
 <section id="loginBox" class="card login">
 
-<h2>
-Staff Login
-</h2>
+  <h2>Staff Login</h2>
 
-<label>
-Email ID
-</label>
+  <label>Email ID</label>
+  <input
+    id="email"
+    type="email"
+    autocomplete="username"
+    placeholder="Email ID"
+  >
 
-<input
-id="email"
-type="email"
-autocomplete="username"
-placeholder="Email ID"
->
+  <label>Password</label>
+  <input
+    id="password"
+    type="password"
+    autocomplete="current-password"
+    placeholder="Password"
+  >
 
-<label>
-Password
-</label>
+  <button class="blue" onclick="login()">
+    Login
+  </button>
 
-<input
-id="password"
-type="password"
-autocomplete="current-password"
-placeholder="Password"
->
+  <div id="loginMsg" class="msg"></div>
 
-<button
-class="blue"
-onclick="login()"
->
-Login
-</button>
-
-<div id="loginMsg" class="msg"></div>
-
-<p class="small">
-Staff can view reports.
-Admin can create, edit and delete reports.
-</p>
+  <p class="small">
+    Staff can view reports. Admin can create, edit and delete reports.
+  </p>
 
 </section>
-
 
 
 <!-- APPLICATION -->
 
 <section id="app" class="hidden">
 
+  <div class="toolbar">
 
-<div class="toolbar">
+    <button class="gray" onclick="loadReports()">
+      ↻ Refresh
+    </button>
 
-<button
-class="gray"
-onclick="loadReports()"
->
-↻ Refresh
-</button>
+    <button class="gray" onclick="window.print()">
+      🖨 Print
+    </button>
 
-<button
-class="gray"
-onclick="window.print()"
->
-🖨 Print
-</button>
+    <button class="red" onclick="logout()">
+      Logout
+    </button>
 
-<button
-class="red"
-onclick="logout()"
->
-Logout
-</button>
+    <span id="userInfo"></span>
 
-<span id="userInfo"></span>
+  </div>
 
-</div>
 
+  <!-- ADMIN PANEL -->
 
+  <section id="adminPanel" class="card hidden">
 
-<!-- ADMIN PANEL -->
+    <h2 id="adminTitle" class="panel-title">
+      Admin - Create Daily Report
+    </h2>
 
-<section id="adminPanel" class="card hidden">
+    <input id="editId" type="hidden">
 
-<h2
-id="adminTitle"
-class="panel-title"
->
-Admin - Create Daily Report
-</h2>
+    <div class="grid">
 
-<input
-id="editId"
-type="hidden"
->
+      <div>
+        <label>Date</label>
+        <input id="date" type="date">
+      </div>
 
+      <div>
+        <label>Total Strength</label>
+        <input
+          id="strength"
+          type="number"
+          min="0"
+          placeholder="Total Strength"
+        >
+      </div>
 
-<div class="grid">
+      <div>
+        <label>AME Done at All COB</label>
+        <input
+          id="ameCob"
+          type="number"
+          min="0"
+          placeholder="AME COB"
+        >
+      </div>
 
-<div>
+      <div>
+        <label>AME Done at THQ</label>
+        <input
+          id="ameThq"
+          type="number"
+          min="0"
+          placeholder="AME THQ"
+        >
+      </div>
 
-<label>
-Date
-</label>
+    </div>
 
-<input
-id="date"
-type="date"
->
 
-</div>
+    <br>
 
+    <div class="scroll">
 
-<div>
+      <table>
 
-<label>
-Total Strength
-</label>
+        <thead>
 
-<input
-id="strength"
-type="number"
-min="0"
-placeholder="417"
->
+          <tr>
 
-</div>
+            <th>S. NO.</th>
 
+            <th>COB / LOCATION</th>
 
-<div>
+            <th>STATUS</th>
 
-<label>
-AME Done at All COB
-</label>
+            <th>REGT. NO.</th>
 
-<input
-id="ameCob"
-type="number"
-min="0"
-placeholder="295"
->
+            <th>RANK</th>
 
-</div>
+            <th>NAME</th>
 
+            <th>COY</th>
 
-<div>
+            <th>AGE</th>
 
-<label>
-AME Done at THQ
-</label>
+            <th>SEX</th>
 
-<input
-id="ameThq"
-type="number"
-min="0"
-placeholder="202"
->
+            <th>C/O / DIAGNOSIS</th>
 
-</div>
+            <th>CONDITION / REMARKS</th>
 
-</div>
+            <th>AME DONE TODAY</th>
 
+          </tr>
 
+        </thead>
 
-<div class="scroll">
+        <tbody id="formRows"></tbody>
 
-<table>
+      </table>
 
-<thead>
+    </div>
 
-<tr>
 
-<th>S. NO.</th>
+    <label>ANY OTHER ISSUE</label>
 
-<th>COB / LOCATION</th>
+    <textarea
+      id="issue"
+      rows="2"
+      placeholder="NIL"
+    ></textarea>
 
-<th>STATUS</th>
 
-<th>
-REGT. NO. / RANK / NAME / COY
-</th>
+    <div class="actions">
 
-<th>
-AGE / SEX
-</th>
+      <button class="blue" onclick="saveReport()">
+        Save Report
+      </button>
 
-<th>
-C/O / DIAGNOSIS
-</th>
+      <button class="gray" onclick="clearForm()">
+        Clear
+      </button>
 
-<th>
-CONDITION / REMARKS
-</th>
+    </div>
 
-<th>
-AME DONE TODAY
-</th>
+    <div id="saveMsg" class="small"></div>
 
-</tr>
+  </section>
 
-</thead>
 
-<tbody id="formRows">
-</tbody>
+  <!-- REPORTS -->
 
-</table>
-
-</div>
-
-
-
-<label>
-ANY OTHER ISSUE
-</label>
-
-<textarea
-id="issue"
-rows="2"
-placeholder="NIL"
-></textarea>
-
-
-<div class="actions">
-
-<button
-class="blue"
-onclick="saveReport()"
->
-Save Report
-</button>
-
-<button
-class="gray"
-onclick="clearForm()"
->
-Clear
-</button>
-
-</div>
-
-
-<div
-id="saveMsg"
-class="small"
->
-</div>
-
-</section>
-
-
-
-<!-- REPORTS -->
-
-<section id="reports">
-</section>
-
+  <section id="reports"></section>
 
 </section>
 
 </main>
 
 
-
 <script type="module">
 
-
 import {
-initializeApp
+  initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 
 import {
-getAuth,
-signInWithEmailAndPassword,
-onAuthStateChanged,
-signOut
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
 }
 from
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
 import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-doc,
-getDoc,
-updateDoc,
-deleteDoc
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  getDoc,
+  updateDoc,
+  deleteDoc
 }
 from
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
 
 
 /* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
+  apiKey:
+  "AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
 
-authDomain:
-"bn-medical-report.firebaseapp.com",
+  authDomain:
+  "bn-medical-report.firebaseapp.com",
 
-projectId:
-"bn-medical-report",
+  projectId:
+  "bn-medical-report",
 
-storageBucket:
-"bn-medical-report.firebasestorage.app",
+  storageBucket:
+  "bn-medical-report.firebasestorage.app",
 
-messagingSenderId:
-"353793989004",
+  messagingSenderId:
+  "353793989004",
 
-appId:
-"1:353793989004:web:b7963ebe3b641a02059ea9",
+  appId:
+  "1:353793989004:web:b7963ebe3b641a02059ea9",
 
-measurementId:
-"G-RNZ0NBLD6G"
+  measurementId:
+  "G-RNZ0NBLD6G"
 
 };
-
 
 
 const app =
@@ -723,876 +652,875 @@ const db =
 getFirestore(app);
 
 
-
 /* LOCATIONS */
 
 const locations = [
 
-"COB NELANGUR",
+  "COB NELANGUR",
 
-"COB PADAMKOT",
+  "COB PADAMKOT",
 
-"COB BEDMAKOTI",
+  "COB BEDMAKOTI",
 
-"FIELD HOSPITAL KUTUL",
+  "FIELD HOSPITAL KUTUL",
 
-"COB KASTURMETHA",
+  "COB KASTURMETHA",
 
-"THQ KOKRAJHOR / NARAYANPUR",
+  "THQ KOKRAJHOR / NARAYANPUR",
 
-"THQ KONDAGAON",
+  "THQ KONDAGAON",
 
-"RAIPUR"
+  "RAIPUR"
 
 ];
-
 
 
 const $ =
 id => document.getElementById(id);
 
 
-let role =
-"staff";
+let role = "staff";
 
 
 let reportCache =
 new Map();
 
 
-
-/* ESCAPE TEXT */
+/* ESCAPE */
 
 function esc(value){
 
-return String(value ?? "")
-.replace(/[&<>"']/g,function(c){
+  return String(value ?? "")
 
-return {
+    .replace(/[&<>"']/g,function(c){
 
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#39;"
+      return {
 
-}[c];
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
 
-});
+      }[c];
+
+    });
 
 }
-
 
 
 /* TODAY */
 
 function today(){
 
-return new Date()
-.toISOString()
-.slice(0,10);
+  const d = new Date();
+
+  const y = d.getFullYear();
+
+  const m =
+    String(d.getMonth()+1).padStart(2,"0");
+
+  const day =
+    String(d.getDate()).padStart(2,"0");
+
+  return `${y}-${m}-${day}`;
 
 }
-
 
 
 /* DATE */
 
 function niceDate(value){
 
-if(!value)
-return "";
+  if(!value) return "";
 
-const parts =
-value.split("-");
+  const p = value.split("-");
 
-const d =
-new Date(
-Number(parts[0]),
-Number(parts[1])-1,
-Number(parts[2])
-);
+  const d = new Date(
+    Number(p[0]),
+    Number(p[1])-1,
+    Number(p[2])
+  );
 
-return d.toLocaleDateString(
-"en-GB",
-{
-day:"2-digit",
-month:"short",
-year:"numeric"
-}
-).toUpperCase();
+  return d.toLocaleDateString(
+    "en-GB",
+    {
+      day:"2-digit",
+      month:"short",
+      year:"numeric"
+    }
+  ).toUpperCase();
 
 }
-
 
 
 /* WEEKDAY */
 
 function weekday(value){
 
-if(!value)
-return "";
+  if(!value) return "";
 
-const parts =
-value.split("-");
+  const p = value.split("-");
 
-const d =
-new Date(
-Number(parts[0]),
-Number(parts[1])-1,
-Number(parts[2])
-);
+  const d = new Date(
+    Number(p[0]),
+    Number(p[1])-1,
+    Number(p[2])
+  );
 
-return d.toLocaleDateString(
-"en-US",
-{
-weekday:"short"
-}
-).toUpperCase();
+  return d.toLocaleDateString(
+    "en-US",
+    {
+      weekday:"short"
+    }
+  ).toUpperCase();
 
 }
-
 
 
 /* STATUS COLOR */
 
 function statusClass(status){
 
-if(status === "ADMIT")
-return "admit";
+  if(status === "ADMIT")
+    return "admit";
 
-if(status === "REFERRAL")
-return "ref";
+  if(status === "REFERRAL")
+    return "ref";
 
-return "nil";
+  return "nil";
 
 }
 
+
+/* RANK OPTIONS */
+
+const ranks = [
+
+  "AC/GD",
+  "INSP/GD",
+  "HC/GD",
+  "CT/GD",
+  "CT/BBR",
+  "CT/SK",
+  "CT/WM"
+
+];
+
+
+/* COY OPTIONS */
+
+const coys = [
+
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "ADM",
+  "SPT"
+
+];
+
+
+/* AGE OPTIONS */
+
+const ages = [];
+
+for(
+  let age = 20;
+  age <= 80;
+  age++
+){
+
+  ages.push(age);
+
+}
 
 
 /* ADMIN FORM */
 
 function renderForm(data = {}){
 
-$("formRows").innerHTML =
-locations.map(function(location,index){
+  $("formRows").innerHTML =
 
-const d =
-data[location] || {};
+  locations.map(function(location,index){
 
-return `
+    const d =
+      data[location] || {};
 
-<tr>
+    return `
 
-<td>
-${index+1}
-</td>
+    <tr>
 
-<td class="location">
-${location}
-</td>
+      <td>
+        ${index + 1}
+      </td>
 
 
-<td
-class="${statusClass(d.status || "NIL")}"
->
-
-<select
-id="st${index}"
-onchange="changeStatus(${index})"
->
-
-<option>NIL</option>
-
-<option>ADMIT</option>
-
-<option>REFERRAL</option>
-
-</select>
-
-</td>
+      <td class="location">
+        ${esc(location)}
+      </td>
 
 
-<td>
+      <!-- STATUS -->
 
-<input
-id="p${index}"
-value="${esc(d.person || "")}"
-placeholder="-"
->
+      <td
+        id="statusCell${index}"
+        class="${statusClass(d.status || "NIL")}"
+      >
 
-</td>
+        <select
+          id="st${index}"
+          onchange="changeStatus(${index})"
+        >
 
+          <option
+            value="NIL"
+            ${d.status === "NIL" || !d.status ? "selected" : ""}
+          >
+            NIL
+          </option>
 
-<td>
+          <option
+            value="ADMIT"
+            ${d.status === "ADMIT" ? "selected" : ""}
+          >
+            ADMIT
+          </option>
 
-<input
-id="a${index}"
-value="${esc(d.ageSex || "")}"
-placeholder="-"
->
+          <option
+            value="REFERRAL"
+            ${d.status === "REFERRAL" ? "selected" : ""}
+          >
+            REFERRAL
+          </option>
 
-</td>
+        </select>
 
-
-<td>
-
-<input
-id="d${index}"
-value="${esc(d.diagnosis || "")}"
-placeholder="-"
->
-
-</td>
-
-
-<td>
-
-<input
-id="c${index}"
-value="${esc(d.condition || "")}"
-placeholder="-"
->
-
-</td>
+      </td>
 
 
-<td>
+      <!-- REGT NO -->
 
-<input
-id="m${index}"
-type="number"
-min="0"
-value="${Number(d.ame || 0)}"
->
+      <td>
 
-</td>
+        <input
+          id="r${index}"
+          type="text"
+          value="${esc(d.regtNo || "")}"
+          placeholder="Regt No."
+        >
 
-</tr>
-
-`;
-
-}).join("");
+      </td>
 
 
-locations.forEach(function(location,index){
+      <!-- RANK -->
 
-const d =
-data[location] || {};
+      <td>
 
-$("st"+index).value =
-d.status || "NIL";
+        <select id="rk${index}">
 
-changeStatus(index);
+          <option value="">
+            Select Rank
+          </option>
 
-});
+          ${ranks.map(function(rank){
+
+            return `
+
+              <option
+                value="${rank}"
+                ${d.rank === rank ? "selected" : ""}
+              >
+                ${rank}
+              </option>
+
+            `;
+
+          }).join("")}
+
+        </select>
+
+      </td>
+
+
+      <!-- NAME -->
+
+      <td>
+
+        <input
+          id="nm${index}"
+          type="text"
+          value="${esc(d.name || "")}"
+          placeholder="Name"
+        >
+
+      </td>
+
+
+      <!-- COY -->
+
+      <td>
+
+        <select id="cy${index}">
+
+          <option value="">
+            Select Coy
+          </option>
+
+          ${coys.map(function(coy){
+
+            return `
+
+              <option
+                value="${coy}"
+                ${d.coy === coy ? "selected" : ""}
+              >
+                ${coy}
+              </option>
+
+            `;
+
+          }).join("")}
+
+        </select>
+
+      </td>
+
+
+      <!-- AGE -->
+
+      <td>
+
+        <select id="ag${index}">
+
+          <option value="">
+            Age
+          </option>
+
+          ${ages.map(function(age){
+
+            return `
+
+              <option
+                value="${age}"
+                ${String(d.age || "") === String(age) ? "selected" : ""}
+              >
+                ${age}
+              </option>
+
+            `;
+
+          }).join("")}
+
+        </select>
+
+      </td>
+
+
+      <!-- SEX -->
+
+      <td>
+
+        <select id="sx${index}">
+
+          <option value="">
+            Sex
+          </option>
+
+          <option
+            value="M"
+            ${d.sex === "M" ? "selected" : ""}
+          >
+            M
+          </option>
+
+          <option
+            value="F"
+            ${d.sex === "F" ? "selected" : ""}
+          >
+            F
+          </option>
+
+        </select>
+
+      </td>
+
+
+      <!-- DIAGNOSIS -->
+
+      <td>
+
+        <input
+          id="d${index}"
+          type="text"
+          value="${esc(d.diagnosis || "")}"
+          placeholder="C/O / Diagnosis"
+        >
+
+      </td>
+
+
+      <!-- CONDITION -->
+
+      <td>
+
+        <input
+          id="c${index}"
+          type="text"
+          value="${esc(d.condition || "")}"
+          placeholder="Condition / Remarks"
+        >
+
+      </td>
+
+
+      <!-- AME -->
+
+      <td>
+
+        <input
+          id="m${index}"
+          type="number"
+          min="0"
+          value="${Number(d.ame || 0)}"
+        >
+
+      </td>
+
+    </tr>
+
+    `;
+
+  }).join("");
+
+
+  locations.forEach(function(location,index){
+
+    changeStatus(index);
+
+  });
 
 }
 
 
-
-/* CHANGE STATUS */
+/* STATUS CHANGE */
 
 window.changeStatus =
 function(index){
 
-const select =
-$("st"+index);
+  const select =
+    $("st"+index);
 
-select.className =
-statusClass(select.value);
+  const cell =
+    $("statusCell"+index);
+
+  if(!select || !cell)
+    return;
+
+  cell.className =
+    statusClass(select.value);
 
 };
-
 
 
 /* COLLECT FORM */
 
 function collect(){
 
-const output = {};
+  const output = {};
 
-locations.forEach(function(location,index){
+  locations.forEach(function(location,index){
 
-output[location] = {
+    output[location] = {
 
-status:
-$("st"+index).value,
+      status:
+        $("st"+index).value,
 
-person:
-$("p"+index).value.trim(),
+      regtNo:
+        $("r"+index).value.trim(),
 
-ageSex:
-$("a"+index).value.trim(),
+      rank:
+        $("rk"+index).value,
 
-diagnosis:
-$("d"+index).value.trim(),
+      name:
+        $("nm"+index).value.trim(),
 
-condition:
-$("c"+index).value.trim(),
+      coy:
+        $("cy"+index).value,
 
-ame:
-Number($("m"+index).value || 0)
+      age:
+        $("ag"+index).value,
 
-};
+      sex:
+        $("sx"+index).value,
 
-});
+      diagnosis:
+        $("d"+index).value.trim(),
 
-return output;
+      condition:
+        $("c"+index).value.trim(),
+
+      ame:
+        Number(
+          $("m"+index).value || 0
+        )
+
+    };
+
+  });
+
+  return output;
 
 }
-
 
 
 /* SUMMARY */
 
 function calculateSummary(data){
 
-let admitted = 0;
+  let admitted = 0;
 
-let referred = 0;
+  let referred = 0;
 
-let cob = 0;
+  let cob = 0;
 
-let thq = 0;
-
-
-Object.entries(
-data.locations || {}
-).forEach(function([location,item]){
-
-if(item.status === "ADMIT")
-admitted++;
-
-if(item.status === "REFERRAL")
-referred++;
+  let thq = 0;
 
 
-const n =
-Number(item.ame || 0);
+  Object.entries(
+    data.locations || {}
+  ).forEach(function([location,item]){
+
+    if(item.status === "ADMIT")
+      admitted++;
+
+    if(item.status === "REFERRAL")
+      referred++;
 
 
-if(
-location.startsWith("THQ")
-)
-thq += n;
-
-else
-cob += n;
-
-});
+    const n =
+      Number(item.ame || 0);
 
 
-const strength =
-Number(data.totalStrength || 0);
+    if(location.startsWith("THQ"))
+      thq += n;
+    else
+      cob += n;
+
+  });
 
 
-const done =
-data.ameDone != null
-?
-Number(data.ameDone)
-:
-cob + thq;
+  const strength =
+    Number(
+      data.totalStrength || 0
+    );
 
 
-return {
+  const done =
+    data.ameDone != null
+      ? Number(data.ameDone)
+      : cob + thq;
 
-admitted,
 
-referred,
+  return {
 
-cob:
-Number(data.ameCob ?? cob),
+    admitted,
 
-thq:
-Number(data.ameThq ?? thq),
+    referred,
 
-done,
+    cob:
+      Number(
+        data.ameCob ?? cob
+      ),
 
-pending:
-data.amePending != null
-?
-Number(data.amePending)
-:
-Math.max(0,strength-done),
+    thq:
+      Number(
+        data.ameThq ?? thq
+      ),
 
-strength
+    done,
 
-};
+    pending:
+      data.amePending != null
+        ? Number(data.amePending)
+        : Math.max(
+            0,
+            strength - done
+          ),
+
+    strength
+
+  };
 
 }
-
 
 
 /* REPORT HTML */
 
 function createReportHTML(id,data){
 
-const summary =
-calculateSummary(data);
+  const summary =
+    calculateSummary(data);
 
 
-let rows = "";
+  let rows = "";
 
 
-locations.forEach(function(location,index){
+  locations.forEach(function(location,index){
 
-const item =
-(data.locations || {})[location] || {};
+    const item =
+      (data.locations || {})[location] || {};
 
-const status =
-item.status || "NIL";
 
+    const status =
+      item.status || "NIL";
 
-rows += `
 
-<tr>
+    rows += `
 
-<td>
-${index+1}
-</td>
+    <tr>
 
-<td class="location">
-${esc(location)}
-</td>
+      <td>
+        ${index + 1}
+      </td>
 
-<td class="${statusClass(status)}">
-${esc(status)}
-</td>
 
-<td>
-${esc(item.person || "-")}
-</td>
+      <td class="location">
+        ${esc(location)}
+      </td>
 
-<td>
-${esc(item.ageSex || "-")}
-</td>
 
-<td>
-${esc(item.diagnosis || "-")}
-</td>
+      <td class="${statusClass(status)}">
+        ${esc(status)}
+      </td>
 
-<td>
-${esc(item.condition || "-")}
-</td>
 
-<td>
-${Number(item.ame || 0) || "NIL"}
-</td>
+      <td>
+        ${esc(item.regtNo || "-")}
+      </td>
 
-</tr>
 
-`;
+      <td>
+        ${esc(item.rank || "-")}
+      </td>
 
-});
 
+      <td>
+        ${esc(item.name || "-")}
+      </td>
 
 
-return `
+      <td>
+        ${esc(item.coy || "-")}
+      </td>
 
-<section class="report">
 
-<div class="report-head">
-DAILY MEDICAL REPORT - ALL COBs &amp; THQs
-</div>
+      <td>
+        ${esc(item.age || "-")}
+      </td>
 
 
-<div class="bn">
-41 BN ITBP
-</div>
+      <td>
+        ${esc(item.sex || "-")}
+      </td>
 
 
-<div class="date">
+      <td>
+        ${esc(item.diagnosis || "-")}
+      </td>
 
-DATE:
 
-<b>
-${niceDate(data.date)}
-(${weekday(data.date)})
-</b>
+      <td>
+        ${esc(item.condition || "-")}
+      </td>
 
-</div>
 
+      <td>
+        ${
+          Number(item.ame || 0)
+          || "NIL"
+        }
+      </td>
 
+    </tr>
 
-<div class="scroll">
+    `;
 
-<table>
+  });
 
-<thead>
 
-<tr>
+  return `
 
-<th>S. NO.</th>
+  <section class="report">
 
-<th>COB / LOCATION</th>
+    <div class="report-head">
+      DAILY MEDICAL REPORT - ALL COBs &amp; THQs
+    </div>
 
-<th>STATUS</th>
 
-<th>
-REGT. NO. / RANK / NAME / COY
-</th>
+    <div class="bn">
+      41 BN ITBP
+    </div>
 
-<th>
-AGE / SEX
-</th>
 
-<th>
-C/O / DIAGNOSIS
-</th>
+    <div class="date">
 
-<th>
-CONDITION / REMARKS
-</th>
+      DATE:
 
-<th>
-AME DONE TODAY
-</th>
+      <b>
+        ${niceDate(data.date)}
+        (${weekday(data.date)})
+      </b>
 
-</tr>
+    </div>
 
-</thead>
 
+    <div class="scroll">
 
-<tbody>
+      <table>
 
-${rows}
+        <thead>
 
-</tbody>
+          <tr>
 
-</table>
+            <th>S. NO.</th>
 
-</div>
+            <th>COB / LOCATION</th>
 
+            <th>STATUS</th>
 
+            <th>REGT. NO.</th>
 
-<div class="summary-title">
-DAILY SUMMARY
-</div>
+            <th>RANK</th>
 
+            <th>NAME</th>
 
-<table class="summary">
+            <th>COY</th>
 
-<tr>
+            <th>AGE</th>
 
-<td>
-TOTAL ADMITTED PATIENTS
-</td>
+            <th>SEX</th>
 
-<td>
-${summary.admitted}
-</td>
+            <th>C/O / DIAGNOSIS</th>
 
-</tr>
+            <th>CONDITION / REMARKS</th>
 
+            <th>AME DONE TODAY</th>
 
-<tr>
+          </tr>
 
-<td>
-TOTAL REFERRED PATIENTS
-</td>
+        </thead>
 
-<td>
-${summary.referred}
-</td>
 
-</tr>
+        <tbody>
 
+          ${rows}
 
-<tr>
+        </tbody>
 
-<td>
-AME DONE AT ALL COB
-</td>
+      </table>
 
-<td>
-${summary.cob}
-</td>
+    </div>
 
-</tr>
 
+    <div class="summary-title">
+      DAILY SUMMARY
+    </div>
 
-<tr>
 
-<td>
-AME DONE AT THQ
-</td>
+    <table class="summary">
 
-<td>
-${summary.thq}
-</td>
+      <tr>
+        <td>TOTAL ADMITTED PATIENTS</td>
+        <td>${summary.admitted}</td>
+      </tr>
 
-</tr>
+      <tr>
+        <td>TOTAL REFERRED PATIENTS</td>
+        <td>${summary.referred}</td>
+      </tr>
 
+      <tr>
+        <td>AME DONE AT ALL COB</td>
+        <td>${summary.cob}</td>
+      </tr>
 
-<tr>
+      <tr>
+        <td>AME DONE AT THQ</td>
+        <td>${summary.thq}</td>
+      </tr>
 
-<td>
-TOTAL AME DONE
-</td>
+      <tr>
+        <td>TOTAL AME DONE</td>
+        <td>${summary.done}</td>
+      </tr>
 
-<td>
-${summary.done}
-</td>
+      <tr>
+        <td>AME PENDING</td>
+        <td>${summary.pending}</td>
+      </tr>
 
-</tr>
+      <tr>
+        <td>TOTAL STRENGTH</td>
+        <td>${summary.strength}</td>
+      </tr>
 
+    </table>
 
-<tr>
 
-<td>
-AME PENDING
-</td>
+    <div class="issue">
 
-<td>
-${summary.pending}
-</td>
+      <b>
+        ANY OTHER ISSUE
+      </b>
 
-</tr>
+      <span>
+        ${esc(data.otherIssue || "NIL")}
+      </span>
 
+    </div>
 
-<tr>
 
-<td>
-TOTAL STRENGTH
-</td>
+    ${
+      role === "admin"
+      ?
 
-<td>
-${summary.strength}
-</td>
+      `
 
-</tr>
+      <div class="report-actions">
 
-</table>
+        <button
+          class="blue"
+          onclick="editReport('${id}')"
+        >
+          ✏ Edit
+        </button>
 
+        <button
+          class="red"
+          onclick="deleteReport('${id}')"
+        >
+          🗑 Delete
+        </button>
 
+      </div>
 
-<div class="issue">
+      `
 
-<b>
-ANY OTHER ISSUE
-</b>
+      :
 
-<span>
-${esc(data.otherIssue || "NIL")}
-</span>
+      ""
 
-</div>
+    }
 
+  </section>
 
-
-${
-role === "admin"
-
-?
-
-`
-
-<div class="actions">
-
-<button
-class="blue"
-onclick="editReport('${id}')"
->
-Edit
-</button>
-
-
-<button
-class="red"
-onclick="deleteReport('${id}')"
->
-Delete
-</button>
-
-</div>
-
-`
-
-:
-
-""
+  `;
 
 }
-
-</section>
-
-`;
-
-}
-
-
-
-/* TIMEOUT */
-
-function timeout(promise,ms){
-
-return Promise.race([
-
-promise,
-
-new Promise(function(_,reject){
-
-setTimeout(
-function(){
-
-reject(
-new Error(
-"Firebase response timeout. Refresh karke dobara try karein."
-)
-);
-
-},
-ms
-);
-
-})
-
-]);
-
-}
-
-
-
-/* LOAD REPORTS */
-
-async function loadReports(){
-
-$("reports").innerHTML = `
-
-<div class="card loading">
-
-Loading reports...
-
-</div>
-
-`;
-
-
-try{
-
-const snapshot =
-await timeout(
-getDocs(
-collection(db,"daily_reports")
-),
-10000
-);
-
-
-const reports = [];
-
-reportCache.clear();
-
-
-snapshot.forEach(function(item){
-
-const data =
-item.data();
-
-
-if(data.date){
-
-reportCache.set(
-item.id,
-data
-);
-
-reports.push({
-
-id:item.id,
-
-data:data
-
-});
-
-}
-
-});
-
-
-reports.sort(function(a,b){
-
-return String(
-b.data.date || ""
-)
-.localeCompare(
-String(a.data.date || "")
-);
-
-});
-
-
-if(!reports.length){
-
-$("reports").innerHTML = `
-
-<div class="card empty">
-
-No daily reports available.
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-$("reports").innerHTML =
-reports
-.map(function(item){
-
-return createReportHTML(
-item.id,
-item.data
-);
-
-})
-.join("");
-
-
-}
-
-catch(error){
-
-console.error(error);
-
-
-$("reports").innerHTML = `
-
-<div class="error">
-
-<b>
-Reports load nahi ho rahe.
-</b>
-
-<br><br>
-
-${esc(error.message)}
-
-<br><br>
-
-<button
-class="blue"
-onclick="loadReports()"
->
-Retry
-</button>
-
-</div>
-
-`;
-
-}
-
-}
-
-
-window.loadReports =
-loadReports;
-
 
 
 /* LOGIN */
@@ -1600,484 +1528,51 @@ loadReports;
 window.login =
 async function(){
 
-const email =
-$("email").value.trim();
+  const email =
+    $("email").value.trim();
 
-const password =
-$("password").value;
-
-
-if(!email || !password){
-
-$("loginMsg").style.display =
-"block";
-
-$("loginMsg").textContent =
-"Email aur password enter karo.";
-
-return;
-
-}
+  const password =
+    $("password").value;
 
 
-try{
+  $("loginMsg").style.display =
+    "none";
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
 
-}
+  if(!email || !password){
 
-catch(error){
+    $("loginMsg").textContent =
+      "Email aur password enter karein.";
 
-$("loginMsg").style.display =
-"block";
+    $("loginMsg").style.display =
+      "block";
 
-$("loginMsg").textContent =
-"Login failed: " +
-error.message;
+    return;
 
-}
+  }
+
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }
+
+  catch(error){
+
+    $("loginMsg").textContent =
+      error.message;
+
+    $("loginMsg").style.display =
+      "block";
+
+  }
 
 };
-
-
-
-/* AUTH */
-
-onAuthStateChanged(
-auth,
-async function(user){
-
-if(!user){
-
-$("loginBox")
-.classList
-.remove("hidden");
-
-$("app")
-.classList
-.add("hidden");
-
-return;
-
-}
-
-
-$("loginBox")
-.classList
-.add("hidden");
-
-$("app")
-.classList
-.remove("hidden");
-
-
-$("userInfo").textContent =
-"Logged in: " +
-(user.email || "");
-
-
-try{
-
-const userDoc =
-await timeout(
-getDoc(
-doc(db,"users",user.uid)
-),
-8000
-);
-
-
-if(!userDoc.exists()){
-
-alert(
-"Is account ka role Firebase mein set nahi hai."
-);
-
-return;
-
-}
-
-
-role =
-userDoc.data().role || "staff";
-
-
-if(role === "admin"){
-
-$("adminPanel")
-.classList
-.remove("hidden");
-
-}
-else{
-
-$("adminPanel")
-.classList
-.add("hidden");
-
-}
-
-
-clearForm();
-
-await loadReports();
-
-}
-
-catch(error){
-
-$("reports").innerHTML = `
-
-<div class="error">
-
-${esc(error.message)}
-
-<br><br>
-
-<button
-class="blue"
-onclick="loadReports()"
->
-Retry
-</button>
-
-</div>
-
-`;
-
-}
-
-});
-
-
-
-/* CLEAR FORM */
-
-window.clearForm =
-function(){
-
-$("editId").value = "";
-
-$("adminTitle").textContent =
-"Admin - Create Daily Report";
-
-$("date").value =
-today();
-
-$("strength").value = "";
-
-$("ameCob").value = "";
-
-$("ameThq").value = "";
-
-$("issue").value = "";
-
-$("saveMsg").textContent = "";
-
-renderForm();
-
-};
-
-
-
-/* SAVE REPORT */
-
-window.saveReport =
-async function(){
-
-if(role !== "admin"){
-
-alert(
-"Sirf Admin report create/edit kar sakta hai."
-);
-
-return;
-
-}
-
-
-const date =
-$("date").value;
-
-
-if(!date){
-
-alert(
-"Date select karo."
-);
-
-return;
-
-}
-
-
-const locationsData =
-collect();
-
-
-const strength =
-Number(
-$("strength").value || 0
-);
-
-
-const cob =
-Number(
-$("ameCob").value || 0
-);
-
-
-const thq =
-Number(
-$("ameThq").value || 0
-);
-
-
-let admitted = 0;
-
-let referred = 0;
-
-
-Object.values(
-locationsData
-).forEach(function(item){
-
-if(item.status === "ADMIT")
-admitted++;
-
-if(item.status === "REFERRAL")
-referred++;
-
-});
-
-
-const payload = {
-
-date:
-
-date,
-
-totalStrength:
-
-strength,
-
-ameCob:
-
-cob,
-
-ameThq:
-
-thq,
-
-ameDone:
-
-cob + thq,
-
-amePending:
-
-Math.max(
-0,
-strength - cob - thq
-),
-
-totalAdmitted:
-
-admitted,
-
-totalReferred:
-
-referred,
-
-locations:
-
-locationsData,
-
-otherIssue:
-
-$("issue").value.trim() || "NIL",
-
-updatedAt:
-
-new Date().toISOString()
-
-};
-
-
-$("saveMsg").textContent =
-"Saving...";
-
-
-try{
-
-const id =
-$("editId").value;
-
-
-if(id){
-
-await updateDoc(
-
-doc(
-db,
-"daily_reports",
-id
-),
-
-payload
-
-);
-
-}
-
-else{
-
-payload.createdBy =
-auth.currentUser.uid;
-
-payload.createdAt =
-new Date().toISOString();
-
-
-await addDoc(
-
-collection(
-db,
-"daily_reports"
-),
-
-payload
-
-);
-
-}
-
-
-$("saveMsg").textContent =
-"Report saved successfully.";
-
-
-clearForm();
-
-await loadReports();
-
-}
-
-catch(error){
-
-$("saveMsg").textContent =
-"Save failed: " +
-error.message;
-
-}
-
-};
-
-
-
-/* EDIT REPORT */
-
-window.editReport =
-function(id){
-
-const data =
-reportCache.get(id);
-
-
-if(!data)
-return;
-
-
-$("editId").value =
-id;
-
-
-$("adminTitle").textContent =
-"Admin - Edit Daily Report";
-
-
-$("date").value =
-data.date || today();
-
-
-$("strength").value =
-data.totalStrength || "";
-
-
-$("ameCob").value =
-data.ameCob ?? "";
-
-
-$("ameThq").value =
-data.ameThq ?? "";
-
-
-$("issue").value =
-data.otherIssue || "NIL";
-
-
-renderForm(
-data.locations || {}
-);
-
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
-
-
-
-/* DELETE */
-
-window.deleteReport =
-async function(id){
-
-if(
-!confirm(
-"Kya aap ye report delete karna chahte ho?"
-)
-){
-
-return;
-
-}
-
-
-try{
-
-await deleteDoc(
-doc(
-db,
-"daily_reports",
-id
-)
-);
-
-
-await loadReports();
-
-}
-
-catch(error){
-
-alert(
-"Delete failed: " +
-error.message
-);
-
-}
-
-};
-
 
 
 /* LOGOUT */
@@ -2085,19 +1580,624 @@ error.message
 window.logout =
 async function(){
 
-await signOut(auth);
+  await signOut(auth);
 
 };
 
 
+/* AUTH STATE */
 
-/* START */
+onAuthStateChanged(
+  auth,
+  async function(user){
+
+    if(!user){
+
+      $("loginBox")
+        .classList
+        .remove("hidden");
+
+      $("app")
+        .classList
+        .add("hidden");
+
+      return;
+
+    }
+
+
+    try{
+
+      const userSnap =
+        await getDoc(
+          doc(
+            db,
+            "users",
+            user.uid
+          )
+        );
+
+
+      if(
+        userSnap.exists()
+      ){
+
+        role =
+          userSnap.data().role
+          || "staff";
+
+      }
+      else{
+
+        role = "staff";
+
+      }
+
+
+      $("loginBox")
+        .classList
+        .add("hidden");
+
+      $("app")
+        .classList
+        .remove("hidden");
+
+
+      $("userInfo").textContent =
+        "Logged in: " + user.email;
+
+
+      if(role === "admin"){
+
+        $("adminPanel")
+          .classList
+          .remove("hidden");
+
+        $("date").value =
+          today();
+
+        renderForm();
+
+      }
+      else{
+
+        $("adminPanel")
+          .classList
+          .add("hidden");
+
+      }
+
+
+      loadReports();
+
+    }
+
+    catch(error){
+
+      console.error(error);
+
+      $("loginMsg").textContent =
+        "User profile load nahi hua: "
+        + error.message;
+
+      $("loginMsg").style.display =
+        "block";
+
+    }
+
+  }
+
+);
+
+
+/* LOAD REPORTS */
+
+window.loadReports =
+async function(){
+
+  $("reports").innerHTML =
+    `<div class="card loading">
+      Loading reports...
+    </div>`;
+
+
+  try{
+
+    const snap =
+      await getDocs(
+        collection(
+          db,
+          "daily_reports"
+        )
+      );
+
+
+    reportCache.clear();
+
+
+    if(snap.empty){
+
+      $("reports").innerHTML =
+        `<div class="card empty">
+          No daily reports available.
+        </div>`;
+
+      return;
+
+    }
+
+
+    const reports = [];
+
+
+    snap.forEach(function(item){
+
+      const data =
+        item.data();
+
+
+      if(data.setup === true)
+        return;
+
+
+      reportCache.set(
+        item.id,
+        data
+      );
+
+
+      reports.push({
+
+        id:item.id,
+
+        data:data
+
+      });
+
+    });
+
+
+    reports.sort(
+      function(a,b){
+
+        return String(
+          b.data.date || ""
+        ).localeCompare(
+          String(a.data.date || "")
+        );
+
+      }
+    );
+
+
+    if(reports.length === 0){
+
+      $("reports").innerHTML =
+        `<div class="card empty">
+          No daily reports available.
+        </div>`;
+
+      return;
+
+    }
+
+
+    $("reports").innerHTML =
+      reports.map(function(item){
+
+        return createReportHTML(
+          item.id,
+          item.data
+        );
+
+      }).join("");
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    $("reports").innerHTML = `
+
+      <div class="card error">
+
+        <h3>
+          Reports load nahi ho rahe.
+        </h3>
+
+        <p>
+          ${esc(error.message)}
+        </p>
+
+        <button
+          class="blue"
+          onclick="loadReports()"
+        >
+          Retry
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+};
+
+
+/* SAVE REPORT */
+
+window.saveReport =
+async function(){
+
+  if(role !== "admin"){
+
+    alert(
+      "Only Admin can save reports."
+    );
+
+    return;
+
+  }
+
+
+  const date =
+    $("date").value;
+
+
+  if(!date){
+
+    alert(
+      "Date select karein."
+    );
+
+    return;
+
+  }
+
+
+  const locationsData =
+    collect();
+
+
+  const totalStrength =
+    Number(
+      $("strength").value || 0
+    );
+
+
+  let cobAME = 0;
+
+  let thqAME = 0;
+
+
+  Object.entries(
+    locationsData
+  ).forEach(function([location,item]){
+
+    const n =
+      Number(item.ame || 0);
+
+
+    if(location.startsWith("THQ"))
+      thqAME += n;
+    else
+      cobAME += n;
+
+  });
+
+
+  const manualCob =
+    Number(
+      $("ameCob").value || 0
+    );
+
+
+  const manualThq =
+    Number(
+      $("ameThq").value || 0
+    );
+
+
+  const ameCob =
+    manualCob || cobAME;
+
+
+  const ameThq =
+    manualThq || thqAME;
+
+
+  const ameDone =
+    ameCob + ameThq;
+
+
+  const amePending =
+    Math.max(
+      0,
+      totalStrength - ameDone
+    );
+
+
+  const report = {
+
+    date:
+
+      date,
+
+    totalStrength:
+
+      totalStrength,
+
+    ameCob:
+
+      ameCob,
+
+    ameThq:
+
+      ameThq,
+
+    ameDone:
+
+      ameDone,
+
+    amePending:
+
+      amePending,
+
+    totalAdmitted:
+
+      0,
+
+    totalReferred:
+
+      0,
+
+    locations:
+
+      locationsData,
+
+    otherIssue:
+
+      $("issue").value.trim()
+      || "NIL"
+
+  };
+
+
+  Object.values(
+    locationsData
+  ).forEach(function(item){
+
+    if(item.status === "ADMIT")
+      report.totalAdmitted++;
+
+    if(item.status === "REFERRAL")
+      report.totalReferred++;
+
+  });
+
+
+  try{
+
+    const editId =
+      $("editId").value;
+
+
+    if(editId){
+
+      await updateDoc(
+
+        doc(
+          db,
+          "daily_reports",
+          editId
+        ),
+
+        report
+
+      );
+
+      $("saveMsg").textContent =
+        "Report updated successfully.";
+
+    }
+    else{
+
+      await addDoc(
+
+        collection(
+          db,
+          "daily_reports"
+        ),
+
+        report
+
+      );
+
+      $("saveMsg").textContent =
+        "Report saved successfully.";
+
+    }
+
+
+    $("editId").value = "";
+
+    $("adminTitle").textContent =
+      "Admin - Create Daily Report";
+
+
+    await loadReports();
+
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    $("saveMsg").textContent =
+      "Save failed: " + error.message;
+
+  }
+
+};
+
+
+/* EDIT REPORT */
+
+window.editReport =
+function(id){
+
+  if(role !== "admin")
+    return;
+
+
+  const data =
+    reportCache.get(id);
+
+
+  if(!data)
+    return;
+
+
+  $("editId").value =
+    id;
+
+
+  $("adminTitle").textContent =
+    "Admin - Edit Daily Report";
+
+
+  $("date").value =
+    data.date || today();
+
+
+  $("strength").value =
+    data.totalStrength || 0;
+
+
+  $("ameCob").value =
+    data.ameCob || 0;
+
+
+  $("ameThq").value =
+    data.ameThq || 0;
+
+
+  $("issue").value =
+    data.otherIssue || "";
+
+
+  renderForm(
+    data.locations || {}
+  );
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+};
+
+
+/* DELETE REPORT */
+
+window.deleteReport =
+async function(id){
+
+  if(role !== "admin")
+    return;
+
+
+  const ok =
+    confirm(
+      "Kya aap ye report delete karna chahte hain?"
+    );
+
+
+  if(!ok)
+    return;
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "daily_reports",
+        id
+      )
+    );
+
+
+    await loadReports();
+
+  }
+
+  catch(error){
+
+    alert(
+      "Delete failed: "
+      + error.message
+    );
+
+  }
+
+};
+
+
+/* CLEAR FORM */
+
+window.clearForm =
+function(){
+
+  $("editId").value =
+    "";
+
+  $("adminTitle").textContent =
+    "Admin - Create Daily Report";
+
+
+  $("date").value =
+    today();
+
+
+  $("strength").value =
+    "";
+
+
+  $("ameCob").value =
+    "";
+
+
+  $("ameThq").value =
+    "";
+
+
+  $("issue").value =
+    "";
+
+
+  $("saveMsg").textContent =
+    "";
+
+
+  renderForm();
+
+};
+
+
+/* INITIAL FORM */
 
 $("date").value =
 today();
-
-renderForm();
-
 
 </script>
 
