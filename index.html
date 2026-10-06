@@ -2,105 +2,366 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>41 BN Medical Report System</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>41 BN ITBP - Daily Medical Report</title>
 
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f1f5f9;
-  color:#172033;
-}
-header{
-  background:#123b2a;
-  color:white;
-  padding:18px;
-  text-align:center;
-}
-header h1{margin:0;font-size:23px}
-header p{margin:6px 0 0;font-size:13px}
 
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:18px;
+:root{
+--navy:#073f7a;
+--blue:#0b5aa5;
+--sky:#bfe7ff;
+--green:#dff3a8;
+--red:#ffd6d2;
+--orange:#ffe8b3;
+--line:#274c70;
+}
+
+body{
+margin:0;
+background:#eef3f8;
+color:#111;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+background:linear-gradient(90deg,#063b73,#0b5da8,#063b73);
+color:#fff;
+text-align:center;
+padding:14px 8px;
+}
+
+header h1{
+margin:0;
+font:700 clamp(21px,4vw,34px) Georgia,serif;
+}
+
+header p{
+margin:5px 0 0;
+font:700 clamp(18px,3vw,28px) Georgia,serif;
+}
+
+.wrap{
+max-width:1500px;
+margin:auto;
+padding:10px;
+}
+
+.hidden{
+display:none!important;
 }
 
 .card{
-  background:white;
-  padding:20px;
-  margin-bottom:18px;
-  border-radius:14px;
-  box-shadow:0 3px 12px #0001;
+background:#fff;
+border:1px solid #ccd6df;
+border-radius:10px;
+padding:15px;
+margin-bottom:14px;
+box-shadow:0 2px 8px #0001;
 }
 
-h2{margin-top:0;color:#123b2a}
+.login{
+max-width:430px;
+margin:30px auto;
+}
+
+.login h2{
+text-align:center;
+color:var(--navy);
+font-family:Georgia,serif;
+}
+
+label{
+display:block;
+font-weight:700;
+margin:8px 0 4px;
+}
 
 input,select,textarea{
-  width:100%;
-  padding:12px;
-  margin:7px 0 13px;
-  border:1px solid #ccd3dc;
-  border-radius:8px;
-  font-size:15px;
+width:100%;
+padding:9px;
+border:1px solid #b9c4cf;
+border-radius:6px;
+font-size:14px;
+background:white;
 }
 
 button{
-  border:0;
-  border-radius:8px;
-  padding:12px 18px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  background:#123b2a;
-  color:white;
+border:0;
+border-radius:7px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
 }
 
-button.red{background:#b42318}
-button.blue{background:#1769aa}
+.blue{
+background:var(--blue);
+color:white;
+}
 
-.hidden{display:none}
+.red{
+background:#b42318;
+color:white;
+}
+
+.gray{
+background:#475569;
+color:white;
+}
+
+.login button{
+width:100%;
+margin-top:10px;
+}
+
+.msg{
+display:none;
+margin-top:10px;
+padding:10px;
+border-radius:6px;
+background:#fff3cd;
+color:#664d03;
+}
+
+.toolbar{
+display:flex;
+gap:8px;
+align-items:center;
+flex-wrap:wrap;
+margin-bottom:10px;
+}
+
+.toolbar span{
+margin-left:auto;
+background:#fff;
+border:1px solid #c8d2dd;
+border-radius:7px;
+padding:8px 10px;
+font-size:13px;
+}
+
+.panel-title{
+margin:0 0 10px;
+color:var(--navy);
+font:700 22px Georgia,serif;
+}
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:9px;
+}
+
+.scroll{
+overflow-x:auto;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:12px;
-  background:white;
+border-collapse:collapse;
+width:100%;
+min-width:1200px;
 }
 
 th,td{
-  border:1px solid #d8dee6;
-  padding:10px;
-  text-align:left;
+border:1px solid #555;
+padding:7px;
+text-align:center;
+vertical-align:middle;
 }
 
 th{
-  background:#123b2a;
-  color:white;
+background:var(--navy);
+color:white;
+font:700 13px Georgia,serif;
+}
+
+td{
+background:white;
+font-size:13px;
+}
+
+.location{
+text-align:left;
+font-weight:700;
+white-space:nowrap;
+}
+
+.nil{
+background:var(--green)!important;
+font-weight:700;
+}
+
+.admit{
+background:var(--red)!important;
+font-weight:700;
+}
+
+.ref{
+background:var(--orange)!important;
+font-weight:700;
 }
 
 .report{
-  border-left:5px solid #123b2a;
+background:#fff;
+border:1px solid #b7c4d0;
+margin:16px 0;
+box-shadow:0 2px 7px #0001;
+}
+
+.report-head{
+background:var(--navy);
+color:white;
+text-align:center;
+padding:7px;
+font:700 clamp(19px,3vw,30px) Georgia,serif;
+}
+
+.bn{
+text-align:center;
+color:#064a92;
+background:white;
+padding:8px;
+font:700 clamp(20px,3vw,29px) Georgia,serif;
+}
+
+.date{
+padding:8px 12px;
+border-bottom:2px solid var(--blue);
+font-weight:700;
+}
+
+.date b{
+display:inline-block;
+margin-left:8px;
+border:1px solid #1683d8;
+background:#dff2ff;
+padding:4px 12px;
+}
+
+.summary-title{
+background:var(--sky);
+border:1px solid #1774bd;
+text-align:center;
+padding:6px;
+font:700 22px Georgia,serif;
+}
+
+.summary{
+min-width:0;
+}
+
+.summary td:first-child{
+background:var(--sky);
+text-align:left;
+font-weight:700;
+width:50%;
+}
+
+.summary td:last-child{
+text-align:left;
+font-weight:700;
+}
+
+.issue{
+display:grid;
+grid-template-columns:340px 1fr;
+border:1px solid #1774bd;
+margin-top:10px;
+}
+
+.issue b{
+background:var(--sky);
+padding:12px;
+}
+
+.issue span{
+padding:12px;
+background:white;
+}
+
+.actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+.loading{
+text-align:center;
+padding:25px;
+font-weight:700;
+color:#475569;
+}
+
+.error{
+padding:12px;
+background:#fee2e2;
+color:#991b1b;
+border-radius:7px;
+}
+
+.empty{
+text-align:center;
+padding:25px;
+color:#64748b;
 }
 
 .small{
-  color:#667085;
-  font-size:13px;
+font-size:12px;
+color:#667085;
 }
 
-#message{
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:8px;
-  display:none;
+@media(max-width:850px){
+
+.grid{
+grid-template-columns:1fr 1fr;
+}
+
+.toolbar span{
+margin-left:0;
+}
+
+}
+
+@media(max-width:520px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.wrap{
+padding:6px;
+}
+
+.issue{
+grid-template-columns:1fr;
+}
+
+}
+
+@media print{
+
+.toolbar,
+#adminPanel,
+.actions{
+display:none!important;
+}
+
+body{
+background:white;
+}
+
+.wrap{
+max-width:none;
+padding:0;
+}
+
+.report{
+box-shadow:none;
+border:0;
+}
+
 }
 </style>
 </head>
@@ -108,623 +369,1737 @@ th{
 <body>
 
 <header>
-  <h1>41 BN MEDICAL REPORT SYSTEM</h1>
-  <p>Daily Medical Report • 41 Battalion</p>
+
+<h1>
+DAILY MEDICAL REPORT - ALL COBs &amp; THQs
+</h1>
+
+<p>
+41 BN ITBP
+</p>
+
 </header>
 
-<div class="container">
+
+<main class="wrap">
+
 
 <!-- LOGIN -->
-<div id="loginBox" class="card">
-  <h2>Staff Login</h2>
 
-  <input id="email" type="email" placeholder="Email ID">
-  <input id="password" type="password" placeholder="Password">
+<section id="loginBox" class="card login">
 
-  <button onclick="login()">Login</button>
+<h2>
+Staff Login
+</h2>
 
-  <div id="message"></div>
+<label>
+Email ID
+</label>
 
-  <p class="small">
-    Staff can view reports. Admin can create, edit and delete reports.
-  </p>
-</div>
+<input
+id="email"
+type="email"
+autocomplete="username"
+placeholder="Email ID"
+>
 
+<label>
+Password
+</label>
 
-<!-- APP -->
-<div id="app" class="hidden">
+<input
+id="password"
+type="password"
+autocomplete="current-password"
+placeholder="Password"
+>
 
-  <div class="card">
-    <h2>Welcome</h2>
-    <p id="userInfo"></p>
-    <button class="red" onclick="logout()">Logout</button>
-  </div>
+<button
+class="blue"
+onclick="login()"
+>
+Login
+</button>
 
+<div id="loginMsg" class="msg"></div>
 
-  <!-- ADMIN PANEL -->
-  <div id="adminPanel" class="card hidden">
+<p class="small">
+Staff can view reports.
+Admin can create, edit and delete reports.
+</p>
 
-    <h2>Admin – Create Daily Report</h2>
-
-    <div class="grid">
-
-      <div>
-        <label>Date</label>
-        <input id="reportDate" type="date">
-      </div>
-
-      <div>
-        <label>Total Strength</label>
-        <input id="totalStrength" type="number" placeholder="Example: 417">
-      </div>
-
-      <div>
-        <label>AME Done</label>
-        <input id="ameDone" type="number" placeholder="AME Done">
-      </div>
-
-      <div>
-        <label>AME Pending</label>
-        <input id="amePending" type="number" placeholder="AME Pending">
-      </div>
-
-    </div>
-
-    <h3>Location-wise Medical Report</h3>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Location</th>
-          <th>Patients</th>
-          <th>Admitted</th>
-          <th>Referral</th>
-        </tr>
-      </thead>
-
-      <tbody id="locationRows"></tbody>
-    </table>
-
-    <br>
-
-    <label>Remarks</label>
-    <textarea id="remarks" rows="4"
-      placeholder="Enter important medical remarks..."></textarea>
-
-    <button onclick="saveReport()">Save Daily Report</button>
-
-    <p id="saveStatus" class="small"></p>
-
-  </div>
+</section>
 
 
-  <!-- REPORTS -->
-  <div class="card">
 
-    <h2>Daily Medical Reports</h2>
+<!-- APPLICATION -->
 
-    <div id="reportsList">
-      Loading reports...
-    </div>
+<section id="app" class="hidden">
 
-  </div>
+
+<div class="toolbar">
+
+<button
+class="gray"
+onclick="loadReports()"
+>
+↻ Refresh
+</button>
+
+<button
+class="gray"
+onclick="window.print()"
+>
+🖨 Print
+</button>
+
+<button
+class="red"
+onclick="logout()"
+>
+Logout
+</button>
+
+<span id="userInfo"></span>
 
 </div>
 
+
+
+<!-- ADMIN PANEL -->
+
+<section id="adminPanel" class="card hidden">
+
+<h2
+id="adminTitle"
+class="panel-title"
+>
+Admin - Create Daily Report
+</h2>
+
+<input
+id="editId"
+type="hidden"
+>
+
+
+<div class="grid">
+
+<div>
+
+<label>
+Date
+</label>
+
+<input
+id="date"
+type="date"
+>
+
 </div>
+
+
+<div>
+
+<label>
+Total Strength
+</label>
+
+<input
+id="strength"
+type="number"
+min="0"
+placeholder="417"
+>
+
+</div>
+
+
+<div>
+
+<label>
+AME Done at All COB
+</label>
+
+<input
+id="ameCob"
+type="number"
+min="0"
+placeholder="295"
+>
+
+</div>
+
+
+<div>
+
+<label>
+AME Done at THQ
+</label>
+
+<input
+id="ameThq"
+type="number"
+min="0"
+placeholder="202"
+>
+
+</div>
+
+</div>
+
+
+
+<div class="scroll">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>S. NO.</th>
+
+<th>COB / LOCATION</th>
+
+<th>STATUS</th>
+
+<th>
+REGT. NO. / RANK / NAME / COY
+</th>
+
+<th>
+AGE / SEX
+</th>
+
+<th>
+C/O / DIAGNOSIS
+</th>
+
+<th>
+CONDITION / REMARKS
+</th>
+
+<th>
+AME DONE TODAY
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="formRows">
+</tbody>
+
+</table>
+
+</div>
+
+
+
+<label>
+ANY OTHER ISSUE
+</label>
+
+<textarea
+id="issue"
+rows="2"
+placeholder="NIL"
+></textarea>
+
+
+<div class="actions">
+
+<button
+class="blue"
+onclick="saveReport()"
+>
+Save Report
+</button>
+
+<button
+class="gray"
+onclick="clearForm()"
+>
+Clear
+</button>
+
+</div>
+
+
+<div
+id="saveMsg"
+class="small"
+>
+</div>
+
+</section>
+
+
+
+<!-- REPORTS -->
+
+<section id="reports">
+</section>
+
+
+</section>
+
+</main>
+
 
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+initializeApp
 }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  getDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  orderBy
+getAuth,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
 }
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+doc,
+getDoc,
+updateDoc,
+deleteDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 
 
 /* FIREBASE CONFIG */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
-  authDomain: "bn-medical-report.firebaseapp.com",
-  projectId: "bn-medical-report",
-  storageBucket: "bn-medical-report.firebasestorage.app",
-  messagingSenderId: "353793989004",
-  appId: "1:353793989004:web:b7963ebe3b641a02059ea9",
-  measurementId: "G-RNZ0NBLD6G"
+
+apiKey:
+"AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
+
+authDomain:
+"bn-medical-report.firebaseapp.com",
+
+projectId:
+"bn-medical-report",
+
+storageBucket:
+"bn-medical-report.firebasestorage.app",
+
+messagingSenderId:
+"353793989004",
+
+appId:
+"1:353793989004:web:b7963ebe3b641a02059ea9",
+
+measurementId:
+"G-RNZ0NBLD6G"
+
 };
 
 
-/* INITIALIZE FIREBASE */
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getFirestore(app);
+
 
 
 /* LOCATIONS */
 
 const locations = [
-  "COB Nelangur",
-  "COB Padamkot",
-  "COB Bedmakoti",
-  "COB Kutul",
-  "COB Kasturmetha",
-  "THQ Kukrajhor"
+
+"COB NELANGUR",
+
+"COB PADAMKOT",
+
+"COB BEDMAKOTI",
+
+"FIELD HOSPITAL KUTUL",
+
+"COB KASTURMETHA",
+
+"THQ KOKRAJHOR / NARAYANPUR",
+
+"THQ KONDAGAON",
+
+"RAIPUR"
+
 ];
 
 
-/* CREATE LOCATION TABLE */
 
-const locationRows = document.getElementById("locationRows");
-
-locations.forEach((location,index)=>{
-  locationRows.innerHTML += `
-    <tr>
-      <td>${location}</td>
-      <td>
-        <input id="patients${index}" type="number" value="0">
-      </td>
-      <td>
-        <input id="admitted${index}" type="number" value="0">
-      </td>
-      <td>
-        <input id="referral${index}" type="number" value="0">
-      </td>
-    </tr>
-  `;
-});
+const $ =
+id => document.getElementById(id);
 
 
-/* LOGIN */
-
-window.login = async function(){
-
-  const email =
-    document.getElementById("email").value.trim();
-
-  const password =
-    document.getElementById("password").value;
-
-  const message =
-    document.getElementById("message");
-
-  if(!email || !password){
-    showMessage("Email aur password enter karo.");
-    return;
-  }
-
-  try{
-
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  }catch(error){
-
-    showMessage("Login failed: " + error.message);
-
-  }
-};
+let role =
+"staff";
 
 
-/* AUTH STATE */
+let reportCache =
+new Map();
 
-onAuthStateChanged(auth, async(user)=>{
 
-  if(!user){
 
-    document.getElementById("loginBox")
-      .classList.remove("hidden");
+/* ESCAPE TEXT */
 
-    document.getElementById("app")
-      .classList.add("hidden");
+function esc(value){
 
-    return;
-  }
+return String(value ?? "")
+.replace(/[&<>"']/g,function(c){
 
-  document.getElementById("loginBox")
-    .classList.add("hidden");
+return {
 
-  document.getElementById("app")
-    .classList.remove("hidden");
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
 
-  document.getElementById("userInfo").innerHTML =
-    "Logged in as: <b>" + user.email + "</b>";
-
-  await checkRole(user.uid);
+}[c];
 
 });
-
-
-/* CHECK ROLE */
-
-async function checkRole(uid){
-
-  try{
-
-    const userDoc =
-      await getDoc(doc(db,"users",uid));
-
-    if(!userDoc.exists()){
-
-      showMessage(
-        "Is account ka role Firebase mein set nahi hai."
-      );
-
-      return;
-    }
-
-    const role =
-      userDoc.data().role;
-
-    if(role === "admin"){
-
-      document.getElementById("adminPanel")
-        .classList.remove("hidden");
-
-    }else{
-
-      document.getElementById("adminPanel")
-        .classList.add("hidden");
-
-    }
-
-    loadReports();
-
-  }catch(error){
-
-    console.error(error);
-
-    showMessage(
-      "Permission error. Firebase Rules check karo."
-    );
-
-  }
 
 }
 
 
-/* SAVE REPORT */
 
-window.saveReport = async function(){
+/* TODAY */
 
-  const user = auth.currentUser;
+function today(){
 
-  if(!user){
-    alert("Pehle login karo.");
-    return;
-  }
+return new Date()
+.toISOString()
+.slice(0,10);
 
-  const userDoc =
-    await getDoc(doc(db,"users",user.uid));
-
-  if(!userDoc.exists() ||
-     userDoc.data().role !== "admin"){
-
-    alert("Sirf Admin report create kar sakta hai.");
-    return;
-  }
-
-  const date =
-    document.getElementById("reportDate").value;
-
-  const totalStrength =
-    Number(document.getElementById("totalStrength").value || 0);
-
-  const ameDone =
-    Number(document.getElementById("ameDone").value || 0);
-
-  const amePending =
-    Number(document.getElementById("amePending").value || 0);
-
-  const remarks =
-    document.getElementById("remarks").value;
+}
 
 
-  if(!date){
 
-    alert("Date select karo.");
-    return;
+/* DATE */
 
-  }
+function niceDate(value){
+
+if(!value)
+return "";
+
+const parts =
+value.split("-");
+
+const d =
+new Date(
+Number(parts[0]),
+Number(parts[1])-1,
+Number(parts[2])
+);
+
+return d.toLocaleDateString(
+"en-GB",
+{
+day:"2-digit",
+month:"short",
+year:"numeric"
+}
+).toUpperCase();
+
+}
 
 
-  const locationData = {};
 
-  locations.forEach((location,index)=>{
+/* WEEKDAY */
 
-    locationData[location] = {
+function weekday(value){
 
-      patients:
-        Number(document.getElementById("patients"+index).value || 0),
+if(!value)
+return "";
 
-      admitted:
-        Number(document.getElementById("admitted"+index).value || 0),
+const parts =
+value.split("-");
 
-      referral:
-        Number(document.getElementById("referral"+index).value || 0)
+const d =
+new Date(
+Number(parts[0]),
+Number(parts[1])-1,
+Number(parts[2])
+);
 
-    };
+return d.toLocaleDateString(
+"en-US",
+{
+weekday:"short"
+}
+).toUpperCase();
 
-  });
+}
 
 
-  try{
 
-    await addDoc(
-      collection(db,"daily_reports"),
-      {
-        date,
-        totalStrength,
-        ameDone,
-        amePending,
-        locations: locationData,
-        remarks,
-        createdBy: user.uid,
-        createdAt: new Date().toISOString()
-      }
-    );
+/* STATUS COLOR */
 
-    document.getElementById("saveStatus").innerText =
-      "Report successfully save ho gayi.";
+function statusClass(status){
 
-    loadReports();
+if(status === "ADMIT")
+return "admit";
 
-  }catch(error){
+if(status === "REFERRAL")
+return "ref";
 
-    alert(
-      "Report save nahi hui: " + error.message
-    );
+return "nil";
 
-  }
+}
+
+
+
+/* ADMIN FORM */
+
+function renderForm(data = {}){
+
+$("formRows").innerHTML =
+locations.map(function(location,index){
+
+const d =
+data[location] || {};
+
+return `
+
+<tr>
+
+<td>
+${index+1}
+</td>
+
+<td class="location">
+${location}
+</td>
+
+
+<td
+class="${statusClass(d.status || "NIL")}"
+>
+
+<select
+id="st${index}"
+onchange="changeStatus(${index})"
+>
+
+<option>NIL</option>
+
+<option>ADMIT</option>
+
+<option>REFERRAL</option>
+
+</select>
+
+</td>
+
+
+<td>
+
+<input
+id="p${index}"
+value="${esc(d.person || "")}"
+placeholder="-"
+>
+
+</td>
+
+
+<td>
+
+<input
+id="a${index}"
+value="${esc(d.ageSex || "")}"
+placeholder="-"
+>
+
+</td>
+
+
+<td>
+
+<input
+id="d${index}"
+value="${esc(d.diagnosis || "")}"
+placeholder="-"
+>
+
+</td>
+
+
+<td>
+
+<input
+id="c${index}"
+value="${esc(d.condition || "")}"
+placeholder="-"
+>
+
+</td>
+
+
+<td>
+
+<input
+id="m${index}"
+type="number"
+min="0"
+value="${Number(d.ame || 0)}"
+>
+
+</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+
+locations.forEach(function(location,index){
+
+const d =
+data[location] || {};
+
+$("st"+index).value =
+d.status || "NIL";
+
+changeStatus(index);
+
+});
+
+}
+
+
+
+/* CHANGE STATUS */
+
+window.changeStatus =
+function(index){
+
+const select =
+$("st"+index);
+
+select.className =
+statusClass(select.value);
 
 };
+
+
+
+/* COLLECT FORM */
+
+function collect(){
+
+const output = {};
+
+locations.forEach(function(location,index){
+
+output[location] = {
+
+status:
+$("st"+index).value,
+
+person:
+$("p"+index).value.trim(),
+
+ageSex:
+$("a"+index).value.trim(),
+
+diagnosis:
+$("d"+index).value.trim(),
+
+condition:
+$("c"+index).value.trim(),
+
+ame:
+Number($("m"+index).value || 0)
+
+};
+
+});
+
+return output;
+
+}
+
+
+
+/* SUMMARY */
+
+function calculateSummary(data){
+
+let admitted = 0;
+
+let referred = 0;
+
+let cob = 0;
+
+let thq = 0;
+
+
+Object.entries(
+data.locations || {}
+).forEach(function([location,item]){
+
+if(item.status === "ADMIT")
+admitted++;
+
+if(item.status === "REFERRAL")
+referred++;
+
+
+const n =
+Number(item.ame || 0);
+
+
+if(
+location.startsWith("THQ")
+)
+thq += n;
+
+else
+cob += n;
+
+});
+
+
+const strength =
+Number(data.totalStrength || 0);
+
+
+const done =
+data.ameDone != null
+?
+Number(data.ameDone)
+:
+cob + thq;
+
+
+return {
+
+admitted,
+
+referred,
+
+cob:
+Number(data.ameCob ?? cob),
+
+thq:
+Number(data.ameThq ?? thq),
+
+done,
+
+pending:
+data.amePending != null
+?
+Number(data.amePending)
+:
+Math.max(0,strength-done),
+
+strength
+
+};
+
+}
+
+
+
+/* REPORT HTML */
+
+function createReportHTML(id,data){
+
+const summary =
+calculateSummary(data);
+
+
+let rows = "";
+
+
+locations.forEach(function(location,index){
+
+const item =
+(data.locations || {})[location] || {};
+
+const status =
+item.status || "NIL";
+
+
+rows += `
+
+<tr>
+
+<td>
+${index+1}
+</td>
+
+<td class="location">
+${esc(location)}
+</td>
+
+<td class="${statusClass(status)}">
+${esc(status)}
+</td>
+
+<td>
+${esc(item.person || "-")}
+</td>
+
+<td>
+${esc(item.ageSex || "-")}
+</td>
+
+<td>
+${esc(item.diagnosis || "-")}
+</td>
+
+<td>
+${esc(item.condition || "-")}
+</td>
+
+<td>
+${Number(item.ame || 0) || "NIL"}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+
+return `
+
+<section class="report">
+
+<div class="report-head">
+DAILY MEDICAL REPORT - ALL COBs &amp; THQs
+</div>
+
+
+<div class="bn">
+41 BN ITBP
+</div>
+
+
+<div class="date">
+
+DATE:
+
+<b>
+${niceDate(data.date)}
+(${weekday(data.date)})
+</b>
+
+</div>
+
+
+
+<div class="scroll">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>S. NO.</th>
+
+<th>COB / LOCATION</th>
+
+<th>STATUS</th>
+
+<th>
+REGT. NO. / RANK / NAME / COY
+</th>
+
+<th>
+AGE / SEX
+</th>
+
+<th>
+C/O / DIAGNOSIS
+</th>
+
+<th>
+CONDITION / REMARKS
+</th>
+
+<th>
+AME DONE TODAY
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+${rows}
+
+</tbody>
+
+</table>
+
+</div>
+
+
+
+<div class="summary-title">
+DAILY SUMMARY
+</div>
+
+
+<table class="summary">
+
+<tr>
+
+<td>
+TOTAL ADMITTED PATIENTS
+</td>
+
+<td>
+${summary.admitted}
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+TOTAL REFERRED PATIENTS
+</td>
+
+<td>
+${summary.referred}
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+AME DONE AT ALL COB
+</td>
+
+<td>
+${summary.cob}
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+AME DONE AT THQ
+</td>
+
+<td>
+${summary.thq}
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+TOTAL AME DONE
+</td>
+
+<td>
+${summary.done}
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+AME PENDING
+</td>
+
+<td>
+${summary.pending}
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+TOTAL STRENGTH
+</td>
+
+<td>
+${summary.strength}
+</td>
+
+</tr>
+
+</table>
+
+
+
+<div class="issue">
+
+<b>
+ANY OTHER ISSUE
+</b>
+
+<span>
+${esc(data.otherIssue || "NIL")}
+</span>
+
+</div>
+
+
+
+${
+role === "admin"
+
+?
+
+`
+
+<div class="actions">
+
+<button
+class="blue"
+onclick="editReport('${id}')"
+>
+Edit
+</button>
+
+
+<button
+class="red"
+onclick="deleteReport('${id}')"
+>
+Delete
+</button>
+
+</div>
+
+`
+
+:
+
+""
+
+}
+
+</section>
+
+`;
+
+}
+
+
+
+/* TIMEOUT */
+
+function timeout(promise,ms){
+
+return Promise.race([
+
+promise,
+
+new Promise(function(_,reject){
+
+setTimeout(
+function(){
+
+reject(
+new Error(
+"Firebase response timeout. Refresh karke dobara try karein."
+)
+);
+
+},
+ms
+);
+
+})
+
+]);
+
+}
+
 
 
 /* LOAD REPORTS */
 
 async function loadReports(){
 
-  const list =
-    document.getElementById("reportsList");
+$("reports").innerHTML = `
 
-  try{
+<div class="card loading">
 
-    const q =
-      query(
-        collection(db,"daily_reports"),
-        orderBy("date","desc")
-      );
+Loading reports...
 
-    const snapshot =
-      await getDocs(q);
+</div>
 
-    if(snapshot.empty){
-
-      list.innerHTML =
-        "<p>No reports available.</p>";
-
-      return;
-
-    }
+`;
 
 
-    list.innerHTML = "";
+try{
+
+const snapshot =
+await timeout(
+getDocs(
+collection(db,"daily_reports")
+),
+10000
+);
 
 
-    snapshot.forEach((item)=>{
+const reports = [];
 
-      const data = item.data();
-
-      let rows = "";
-
-      if(data.locations){
-
-        for(const location in data.locations){
-
-          const d =
-            data.locations[location];
-
-          rows += `
-            <tr>
-              <td>${location}</td>
-              <td>${d.patients || 0}</td>
-              <td>${d.admitted || 0}</td>
-              <td>${d.referral || 0}</td>
-            </tr>
-          `;
-
-        }
-
-      }
+reportCache.clear();
 
 
-      list.innerHTML += `
+snapshot.forEach(function(item){
 
-        <div class="card report">
-
-          <h3>
-            Medical Report – ${data.date || ""}
-          </h3>
-
-          <p>
-            <b>Total Strength:</b>
-            ${data.totalStrength || 0}
-          </p>
-
-          <p>
-            <b>AME Done:</b>
-            ${data.ameDone || 0}
-            &nbsp;&nbsp;
-            <b>AME Pending:</b>
-            ${data.amePending || 0}
-          </p>
-
-          <table>
-
-            <tr>
-              <th>Location</th>
-              <th>Patients</th>
-              <th>Admitted</th>
-              <th>Referral</th>
-            </tr>
-
-            ${rows}
-
-          </table>
-
-          <p>
-            <b>Remarks:</b>
-            ${data.remarks || "Nil"}
-          </p>
-
-          ${
-            document.getElementById("adminPanel")
-              .classList.contains("hidden")
-            ? ""
-            :
-            `<button class="red"
-              onclick="deleteReport('${item.id}')">
-              Delete Report
-            </button>`
-          }
-
-        </div>
-
-      `;
-
-    });
+const data =
+item.data();
 
 
-  }catch(error){
+if(data.date){
 
-    list.innerHTML =
-      "<p>Reports load nahi ho rahe: "
-      + error.message +
-      "</p>";
+reportCache.set(
+item.id,
+data
+);
 
-  }
+reports.push({
+
+id:item.id,
+
+data:data
+
+});
+
+}
+
+});
+
+
+reports.sort(function(a,b){
+
+return String(
+b.data.date || ""
+)
+.localeCompare(
+String(a.data.date || "")
+);
+
+});
+
+
+if(!reports.length){
+
+$("reports").innerHTML = `
+
+<div class="card empty">
+
+No daily reports available.
+
+</div>
+
+`;
+
+return;
 
 }
 
 
-/* DELETE REPORT */
+$("reports").innerHTML =
+reports
+.map(function(item){
 
-window.deleteReport = async function(id){
+return createReportHTML(
+item.id,
+item.data
+);
 
-  if(!confirm("Kya aap ye report delete karna chahte ho?")){
-    return;
-  }
+})
+.join("");
 
-  try{
 
-    await deleteDoc(
-      doc(db,"daily_reports",id)
-    );
+}
 
-    loadReports();
+catch(error){
 
-  }catch(error){
+console.error(error);
 
-    alert(
-      "Delete failed: " + error.message
-    );
 
-  }
+$("reports").innerHTML = `
+
+<div class="error">
+
+<b>
+Reports load nahi ho rahe.
+</b>
+
+<br><br>
+
+${esc(error.message)}
+
+<br><br>
+
+<button
+class="blue"
+onclick="loadReports()"
+>
+Retry
+</button>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+window.loadReports =
+loadReports;
+
+
+
+/* LOGIN */
+
+window.login =
+async function(){
+
+const email =
+$("email").value.trim();
+
+const password =
+$("password").value;
+
+
+if(!email || !password){
+
+$("loginMsg").style.display =
+"block";
+
+$("loginMsg").textContent =
+"Email aur password enter karo.";
+
+return;
+
+}
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}
+
+catch(error){
+
+$("loginMsg").style.display =
+"block";
+
+$("loginMsg").textContent =
+"Login failed: " +
+error.message;
+
+}
 
 };
+
+
+
+/* AUTH */
+
+onAuthStateChanged(
+auth,
+async function(user){
+
+if(!user){
+
+$("loginBox")
+.classList
+.remove("hidden");
+
+$("app")
+.classList
+.add("hidden");
+
+return;
+
+}
+
+
+$("loginBox")
+.classList
+.add("hidden");
+
+$("app")
+.classList
+.remove("hidden");
+
+
+$("userInfo").textContent =
+"Logged in: " +
+(user.email || "");
+
+
+try{
+
+const userDoc =
+await timeout(
+getDoc(
+doc(db,"users",user.uid)
+),
+8000
+);
+
+
+if(!userDoc.exists()){
+
+alert(
+"Is account ka role Firebase mein set nahi hai."
+);
+
+return;
+
+}
+
+
+role =
+userDoc.data().role || "staff";
+
+
+if(role === "admin"){
+
+$("adminPanel")
+.classList
+.remove("hidden");
+
+}
+else{
+
+$("adminPanel")
+.classList
+.add("hidden");
+
+}
+
+
+clearForm();
+
+await loadReports();
+
+}
+
+catch(error){
+
+$("reports").innerHTML = `
+
+<div class="error">
+
+${esc(error.message)}
+
+<br><br>
+
+<button
+class="blue"
+onclick="loadReports()"
+>
+Retry
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+
+
+/* CLEAR FORM */
+
+window.clearForm =
+function(){
+
+$("editId").value = "";
+
+$("adminTitle").textContent =
+"Admin - Create Daily Report";
+
+$("date").value =
+today();
+
+$("strength").value = "";
+
+$("ameCob").value = "";
+
+$("ameThq").value = "";
+
+$("issue").value = "";
+
+$("saveMsg").textContent = "";
+
+renderForm();
+
+};
+
+
+
+/* SAVE REPORT */
+
+window.saveReport =
+async function(){
+
+if(role !== "admin"){
+
+alert(
+"Sirf Admin report create/edit kar sakta hai."
+);
+
+return;
+
+}
+
+
+const date =
+$("date").value;
+
+
+if(!date){
+
+alert(
+"Date select karo."
+);
+
+return;
+
+}
+
+
+const locationsData =
+collect();
+
+
+const strength =
+Number(
+$("strength").value || 0
+);
+
+
+const cob =
+Number(
+$("ameCob").value || 0
+);
+
+
+const thq =
+Number(
+$("ameThq").value || 0
+);
+
+
+let admitted = 0;
+
+let referred = 0;
+
+
+Object.values(
+locationsData
+).forEach(function(item){
+
+if(item.status === "ADMIT")
+admitted++;
+
+if(item.status === "REFERRAL")
+referred++;
+
+});
+
+
+const payload = {
+
+date:
+
+date,
+
+totalStrength:
+
+strength,
+
+ameCob:
+
+cob,
+
+ameThq:
+
+thq,
+
+ameDone:
+
+cob + thq,
+
+amePending:
+
+Math.max(
+0,
+strength - cob - thq
+),
+
+totalAdmitted:
+
+admitted,
+
+totalReferred:
+
+referred,
+
+locations:
+
+locationsData,
+
+otherIssue:
+
+$("issue").value.trim() || "NIL",
+
+updatedAt:
+
+new Date().toISOString()
+
+};
+
+
+$("saveMsg").textContent =
+"Saving...";
+
+
+try{
+
+const id =
+$("editId").value;
+
+
+if(id){
+
+await updateDoc(
+
+doc(
+db,
+"daily_reports",
+id
+),
+
+payload
+
+);
+
+}
+
+else{
+
+payload.createdBy =
+auth.currentUser.uid;
+
+payload.createdAt =
+new Date().toISOString();
+
+
+await addDoc(
+
+collection(
+db,
+"daily_reports"
+),
+
+payload
+
+);
+
+}
+
+
+$("saveMsg").textContent =
+"Report saved successfully.";
+
+
+clearForm();
+
+await loadReports();
+
+}
+
+catch(error){
+
+$("saveMsg").textContent =
+"Save failed: " +
+error.message;
+
+}
+
+};
+
+
+
+/* EDIT REPORT */
+
+window.editReport =
+function(id){
+
+const data =
+reportCache.get(id);
+
+
+if(!data)
+return;
+
+
+$("editId").value =
+id;
+
+
+$("adminTitle").textContent =
+"Admin - Edit Daily Report";
+
+
+$("date").value =
+data.date || today();
+
+
+$("strength").value =
+data.totalStrength || "";
+
+
+$("ameCob").value =
+data.ameCob ?? "";
+
+
+$("ameThq").value =
+data.ameThq ?? "";
+
+
+$("issue").value =
+data.otherIssue || "NIL";
+
+
+renderForm(
+data.locations || {}
+);
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+
+
+/* DELETE */
+
+window.deleteReport =
+async function(id){
+
+if(
+!confirm(
+"Kya aap ye report delete karna chahte ho?"
+)
+){
+
+return;
+
+}
+
+
+try{
+
+await deleteDoc(
+doc(
+db,
+"daily_reports",
+id
+)
+);
+
+
+await loadReports();
+
+}
+
+catch(error){
+
+alert(
+"Delete failed: " +
+error.message
+);
+
+}
+
+};
+
 
 
 /* LOGOUT */
 
-window.logout = async function(){
+window.logout =
+async function(){
 
-  await signOut(auth);
+await signOut(auth);
 
 };
 
 
-/* MESSAGE */
 
-function showMessage(text){
+/* START */
 
-  const box =
-    document.getElementById("message");
+$("date").value =
+today();
 
-  box.style.display = "block";
+renderForm();
 
-  box.innerText = text;
-
-}
 
 </script>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import {
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signOut
-  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs,
-    updateDoc,
-    deleteDoc,
-    doc,
-    query,
-    orderBy
-  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
-    authDomain: "bn-medical-report.firebaseapp.com",
-    projectId: "bn-medical-report",
-    storageBucket: "bn-medical-report.firebasestorage.app",
-    messagingSenderId: "353793989004",
-    appId: "1:353793989004:web:b7963ebe3b641a02059ea9",
-    measurementId: "G-RNZ0NBLD6G"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  window.firebaseAuth = auth;
-  window.firebaseDB = db;
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log("Firebase Login Successful:", user.email);
-    } else {
-      console.log("No user logged in");
-    }
-  });
-</script>
 </body>
 </html>
