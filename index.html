@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>41 BN Medical Report System</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f1f5f9;
+  color:#172033;
+}
+header{
+  background:#123b2a;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
+header h1{margin:0;font-size:23px}
+header p{margin:6px 0 0;font-size:13px}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0001;
+}
+
+h2{margin-top:0;color:#123b2a}
+
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin:7px 0 13px;
+  border:1px solid #ccd3dc;
+  border-radius:8px;
+  font-size:15px;
+}
+
+button{
+  border:0;
+  border-radius:8px;
+  padding:12px 18px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#123b2a;
+  color:white;
+}
+
+button.red{background:#b42318}
+button.blue{background:#1769aa}
+
+.hidden{display:none}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  background:white;
+}
+
+th,td{
+  border:1px solid #d8dee6;
+  padding:10px;
+  text-align:left;
+}
+
+th{
+  background:#123b2a;
+  color:white;
+}
+
+.report{
+  border-left:5px solid #123b2a;
+}
+
+.small{
+  color:#667085;
+  font-size:13px;
+}
+
+#message{
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:8px;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>41 BN MEDICAL REPORT SYSTEM</h1>
+  <p>Daily Medical Report • 41 Battalion</p>
+</header>
+
+<div class="container">
+
+<!-- LOGIN -->
+<div id="loginBox" class="card">
+  <h2>Staff Login</h2>
+
+  <input id="email" type="email" placeholder="Email ID">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <div id="message"></div>
+
+  <p class="small">
+    Staff can view reports. Admin can create, edit and delete reports.
+  </p>
+</div>
+
+
+<!-- APP -->
+<div id="app" class="hidden">
+
+  <div class="card">
+    <h2>Welcome</h2>
+    <p id="userInfo"></p>
+    <button class="red" onclick="logout()">Logout</button>
+  </div>
+
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="card hidden">
+
+    <h2>Admin – Create Daily Report</h2>
+
+    <div class="grid">
+
+      <div>
+        <label>Date</label>
+        <input id="reportDate" type="date">
+      </div>
+
+      <div>
+        <label>Total Strength</label>
+        <input id="totalStrength" type="number" placeholder="Example: 417">
+      </div>
+
+      <div>
+        <label>AME Done</label>
+        <input id="ameDone" type="number" placeholder="AME Done">
+      </div>
+
+      <div>
+        <label>AME Pending</label>
+        <input id="amePending" type="number" placeholder="AME Pending">
+      </div>
+
+    </div>
+
+    <h3>Location-wise Medical Report</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Patients</th>
+          <th>Admitted</th>
+          <th>Referral</th>
+        </tr>
+      </thead>
+
+      <tbody id="locationRows"></tbody>
+    </table>
+
+    <br>
+
+    <label>Remarks</label>
+    <textarea id="remarks" rows="4"
+      placeholder="Enter important medical remarks..."></textarea>
+
+    <button onclick="saveReport()">Save Daily Report</button>
+
+    <p id="saveStatus" class="small"></p>
+
+  </div>
+
+
+  <!-- REPORTS -->
+  <div class="card">
+
+    <h2>Daily Medical Reports</h2>
+
+    <div id="reportsList">
+      Loading reports...
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+/* FIREBASE CONFIG */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
+  authDomain: "bn-medical-report.firebaseapp.com",
+  projectId: "bn-medical-report",
+  storageBucket: "bn-medical-report.firebasestorage.app",
+  messagingSenderId: "353793989004",
+  appId: "1:353793989004:web:b7963ebe3b641a02059ea9",
+  measurementId: "G-RNZ0NBLD6G"
+};
+
+
+/* INITIALIZE FIREBASE */
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+/* LOCATIONS */
+
+const locations = [
+  "COB Nelangur",
+  "COB Padamkot",
+  "COB Bedmakoti",
+  "COB Kutul",
+  "COB Kasturmetha",
+  "THQ Kukrajhor"
+];
+
+
+/* CREATE LOCATION TABLE */
+
+const locationRows = document.getElementById("locationRows");
+
+locations.forEach((location,index)=>{
+  locationRows.innerHTML += `
+    <tr>
+      <td>${location}</td>
+      <td>
+        <input id="patients${index}" type="number" value="0">
+      </td>
+      <td>
+        <input id="admitted${index}" type="number" value="0">
+      </td>
+      <td>
+        <input id="referral${index}" type="number" value="0">
+      </td>
+    </tr>
+  `;
+});
+
+
+/* LOGIN */
+
+window.login = async function(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("message");
+
+  if(!email || !password){
+    showMessage("Email aur password enter karo.");
+    return;
+  }
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(error){
+
+    showMessage("Login failed: " + error.message);
+
+  }
+};
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth, async(user)=>{
+
+  if(!user){
+
+    document.getElementById("loginBox")
+      .classList.remove("hidden");
+
+    document.getElementById("app")
+      .classList.add("hidden");
+
+    return;
+  }
+
+  document.getElementById("loginBox")
+    .classList.add("hidden");
+
+  document.getElementById("app")
+    .classList.remove("hidden");
+
+  document.getElementById("userInfo").innerHTML =
+    "Logged in as: <b>" + user.email + "</b>";
+
+  await checkRole(user.uid);
+
+});
+
+
+/* CHECK ROLE */
+
+async function checkRole(uid){
+
+  try{
+
+    const userDoc =
+      await getDoc(doc(db,"users",uid));
+
+    if(!userDoc.exists()){
+
+      showMessage(
+        "Is account ka role Firebase mein set nahi hai."
+      );
+
+      return;
+    }
+
+    const role =
+      userDoc.data().role;
+
+    if(role === "admin"){
+
+      document.getElementById("adminPanel")
+        .classList.remove("hidden");
+
+    }else{
+
+      document.getElementById("adminPanel")
+        .classList.add("hidden");
+
+    }
+
+    loadReports();
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "Permission error. Firebase Rules check karo."
+    );
+
+  }
+
+}
+
+
+/* SAVE REPORT */
+
+window.saveReport = async function(){
+
+  const user = auth.currentUser;
+
+  if(!user){
+    alert("Pehle login karo.");
+    return;
+  }
+
+  const userDoc =
+    await getDoc(doc(db,"users",user.uid));
+
+  if(!userDoc.exists() ||
+     userDoc.data().role !== "admin"){
+
+    alert("Sirf Admin report create kar sakta hai.");
+    return;
+  }
+
+  const date =
+    document.getElementById("reportDate").value;
+
+  const totalStrength =
+    Number(document.getElementById("totalStrength").value || 0);
+
+  const ameDone =
+    Number(document.getElementById("ameDone").value || 0);
+
+  const amePending =
+    Number(document.getElementById("amePending").value || 0);
+
+  const remarks =
+    document.getElementById("remarks").value;
+
+
+  if(!date){
+
+    alert("Date select karo.");
+    return;
+
+  }
+
+
+  const locationData = {};
+
+  locations.forEach((location,index)=>{
+
+    locationData[location] = {
+
+      patients:
+        Number(document.getElementById("patients"+index).value || 0),
+
+      admitted:
+        Number(document.getElementById("admitted"+index).value || 0),
+
+      referral:
+        Number(document.getElementById("referral"+index).value || 0)
+
+    };
+
+  });
+
+
+  try{
+
+    await addDoc(
+      collection(db,"daily_reports"),
+      {
+        date,
+        totalStrength,
+        ameDone,
+        amePending,
+        locations: locationData,
+        remarks,
+        createdBy: user.uid,
+        createdAt: new Date().toISOString()
+      }
+    );
+
+    document.getElementById("saveStatus").innerText =
+      "Report successfully save ho gayi.";
+
+    loadReports();
+
+  }catch(error){
+
+    alert(
+      "Report save nahi hui: " + error.message
+    );
+
+  }
+
+};
+
+
+/* LOAD REPORTS */
+
+async function loadReports(){
+
+  const list =
+    document.getElementById("reportsList");
+
+  try{
+
+    const q =
+      query(
+        collection(db,"daily_reports"),
+        orderBy("date","desc")
+      );
+
+    const snapshot =
+      await getDocs(q);
+
+    if(snapshot.empty){
+
+      list.innerHTML =
+        "<p>No reports available.</p>";
+
+      return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    snapshot.forEach((item)=>{
+
+      const data = item.data();
+
+      let rows = "";
+
+      if(data.locations){
+
+        for(const location in data.locations){
+
+          const d =
+            data.locations[location];
+
+          rows += `
+            <tr>
+              <td>${location}</td>
+              <td>${d.patients || 0}</td>
+              <td>${d.admitted || 0}</td>
+              <td>${d.referral || 0}</td>
+            </tr>
+          `;
+
+        }
+
+      }
+
+
+      list.innerHTML += `
+
+        <div class="card report">
+
+          <h3>
+            Medical Report – ${data.date || ""}
+          </h3>
+
+          <p>
+            <b>Total Strength:</b>
+            ${data.totalStrength || 0}
+          </p>
+
+          <p>
+            <b>AME Done:</b>
+            ${data.ameDone || 0}
+            &nbsp;&nbsp;
+            <b>AME Pending:</b>
+            ${data.amePending || 0}
+          </p>
+
+          <table>
+
+            <tr>
+              <th>Location</th>
+              <th>Patients</th>
+              <th>Admitted</th>
+              <th>Referral</th>
+            </tr>
+
+            ${rows}
+
+          </table>
+
+          <p>
+            <b>Remarks:</b>
+            ${data.remarks || "Nil"}
+          </p>
+
+          ${
+            document.getElementById("adminPanel")
+              .classList.contains("hidden")
+            ? ""
+            :
+            `<button class="red"
+              onclick="deleteReport('${item.id}')">
+              Delete Report
+            </button>`
+          }
+
+        </div>
+
+      `;
+
+    });
+
+
+  }catch(error){
+
+    list.innerHTML =
+      "<p>Reports load nahi ho rahe: "
+      + error.message +
+      "</p>";
+
+  }
+
+}
+
+
+/* DELETE REPORT */
+
+window.deleteReport = async function(id){
+
+  if(!confirm("Kya aap ye report delete karna chahte ho?")){
+    return;
+  }
+
+  try{
+
+    await deleteDoc(
+      doc(db,"daily_reports",id)
+    );
+
+    loadReports();
+
+  }catch(error){
+
+    alert(
+      "Delete failed: " + error.message
+    );
+
+  }
+
+};
+
+
+/* LOGOUT */
+
+window.logout = async function(){
+
+  await signOut(auth);
+
+};
+
+
+/* MESSAGE */
+
+function showMessage(text){
+
+  const box =
+    document.getElementById("message");
+
+  box.style.display = "block";
+
+  box.innerText = text;
+
+}
+
+</script>
+
+</body>
+</html>
