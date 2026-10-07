@@ -27,12 +27,11 @@
 </div></section></main>
 <script type="module">
 import{initializeApp}from'https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js';import{getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut}from'https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js';import{getFirestore,collection,addDoc,getDocs,serverTimestamp,doc,deleteDoc}from'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
-const app=initializeApp({apiKey:'AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY',authDomain:'bn-medical-report.firebaseapp.com',projectId:'bn-medical-report',storageBucket:'bn-medical-report.firebasestorage.app',messagingSenderId:'353793989004',appId:'1:353739989004:web:b7963ebe3b641a02059ea9',measurementId:'G-RNZ0NBLD6G'});
+const app=initializeApp({apiKey:'AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY',authDomain:'bn-medical-report.firebaseapp.com',projectId:'bn-medical-report',storageBucket:'bn-medical-report.firebasestorage.app',messagingSenderId:'353793989004',appId:'1:353793989004:web:b7963ebe3b641a02059ea9',measurementId:'G-RNZ0NBLD6G'});
 const auth=getAuth(app),db=getFirestore(app),ADMIN='J2i9QxVcC8gOPwgM4D5teLtVVe13',STAFF='X37iyKzGnOgJ8egsRgaWvK604043';
 const $=id=>document.getElementById(id);
 const emailEl=$('email'),passEl=$('pass'),loginMsg=$('lm'),roleBadge=$('role'),userEmailEl=$('ue');
 let user=null,role='',reports=[];
-setPersistence(auth,browserLocalPersistence).catch(()=>{});
 for(let i=20;i<=80;i++)ra.insertAdjacentHTML('beforeend',`<option>${i}</option>`);rd.value=new Date().toISOString().slice(0,10);ad.value=rd.value;
 window.go=id=>{document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));const page=$(id);if(page)page.classList.add('on');if(id==='report')loadReports();if(id==='ame')loadCol('ame_2026','amel');if(id==='leave')loadCol('staff_leave_plan','leavel');if(id==='medic')loadCol('medic_deployment','medicl');if(id==='doctor')loadCol('doctor_deployment','doctorl');if(id==='disease')renderDiseases();scrollTo({top:0,behavior:'smooth'})};
 window.loginUser=async()=>{
