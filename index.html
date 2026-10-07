@@ -3,2201 +3,2931 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>41 BN ITBP - Daily Medical Report</title>
+<title>UNIT HOSPITAL | 41 BN ITBP</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 :root{
-  --navy:#073f7a;
-  --blue:#0b5aa5;
-  --lightblue:#dff2ff;
-  --green:#dff3a8;
-  --red:#ffd6d2;
-  --orange:#ffe8b3;
-  --border:#555;
+ --navy:#063b73;
+ --blue:#0b5da8;
+ --blue2:#147dcc;
+ --light:#eaf4ff;
+ --green:#dff3b0;
+ --red:#ffd8d5;
+ --orange:#ffe9b0;
+ --gray:#64748b;
+ --border:#cbd5e1;
+ --dark:#102a43;
 }
 
 body{
-  margin:0;
-  background:#eef3f8;
-  color:#111;
-  font-family:Arial,Helvetica,sans-serif;
+ margin:0;
+ background:#eef3f8;
+ color:#17202a;
+ font-family:Arial,Helvetica,sans-serif;
 }
 
-header{
-  background:linear-gradient(90deg,#063b73,#0b5da8,#063b73);
-  color:white;
-  text-align:center;
-  padding:18px 8px;
+.hidden{display:none!important}
+
+.top{
+ background:linear-gradient(135deg,#032e5c,#0864b4,#032e5c);
+ color:white;
+ text-align:center;
+ padding:20px 10px;
+ box-shadow:0 3px 12px #0003;
 }
 
-header h1{
-  margin:0;
-  font:700 clamp(22px,4vw,35px) Georgia,serif;
+.top h1{
+ margin:0;
+ font:700 30px Georgia,serif;
+ letter-spacing:1px;
 }
 
-header p{
-  margin:7px 0 0;
-  font:700 clamp(19px,3vw,28px) Georgia,serif;
+.top h2{
+ margin:7px 0 0;
+ font:700 24px Georgia,serif;
 }
 
 .wrap{
-  max-width:1600px;
-  margin:auto;
-  padding:10px;
-}
-
-.hidden{
-  display:none!important;
+ max-width:1700px;
+ margin:auto;
+ padding:14px;
 }
 
 .card{
-  background:white;
-  border:1px solid #ccd6df;
-  border-radius:10px;
-  padding:15px;
-  margin-bottom:14px;
-  box-shadow:0 2px 8px #0001;
+ background:white;
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:16px;
+ margin-bottom:15px;
+ box-shadow:0 3px 12px #0000000d;
 }
 
 .login{
-  max-width:430px;
-  margin:30px auto;
+ max-width:430px;
+ margin:40px auto;
 }
 
 .login h2{
-  text-align:center;
-  color:var(--navy);
-  font-family:Georgia,serif;
+ text-align:center;
+ color:var(--navy);
+ font-family:Georgia,serif;
 }
 
 label{
-  display:block;
-  font-weight:700;
-  margin:8px 0 4px;
+ display:block;
+ font-weight:700;
+ margin:8px 0 5px;
 }
 
-input,
-select,
-textarea{
-  width:100%;
-  padding:9px;
-  border:1px solid #b9c4cf;
-  border-radius:6px;
-  font-size:14px;
-  background:white;
+input,select,textarea{
+ width:100%;
+ padding:9px;
+ border:1px solid #b8c5d1;
+ border-radius:7px;
+ background:#fff;
+ font-size:14px;
 }
 
 button{
-  border:0;
-  border-radius:7px;
-  padding:10px 15px;
-  font-weight:700;
-  cursor:pointer;
+ border:0;
+ border-radius:7px;
+ padding:10px 15px;
+ cursor:pointer;
+ font-weight:700;
 }
 
-.blue{
-  background:var(--blue);
-  color:white;
-}
-
-.red{
-  background:#b42318;
-  color:white;
-}
-
-.gray{
-  background:#475569;
-  color:white;
-}
+.primary{background:var(--blue);color:#fff}
+.success{background:#198754;color:#fff}
+.danger{background:#b42318;color:#fff}
+.secondary{background:#475569;color:#fff}
+.lightbtn{background:#e7f2ff;color:#064a92;border:1px solid #9cc7ed}
 
 .login button{
-  width:100%;
-  margin-top:10px;
+ width:100%;
+ margin-top:12px;
 }
 
 .msg{
-  display:none;
-  margin-top:10px;
-  padding:10px;
-  border-radius:6px;
-  background:#fff3cd;
-  color:#664d03;
+ padding:10px;
+ border-radius:7px;
+ margin-top:10px;
+ background:#fff3cd;
+ color:#664d03;
+}
+
+.navbar{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ align-items:center;
+ background:white;
+ padding:10px;
+ border-radius:10px;
+ box-shadow:0 2px 8px #0001;
+ margin-bottom:15px;
+}
+
+.navbar button{
+ background:#edf5fd;
+ color:#064a92;
+ border:1px solid #c6dced;
+}
+
+.navbar button.active{
+ background:var(--blue);
+ color:white;
+}
+
+.navbar .logout{
+ margin-left:auto;
+ background:#b42318;
+ color:white;
+}
+
+.page-title{
+ color:var(--navy);
+ font:700 25px Georgia,serif;
+ margin:4px 0 15px;
+}
+
+.dashboard-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+}
+
+.dash-card{
+ min-height:145px;
+ background:white;
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:20px;
+ cursor:pointer;
+ box-shadow:0 4px 12px #00000012;
+ transition:.2s;
+}
+
+.dash-card:hover{
+ transform:translateY(-3px);
+ box-shadow:0 7px 18px #0002;
+}
+
+.dash-icon{
+ font-size:32px;
+ margin-bottom:8px;
+}
+
+.dash-card h3{
+ color:var(--navy);
+ margin:5px 0;
+ font-family:Georgia,serif;
+}
+
+.dash-card p{
+ margin:4px 0;
+ color:#64748b;
+ font-size:13px;
+}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:10px;
+ margin-bottom:15px;
+}
+
+.stat{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:13px;
+ text-align:center;
+}
+
+.stat b{
+ display:block;
+ font-size:25px;
+ color:var(--navy);
+}
+
+.stat span{
+ font-size:12px;
+ color:#64748b;
 }
 
 .toolbar{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-bottom:10px;
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-bottom:12px;
+ align-items:center;
 }
 
-.toolbar span{
-  margin-left:auto;
-  background:white;
-  border:1px solid #c8d2dd;
-  border-radius:7px;
-  padding:9px 12px;
-  font-size:13px;
+.toolbar .user{
+ margin-left:auto;
+ padding:9px 12px;
+ background:white;
+ border:1px solid var(--border);
+ border-radius:7px;
+ font-size:13px;
 }
 
-.panel-title{
-  margin:0 0 12px;
-  color:var(--navy);
-  font:700 22px Georgia,serif;
+.section-head{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-bottom:12px;
+}
+
+.section-head h2{
+ margin:0;
+ color:var(--navy);
+ font:700 22px Georgia,serif;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:10px;
 }
 
 .scroll{
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
+ overflow-x:auto;
+ width:100%;
 }
 
 table{
-  border-collapse:collapse;
-  width:100%;
-  min-width:1750px;
+ border-collapse:collapse;
+ width:100%;
+ min-width:1750px;
 }
 
-th,
-td{
-  border:1px solid var(--border);
-  padding:7px;
-  text-align:center;
-  vertical-align:middle;
+th,td{
+ border:1px solid #555;
+ padding:7px;
+ text-align:center;
+ vertical-align:middle;
 }
 
 th{
-  background:var(--navy);
-  color:white;
-  font:700 13px Georgia,serif;
-  white-space:nowrap;
+ background:var(--navy);
+ color:white;
+ font:700 13px Georgia,serif;
+ white-space:nowrap;
 }
 
 td{
-  background:white;
-  font-size:13px;
+ background:white;
+ font-size:13px;
 }
 
 .location{
-  text-align:left;
-  font-weight:700;
-  white-space:nowrap;
+ text-align:left;
+ font-weight:700;
+ white-space:nowrap;
 }
 
-.nil{
-  background:var(--green)!important;
-  font-weight:700;
-}
-
-.admit{
-  background:var(--red)!important;
-  font-weight:700;
-}
-
-.ref{
-  background:var(--orange)!important;
-  font-weight:700;
-}
+.nil{background:var(--green)!important;font-weight:700}
+.admit{background:var(--red)!important;font-weight:700}
+.ref{background:var(--orange)!important;font-weight:700}
 
 .report{
-  background:white;
-  border:1px solid #b7c4d0;
-  margin:16px 0;
-  box-shadow:0 2px 7px #0001;
+ background:white;
+ border:1px solid #b8c5d1;
+ margin-bottom:18px;
+ box-shadow:0 3px 10px #0001;
 }
 
-.report-head{
-  background:var(--navy);
-  color:white;
-  text-align:center;
-  padding:9px;
-  font:700 clamp(19px,3vw,30px) Georgia,serif;
+.report-title{
+ background:var(--navy);
+ color:white;
+ text-align:center;
+ padding:10px;
+ font:700 27px Georgia,serif;
 }
 
-.bn{
-  text-align:center;
-  color:#064a92;
-  background:white;
-  padding:8px;
-  font:700 clamp(20px,3vw,29px) Georgia,serif;
+.report-bn{
+ text-align:center;
+ padding:8px;
+ color:#064a92;
+ font:700 25px Georgia,serif;
 }
 
-.date{
-  padding:8px 12px;
-  border-bottom:2px solid var(--blue);
-  font-weight:700;
+.report-date{
+ padding:8px 12px;
+ border-bottom:2px solid var(--blue);
+ font-weight:700;
 }
 
-.date b{
-  display:inline-block;
-  margin-left:8px;
-  border:1px solid #1683d8;
-  background:#dff2ff;
-  padding:4px 12px;
+.report-date span{
+ background:#dff2ff;
+ border:1px solid #1683d8;
+ padding:4px 12px;
+ margin-left:7px;
 }
 
 .summary-title{
-  background:#bfe7ff;
-  border:1px solid #1774bd;
-  text-align:center;
-  padding:7px;
-  font:700 21px Georgia,serif;
+ background:#bfe7ff;
+ border:1px solid #1774bd;
+ text-align:center;
+ padding:7px;
+ font:700 20px Georgia,serif;
 }
 
 .summary{
-  min-width:0;
-  width:100%;
+ min-width:0;
 }
 
 .summary td:first-child{
-  background:#bfe7ff;
-  text-align:left;
-  font-weight:700;
-  width:50%;
+ background:#bfe7ff;
+ text-align:left;
+ font-weight:700;
+ width:55%;
 }
 
 .summary td:last-child{
-  text-align:left;
-  font-weight:700;
+ text-align:left;
+ font-weight:700;
 }
 
 .issue{
-  display:grid;
-  grid-template-columns:340px 1fr;
-  border:1px solid #1774bd;
-  margin-top:10px;
+ display:grid;
+ grid-template-columns:300px 1fr;
+ border:1px solid #1774bd;
+ margin-top:10px;
 }
 
 .issue b{
-  background:#bfe7ff;
-  padding:12px;
+ background:#bfe7ff;
+ padding:12px;
 }
 
 .issue span{
-  padding:12px;
-  background:white;
-}
-
-.actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:10px;
+ padding:12px;
 }
 
 .report-actions{
-  padding:10px;
-  border-top:1px solid #ddd;
+ padding:10px;
+ border-top:1px solid #ddd;
+ display:flex;
+ gap:8px;
+}
+
+.searchbar{
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr;
+ gap:8px;
+ margin-bottom:12px;
+}
+
+.list-card{
+ border:1px solid var(--border);
+ border-radius:9px;
+ padding:13px;
+ margin-bottom:9px;
+ background:white;
+}
+
+.list-card h3{
+ margin:0 0 7px;
+ color:var(--navy);
+}
+
+.badge{
+ display:inline-block;
+ padding:5px 9px;
+ border-radius:15px;
+ font-size:12px;
+ font-weight:700;
+ background:#e8f2fc;
+ color:#064a92;
+}
+
+.disease-grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:10px;
+}
+
+.disease-card{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:14px;
+ cursor:pointer;
+}
+
+.disease-card:hover{
+ border-color:var(--blue);
+ box-shadow:0 3px 12px #0001;
+}
+
+.disease-card h3{
+ color:var(--navy);
+ margin:0 0 5px;
+ font-size:16px;
+}
+
+.disease-detail{
+ line-height:1.6;
+}
+
+.disease-detail h3{
+ color:var(--navy);
+ border-bottom:1px solid var(--border);
+ padding-bottom:5px;
+}
+
+.alert{
+ padding:10px;
+ background:#fff3cd;
+ border-left:4px solid #f0ad4e;
+ margin:10px 0;
 }
 
 .loading{
-  text-align:center;
-  padding:25px;
-  font-weight:700;
-  color:#475569;
-}
-
-.error{
-  padding:12px;
-  background:#fee2e2;
-  color:#991b1b;
-  border-radius:7px;
+ text-align:center;
+ padding:25px;
+ color:#64748b;
+ font-weight:700;
 }
 
 .empty{
-  text-align:center;
-  padding:25px;
-  color:#64748b;
+ text-align:center;
+ padding:30px;
+ color:#64748b;
 }
 
 .small{
-  font-size:12px;
-  color:#667085;
+ color:#64748b;
+ font-size:12px;
 }
 
-@media(max-width:850px){
-
-  .grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .toolbar span{
-    margin-left:0;
-  }
-
+@media(max-width:1000px){
+ .dashboard-grid{grid-template-columns:repeat(2,1fr)}
+ .stats{grid-template-columns:repeat(3,1fr)}
+ .disease-grid{grid-template-columns:repeat(3,1fr)}
 }
 
-@media(max-width:520px){
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .wrap{
-    padding:6px;
-  }
-
-  .issue{
-    grid-template-columns:1fr;
-  }
-
-  header{
-    padding:15px 5px;
-  }
-
+@media(max-width:650px){
+ .dashboard-grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .disease-grid{grid-template-columns:repeat(2,1fr)}
+ .grid{grid-template-columns:1fr}
+ .searchbar{grid-template-columns:1fr}
+ .issue{grid-template-columns:1fr}
+ .top h1{font-size:23px}
+ .top h2{font-size:19px}
+ .navbar .logout{margin-left:0}
 }
 
 @media print{
-
-  .toolbar,
-  #adminPanel,
-  .report-actions{
-    display:none!important;
-  }
-
-  body{
-    background:white;
-  }
-
-  .wrap{
-    max-width:none;
-    padding:0;
-  }
-
-  .report{
-    box-shadow:none;
-    border:0;
-  }
-
+ .navbar,
+ .toolbar,
+ .report-actions,
+ #adminArea{
+  display:none!important;
+ }
+ body{background:white}
+ .wrap{max-width:none;padding:0}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>DAILY MEDICAL REPORT - ALL COBs &amp; THQs</h1>
-  <p>41 BN ITBP</p>
+<header class="top">
+ <h1>UNIT HOSPITAL</h1>
+ <h2>41 BN ITBP</h2>
 </header>
 
-<main class="wrap">
+<div class="wrap">
 
 <!-- LOGIN -->
 
-<section id="loginBox" class="card login">
+<section id="loginPage" class="card login">
 
-  <h2>Staff Login</h2>
+ <h2>UNIT HOSPITAL LOGIN</h2>
 
-  <label>Email ID</label>
-  <input
-    id="email"
-    type="email"
-    autocomplete="username"
-    placeholder="Email ID"
-  >
+ <label>Email ID</label>
+ <input id="email" type="email" placeholder="Enter Email">
 
-  <label>Password</label>
-  <input
-    id="password"
-    type="password"
-    autocomplete="current-password"
-    placeholder="Password"
-  >
+ <label>Password</label>
+ <input id="password" type="password" placeholder="Enter Password">
 
-  <button class="blue" onclick="login()">
-    Login
-  </button>
+ <button class="primary" onclick="login()">LOGIN</button>
 
-  <div id="loginMsg" class="msg"></div>
+ <div id="loginMsg" class="msg hidden"></div>
 
-  <p class="small">
-    Staff can view reports. Admin can create, edit and delete reports.
-  </p>
+ <p class="small">
+ Admin: Full access | Staff: View/Search access
+ </p>
 
 </section>
 
 
-<!-- APPLICATION -->
+<!-- APP -->
 
 <section id="app" class="hidden">
 
-  <div class="toolbar">
+ <div class="navbar">
 
-    <button class="gray" onclick="loadReports()">
-      ↻ Refresh
-    </button>
+  <button id="navDashboard" onclick="showPage('dashboard')">
+   🏠 Dashboard
+  </button>
 
-    <button class="gray" onclick="window.print()">
-      🖨 Print
-    </button>
+  <button id="navReports" onclick="showPage('reports')">
+   📋 Daily Reports
+  </button>
 
-    <button class="red" onclick="logout()">
-      Logout
-    </button>
+  <button onclick="showPage('ame')">
+   📊 AME 2026
+  </button>
 
-    <span id="userInfo"></span>
+  <button onclick="showPage('leave')">
+   📅 Staff Leave
+  </button>
+
+  <button onclick="showPage('medic')">
+   🩺 Medic Deployment
+  </button>
+
+  <button onclick="showPage('doctor')">
+   👨‍⚕️ Doctor Deployment
+  </button>
+
+  <button onclick="showPage('diseases')">
+   🦠 Disease Reference
+  </button>
+
+  <span class="user" id="userInfo"></span>
+
+  <button class="logout" onclick="logout()">Logout</button>
+
+ </div>
+
+
+ <!-- DASHBOARD -->
+
+ <section id="dashboard" class="page">
+
+  <h2 class="page-title">
+   UNIT HOSPITAL 41 BN ITBP — DASHBOARD
+  </h2>
+
+  <div class="stats">
+
+   <div class="stat">
+    <b id="dashStrength">0</b>
+    <span>Total Strength</span>
+   </div>
+
+   <div class="stat">
+    <b id="dashAME">0</b>
+    <span>AME Done</span>
+   </div>
+
+   <div class="stat">
+    <b id="dashPending">0</b>
+    <span>AME Pending</span>
+   </div>
+
+   <div class="stat">
+    <b id="dashAdmit">0</b>
+    <span>Admitted</span>
+   </div>
+
+   <div class="stat">
+    <b id="dashReferral">0</b>
+    <span>Referred</span>
+   </div>
 
   </div>
 
 
-  <!-- ADMIN PANEL -->
+  <div class="dashboard-grid">
 
-  <section id="adminPanel" class="card hidden">
+   <div class="dash-card" onclick="showPage('reports')">
+    <div class="dash-icon">📋</div>
+    <h3>DAILY PATIENT REPORT OF ALL COBs AND THQs</h3>
+    <p>Daily medical report, previous reports and search.</p>
+   </div>
 
-    <h2 id="adminTitle" class="panel-title">
-      Admin - Create Daily Report
-    </h2>
 
-    <input id="editId" type="hidden">
+   <div class="dash-card" onclick="showPage('ame')">
+    <div class="dash-icon">📊</div>
+    <h3>AME 2026 STATUS</h3>
+    <p>AME completed, pending and location-wise details.</p>
+   </div>
+
+
+   <div class="dash-card" onclick="showPage('leave')">
+    <div class="dash-icon">📅</div>
+    <h3>STAFF LEAVE PLAN</h3>
+    <p>Staff leave schedule and details.</p>
+   </div>
+
+
+   <div class="dash-card" onclick="showPage('medic')">
+    <div class="dash-icon">🩺</div>
+    <h3>MEDIC DEPLOYMENT</h3>
+    <p>PARAMEDIC and GD/MEDIC deployment.</p>
+   </div>
+
+
+   <div class="dash-card" onclick="showPage('doctor')">
+    <div class="dash-icon">👨‍⚕️</div>
+    <h3>DOCTOR DEPLOYMENT</h3>
+    <p>Doctor deployment and availability.</p>
+   </div>
+
+
+   <div class="dash-card" onclick="showPage('diseases')">
+    <div class="dash-icon">🦠</div>
+    <h3>DISEASE / MEDICAL REFERENCE</h3>
+    <p>Common diseases, symptoms, management and emergency reference.</p>
+   </div>
+
+  </div>
+
+ </section>
+
+
+ <!-- DAILY REPORT -->
+
+ <section id="reports" class="page hidden">
+
+  <div class="section-head">
+   <h2>DAILY PATIENT REPORT OF ALL COBs AND THQs</h2>
+
+   <button class="secondary" onclick="loadReports()">
+    ↻ Refresh
+   </button>
+  </div>
+
+
+  <div id="adminArea" class="card hidden">
+
+   <h2 class="page-title" id="formTitle">
+    Create Daily Medical Report
+   </h2>
+
+   <input id="editReportId" type="hidden">
+
+   <div class="grid">
+
+    <div>
+     <label>Date</label>
+     <input id="reportDate" type="date">
+    </div>
+
+    <div>
+     <label>Total Strength</label>
+     <input id="totalStrength" type="number" min="0">
+    </div>
+
+    <div>
+     <label>AME Done at All COB</label>
+     <input id="ameCob" type="number" min="0">
+    </div>
+
+    <div>
+     <label>AME Done at THQ</label>
+     <input id="ameThq" type="number" min="0">
+    </div>
+
+   </div>
+
+   <br>
+
+   <div class="scroll">
+
+    <table>
+
+     <thead>
+      <tr>
+       <th>S. NO.</th>
+       <th>COB / LOCATION</th>
+       <th>STATUS</th>
+       <th>REGT. NO.</th>
+       <th>RANK</th>
+       <th>NAME</th>
+       <th>COY</th>
+       <th>AGE</th>
+       <th>SEX</th>
+       <th>C/O / DIAGNOSIS</th>
+       <th>CONDITION / REMARKS</th>
+       <th>AME DONE TODAY</th>
+      </tr>
+     </thead>
+
+     <tbody id="reportFormRows"></tbody>
+
+    </table>
+
+   </div>
+
+   <label>ANY OTHER ISSUE</label>
+   <textarea id="otherIssue" rows="2" placeholder="NIL"></textarea>
+
+   <div class="toolbar">
+    <button class="primary" onclick="saveReport()">SAVE REPORT</button>
+    <button class="secondary" onclick="clearReportForm()">CLEAR</button>
+   </div>
+
+   <div id="saveMsg" class="small"></div>
+
+  </div>
+
+
+  <div class="card">
+
+   <div class="searchbar">
+
+    <input id="reportSearch"
+           placeholder="Search by Regt No, Name, Coy, Location..."
+           oninput="filterReports()">
+
+    <input id="reportFrom" type="date" onchange="filterReports()">
+
+    <button class="secondary" onclick="clearReportSearch()">
+     Clear Search
+    </button>
+
+   </div>
+
+  </div>
+
+
+  <div id="reportsList"></div>
+
+ </section>
+
+
+ <!-- AME -->
+
+ <section id="ame" class="page hidden">
+
+  <div class="section-head">
+   <h2>AME 2026 STATUS</h2>
+
+   <button id="ameAddBtn"
+           class="primary hidden"
+           onclick="openAMEForm()">
+    + Add AME Record
+   </button>
+  </div>
+
+
+  <div class="stats">
+
+   <div class="stat">
+    <b id="ameTotal">0</b>
+    <span>Total Strength</span>
+   </div>
+
+   <div class="stat">
+    <b id="ameDone">0</b>
+    <span>AME Done</span>
+   </div>
+
+   <div class="stat">
+    <b id="amePending">0</b>
+    <span>Pending</span>
+   </div>
+
+  </div>
+
+
+  <div id="ameAdmin" class="card hidden">
+
+   <div class="grid">
+
+    <div>
+     <label>Regt No.</label>
+     <input id="ameRegt">
+    </div>
+
+    <div>
+     <label>Rank</label>
+     <select id="ameRank"></select>
+    </div>
+
+    <div>
+     <label>Name</label>
+     <input id="ameName">
+    </div>
+
+    <div>
+     <label>Coy</label>
+     <select id="ameCoy"></select>
+    </div>
+
+    <div>
+     <label>Category</label>
+     <select id="ameCategory">
+      <option value="SO">SO</option>
+      <option value="OR">OR</option>
+     </select>
+    </div>
+
+    <div>
+     <label>Location</label>
+     <select id="ameLocation"></select>
+    </div>
+
+    <div>
+     <label>Status</label>
+     <select id="ameStatus">
+      <option value="DONE">DONE</option>
+      <option value="PENDING">PENDING</option>
+     </select>
+    </div>
+
+   </div>
+
+   <br>
+
+   <button class="success" onclick="saveAME()">
+    SAVE AME
+   </button>
+
+   <button class="secondary" onclick="closeAMEForm()">
+    Cancel
+   </button>
+
+  </div>
+
+
+  <div class="card">
+
+   <input id="ameSearch"
+          placeholder="Search Regt No / Name / Location..."
+          oninput="renderAME()">
+
+  </div>
+
+
+  <div id="ameList"></div>
+
+ </section>
+
+
+ <!-- LEAVE -->
+
+ <section id="leave" class="page hidden">
+
+  <div class="section-head">
+
+   <h2>STAFF LEAVE PLAN</h2>
+
+   <button id="leaveAddBtn"
+           class="primary hidden"
+           onclick="openLeaveForm()">
+    + Add Staff
+   </button>
+
+  </div>
+
+
+  <div id="leaveAdmin" class="card hidden">
+
+   <div class="grid">
+
+    <div>
+     <label>Regt No.</label>
+     <input id="leaveRegt">
+    </div>
+
+    <div>
+     <label>Rank</label>
+     <select id="leaveRank"></select>
+    </div>
+
+    <div>
+     <label>Name</label>
+     <input id="leaveName">
+    </div>
+
+    <div>
+     <label>Coy</label>
+     <select id="leaveCoy"></select>
+    </div>
+
+    <div>
+     <label>Present Location</label>
+     <input id="leaveLocation">
+    </div>
+
+    <div>
+     <label>EL/CL Availed</label>
+     <input id="leaveAvailed">
+    </div>
+
+    <div>
+     <label>Next Leave Date</label>
+     <input id="leaveDate" type="date">
+    </div>
+
+    <div>
+     <label>Remarks</label>
+     <input id="leaveRemarks">
+    </div>
+
+   </div>
+
+   <br>
+
+   <button class="success" onclick="saveLeave()">SAVE</button>
+   <button class="secondary" onclick="closeLeaveForm()">Cancel</button>
+
+  </div>
+
+
+  <div class="card">
+   <input id="leaveSearch"
+          placeholder="Search Regt No / Name / Coy / Location..."
+          oninput="renderLeave()">
+  </div>
+
+
+  <div id="leaveList"></div>
+
+ </section>
+
+
+ <!-- MEDIC -->
+
+ <section id="medic" class="page hidden">
+
+  <h2 class="page-title">MEDIC DEPLOYMENT</h2>
+
+  <div class="dashboard-grid">
+
+   <div class="dash-card"
+        onclick="showMedicType('PARAMEDIC')">
+    <div class="dash-icon">🩺</div>
+    <h3>PARAMEDIC</h3>
+    <p>View and manage paramedic deployment.</p>
+   </div>
+
+   <div class="dash-card"
+        onclick="showMedicType('GD/MEDIC')">
+    <div class="dash-icon">⚕️</div>
+    <h3>GD / MEDIC</h3>
+    <p>View and manage GD/Medic deployment.</p>
+   </div>
+
+  </div>
+
+
+  <div id="medicContent" class="hidden">
+
+   <div class="section-head">
+
+    <h2 id="medicTitle"></h2>
+
+    <button id="medicAddBtn"
+            class="primary hidden"
+            onclick="openMedicForm()">
+     + Add Deployment
+    </button>
+
+   </div>
+
+
+   <div id="medicAdmin" class="card hidden">
 
     <div class="grid">
 
-      <div>
-        <label>Date</label>
-        <input id="date" type="date">
-      </div>
+     <div>
+      <label>Regt No.</label>
+      <input id="medicRegt">
+     </div>
 
-      <div>
-        <label>Total Strength</label>
-        <input
-          id="strength"
-          type="number"
-          min="0"
-          placeholder="Total Strength"
-        >
-      </div>
+     <div>
+      <label>Rank</label>
+      <select id="medicRank"></select>
+     </div>
 
-      <div>
-        <label>AME Done at All COB</label>
-        <input
-          id="ameCob"
-          type="number"
-          min="0"
-          placeholder="AME COB"
-        >
-      </div>
+     <div>
+      <label>Name</label>
+      <input id="medicName">
+     </div>
 
-      <div>
-        <label>AME Done at THQ</label>
-        <input
-          id="ameThq"
-          type="number"
-          min="0"
-          placeholder="AME THQ"
-        >
-      </div>
+     <div>
+      <label>Coy</label>
+      <select id="medicCoy"></select>
+     </div>
+
+     <div>
+      <label>Deployment Location</label>
+      <input id="medicLocation">
+     </div>
+
+     <div>
+      <label>From Date</label>
+      <input id="medicFrom" type="date">
+     </div>
+
+     <div>
+      <label>To Date</label>
+      <input id="medicTo" type="date">
+     </div>
+
+     <div>
+      <label>Remarks</label>
+      <input id="medicRemarks">
+     </div>
 
     </div>
-
 
     <br>
 
-    <div class="scroll">
+    <button class="success" onclick="saveMedic()">SAVE</button>
+    <button class="secondary" onclick="closeMedicForm()">Cancel</button>
 
-      <table>
+   </div>
 
-        <thead>
 
-          <tr>
+   <div class="card">
+    <input id="medicSearch"
+           placeholder="Search Regt No / Name / Location..."
+           oninput="renderMedic()">
+   </div>
 
-            <th>S. NO.</th>
 
-            <th>COB / LOCATION</th>
+   <div id="medicList"></div>
 
-            <th>STATUS</th>
+  </div>
 
-            <th>REGT. NO.</th>
+ </section>
 
-            <th>RANK</th>
 
-            <th>NAME</th>
+ <!-- DOCTOR -->
 
-            <th>COY</th>
+ <section id="doctor" class="page hidden">
 
-            <th>AGE</th>
+  <div class="section-head">
 
-            <th>SEX</th>
+   <h2>DOCTOR DEPLOYMENT</h2>
 
-            <th>C/O / DIAGNOSIS</th>
+   <button id="doctorAddBtn"
+           class="primary hidden"
+           onclick="openDoctorForm()">
+    + Add Doctor
+   </button>
 
-            <th>CONDITION / REMARKS</th>
+  </div>
 
-            <th>AME DONE TODAY</th>
 
-          </tr>
+  <div id="doctorAdmin" class="card hidden">
 
-        </thead>
+   <div class="grid">
 
-        <tbody id="formRows"></tbody>
-
-      </table>
-
+    <div>
+     <label>Name</label>
+     <input id="doctorName">
     </div>
 
-
-    <label>ANY OTHER ISSUE</label>
-
-    <textarea
-      id="issue"
-      rows="2"
-      placeholder="NIL"
-    ></textarea>
-
-
-    <div class="actions">
-
-      <button class="blue" onclick="saveReport()">
-        Save Report
-      </button>
-
-      <button class="gray" onclick="clearForm()">
-        Clear
-      </button>
-
+    <div>
+     <label>Rank</label>
+     <input id="doctorRank" placeholder="Medical Officer / Specialist">
     </div>
 
-    <div id="saveMsg" class="small"></div>
+    <div>
+     <label>Speciality</label>
+     <input id="doctorSpeciality">
+    </div>
 
-  </section>
+    <div>
+     <label>Location</label>
+     <input id="doctorLocation">
+    </div>
+
+    <div>
+     <label>From Date</label>
+     <input id="doctorFrom" type="date">
+    </div>
+
+    <div>
+     <label>To Date</label>
+     <input id="doctorTo" type="date">
+    </div>
+
+    <div>
+     <label>Remarks</label>
+     <input id="doctorRemarks">
+    </div>
+
+   </div>
+
+   <br>
+
+   <button class="success" onclick="saveDoctor()">SAVE</button>
+   <button class="secondary" onclick="closeDoctorForm()">Cancel</button>
+
+  </div>
 
 
-  <!-- REPORTS -->
+  <div class="card">
+   <input id="doctorSearch"
+          placeholder="Search doctor / speciality / location..."
+          oninput="renderDoctors()">
+  </div>
 
-  <section id="reports"></section>
+
+  <div id="doctorList"></div>
+
+ </section>
+
+
+ <!-- DISEASES -->
+
+ <section id="diseases" class="page hidden">
+
+  <div class="section-head">
+   <h2>DISEASE / MEDICAL REFERENCE</h2>
+  </div>
+
+  <div class="alert">
+   This is a quick clinical reference for trained medical personnel.
+   Treatment and drug doses must be checked against current unit/CMO
+   protocols, patient age/weight, contraindications and current guidelines.
+  </div>
+
+
+  <div class="card">
+   <input id="diseaseSearch"
+          placeholder="Search disease..."
+          oninput="renderDiseases()">
+  </div>
+
+
+  <div id="diseaseGrid" class="disease-grid"></div>
+
+
+  <div id="diseaseDetail" class="card hidden"></div>
+
+ </section>
 
 </section>
 
-</main>
+</div>
 
 
 <script type="module">
 
 import {
-  initializeApp
-}
-from
+ initializeApp
+} from
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-}
-from
+ getAuth,
+ signInWithEmailAndPassword,
+ onAuthStateChanged,
+ signOut
+} from
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  getDoc,
-  updateDoc,
-  deleteDoc
-}
-from
+ getFirestore,
+ collection,
+ addDoc,
+ getDocs,
+ getDoc,
+ doc,
+ updateDoc,
+ deleteDoc
+} from
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+/* FIREBASE */
 
-const firebaseConfig = {
-
-  apiKey:
-  "AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
-
-  authDomain:
-  "bn-medical-report.firebaseapp.com",
-
-  projectId:
-  "bn-medical-report",
-
-  storageBucket:
-  "bn-medical-report.firebasestorage.app",
-
-  messagingSenderId:
-  "353793989004",
-
-  appId:
-  "1:353793989004:web:b7963ebe3b641a02059ea9",
-
-  measurementId:
-  "G-RNZ0NBLD6G"
-
+const firebaseConfig={
+ apiKey:"AIzaSyCRUBvxGcbJMue1vKTugNUG0EtwO2W-2gY",
+ authDomain:"bn-medical-report.firebaseapp.com",
+ projectId:"bn-medical-report",
+ storageBucket:"bn-medical-report.firebasestorage.app",
+ messagingSenderId:"353793989004",
+ appId:"1:353793989004:web:b7963ebe3b641a02059ea9",
+ measurementId:"G-RNZ0NBLD6G"
 };
 
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
-const app =
-initializeApp(firebaseConfig);
+const $=id=>document.getElementById(id);
 
-const auth =
-getAuth(app);
+let role="staff";
 
-const db =
-getFirestore(app);
+let reportsData=[];
+let ameData=[];
+let leaveData=[];
+let medicData=[];
+let doctorData=[];
+
+let currentMedicType="PARAMEDIC";
 
 
-/* LOCATIONS */
+/* OPTIONS */
 
-const locations = [
+const locations=[
+ "COB NELANGUR",
+ "COB PADAMKOT",
+ "COB BEDMAKOTI",
+ "FIELD HOSPITAL KUTUL",
+ "COB KASTURMETHA",
+ "THQ KOKRAJHOR / NARAYANPUR",
+ "THQ KONDAGAON",
+ "RAIPUR"
+];
 
-  "COB NELANGUR",
+const ranks=[
+ "AC/GD",
+ "INSP/GD",
+ "HC/GD",
+ "CT/GD",
+ "CT/BBR",
+ "CT/SK",
+ "CT/WM"
+];
 
-  "COB PADAMKOT",
-
-  "COB BEDMAKOTI",
-
-  "FIELD HOSPITAL KUTUL",
-
-  "COB KASTURMETHA",
-
-  "THQ KOKRAJHOR / NARAYANPUR",
-
-  "THQ KONDAGAON",
-
-  "RAIPUR"
-
+const coys=[
+ "A","B","C","D","E","F","ADM","SPT"
 ];
 
 
-const $ =
-id => document.getElementById(id);
+/* DISEASE DATABASE */
 
+const diseases=[
 
-let role = "staff";
+{
+name:"Malaria",
+category:"Infectious",
+summary:"Febrile illness caused by Plasmodium parasites.",
+symptoms:"Fever, chills, rigors, sweating, headache, body ache, weakness; severe disease may cause altered sensorium, respiratory distress, anemia or shock.",
+investigation:"Malaria rapid diagnostic test and/or microscopy as per protocol. Identify species where possible.",
+management:"Confirm diagnosis and treat according to species, severity, local resistance pattern and current national/unit protocol. Assess for severe malaria and refer urgently when red flags are present.",
+dose:"Use the current malaria treatment protocol for the confirmed species and patient weight. Avoid empiric antimalarial dosing without diagnostic/clinical assessment.",
+red:"Altered consciousness, repeated vomiting, seizures, severe anemia, hypoglycemia, shock, respiratory distress or very high parasitemia."
+},
 
+{
+name:"Dengue",
+category:"Infectious",
+summary:"Mosquito-borne viral illness.",
+symptoms:"Fever, severe headache, retro-orbital pain, myalgia, arthralgia, nausea, rash.",
+investigation:"CBC/platelets and dengue testing according to illness day and local protocol.",
+management:"Fluids, monitoring and careful assessment for warning signs. Avoid unnecessary NSAIDs/aspirin because of bleeding risk.",
+dose:"Use weight/age-appropriate paracetamol according to current protocol; avoid aspirin and NSAIDs when dengue is suspected.",
+red:"Abdominal pain, persistent vomiting, mucosal bleeding, lethargy/restlessness, hepatomegaly, fluid accumulation or shock."
+},
 
-let reportCache =
-new Map();
+{
+name:"Typhoid Fever",
+category:"Infectious",
+summary:"Systemic infection commonly caused by Salmonella Typhi.",
+symptoms:"Prolonged fever, headache, malaise, abdominal discomfort, diarrhea or constipation.",
+investigation:"Blood culture is preferred where available; other tests interpreted cautiously.",
+management:"Antibiotic selection should follow local susceptibility/resistance guidance. Hydration and monitoring are important.",
+dose:"Antibiotic dose must follow current guideline, patient weight/age and susceptibility pattern.",
+red:"Shock, altered sensorium, GI bleeding, severe dehydration or suspected intestinal perforation."
+},
 
+{
+name:"Viral Fever",
+category:"Common",
+summary:"Acute febrile illness caused by various viruses.",
+symptoms:"Fever, fatigue, headache, myalgia, sore throat or respiratory/GI symptoms.",
+investigation:"Clinical assessment; targeted testing when indicated.",
+management:"Rest, hydration, temperature control and reassessment if fever persists or red flags develop.",
+dose:"Use age/weight-appropriate symptomatic treatment according to protocol.",
+red:"Breathing difficulty, altered sensorium, persistent vomiting, dehydration or shock."
+},
 
-/* ESCAPE */
+{
+name:"Acute Gastroenteritis",
+category:"GI",
+summary:"Acute inflammation/infection of the gastrointestinal tract.",
+symptoms:"Diarrhea, vomiting, abdominal cramps, fever.",
+investigation:"Usually clinical; stool testing for selected severe/persistent cases.",
+management:"Oral rehydration is central. Assess dehydration. Antibiotics are not routinely required for every case.",
+dose:"ORS should be given according to dehydration assessment and patient age/weight.",
+red:"Shock, severe dehydration, blood in stool, persistent vomiting or altered consciousness."
+},
 
-function esc(value){
+{
+name:"Cholera",
+category:"GI",
+summary:"Acute watery diarrheal illness that can cause rapid dehydration.",
+symptoms:"Profuse watery diarrhea, vomiting, thirst, weakness.",
+investigation:"Clinical assessment and laboratory confirmation where indicated.",
+management:"Immediate fluid/electrolyte replacement and public-health notification according to local protocol.",
+dose:"Fluid replacement depends on dehydration severity; antibiotics only when indicated by protocol.",
+red:"Shock, severe dehydration, inability to drink or altered sensorium."
+},
 
-  return String(value ?? "")
+{
+name:"Hepatitis A / E",
+category:"Infectious",
+summary:"Acute viral hepatitis causing liver inflammation.",
+symptoms:"Fever, nausea, anorexia, abdominal discomfort, dark urine, jaundice.",
+investigation:"Liver function tests and appropriate serology.",
+management:"Supportive care, hydration and avoidance of hepatotoxic substances; refer severe cases.",
+dose:"No routine antiviral treatment for uncomplicated acute hepatitis A/E.",
+red:"Altered consciousness, bleeding tendency, severe jaundice or signs of acute liver failure."
+},
 
-    .replace(/[&<>"']/g,function(c){
+{
+name:"Tuberculosis",
+category:"Respiratory",
+summary:"Mycobacterial infection, commonly affecting the lungs.",
+symptoms:"Cough, fever, night sweats, weight loss, fatigue; sometimes hemoptysis.",
+investigation:"Sputum molecular testing/Xpert, microscopy and imaging according to programme protocol.",
+management:"Prompt referral and treatment under the national TB programme.",
+dose:"Regimen and dosing are weight-band based and must follow the current NTEP protocol.",
+red:"Massive hemoptysis, respiratory distress or severe systemic illness."
+},
 
-      return {
+{
+name:"Pneumonia",
+category:"Respiratory",
+summary:"Infection of lung tissue.",
+symptoms:"Fever, cough, sputum, chest pain, tachypnea and breathlessness.",
+investigation:"Clinical assessment, SpO2, chest imaging and labs when indicated.",
+management:"Assess severity, oxygenation and need for hospital referral. Antibiotics depend on suspected cause and severity.",
+dose:"Antibiotic selection/dose should follow local guideline and patient factors.",
+red:"Low oxygen saturation, severe respiratory distress, hypotension or altered consciousness."
+},
 
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#39;"
+{
+name:"URTI",
+category:"Respiratory",
+summary:"Upper respiratory tract infection.",
+symptoms:"Runny nose, sore throat, cough, fever, nasal congestion.",
+investigation:"Usually clinical.",
+management:"Supportive treatment, hydration and symptomatic care. Avoid unnecessary antibiotics.",
+dose:"Symptomatic medicines should be age/weight appropriate.",
+red:"Stridor, severe breathing difficulty, inability to swallow or altered consciousness."
+},
 
-      }[c];
+{
+name:"LRTI",
+category:"Respiratory",
+summary:"Lower respiratory tract infection.",
+symptoms:"Cough, fever, sputum, chest discomfort and breathlessness.",
+investigation:"Clinical examination, SpO2 and further testing when required.",
+management:"Assess for pneumonia and severity. Treat according to clinical diagnosis.",
+dose:"Follow current clinical protocol.",
+red:"Hypoxia, severe respiratory distress, cyanosis or shock."
+},
 
-    });
+{
+name:"Fungal Skin Infection",
+category:"Dermatology",
+summary:"Superficial fungal infection of skin.",
+symptoms:"Itching, scaling, ring-shaped lesions or moist macerated skin.",
+investigation:"Usually clinical; KOH examination if diagnosis is uncertain.",
+management:"Keep affected area clean/dry and use appropriate topical antifungal treatment.",
+dose:"Topical treatment and duration depend on site and drug; follow approved product/protocol.",
+red:"Extensive infection, immunocompromised patient or suspected bacterial superinfection."
+},
 
+{
+name:"Scabies",
+category:"Dermatology",
+summary:"Infestation by Sarcoptes scabiei.",
+symptoms:"Intense itching, often worse at night; burrows and papules.",
+investigation:"Usually clinical.",
+management:"Treat patient and close contacts simultaneously; wash/heat-treat clothing and bedding.",
+dose:"Use an approved scabicide according to age, pregnancy status and current protocol.",
+red:"Secondary bacterial infection, extensive crusted disease or vulnerable patient."
+},
+
+{
+name:"Cellulitis",
+category:"Infectious",
+summary:"Bacterial infection of skin and subcutaneous tissue.",
+symptoms:"Pain, warmth, redness, swelling and sometimes fever.",
+investigation:"Clinical; labs/imaging for severe or complicated cases.",
+management:"Assess severity, mark spread, treat with appropriate antibiotics and elevate affected limb when suitable.",
+dose:"Antibiotic selection/dose requires clinical assessment and local protocol.",
+red:"Rapid progression, systemic toxicity, hypotension, necrosis or suspected deep infection."
+},
+
+{
+name:"Conjunctivitis",
+category:"Ophthalmic",
+summary:"Inflammation/infection of conjunctiva.",
+symptoms:"Red eye, discharge, irritation, watering.",
+investigation:"Clinical examination.",
+management:"Hand hygiene, avoid sharing towels; antibiotic treatment only when bacterial infection is suspected.",
+dose:"Eye medication depends on cause and should follow ophthalmic protocol.",
+red:"Severe eye pain, photophobia, reduced vision, corneal opacity or trauma."
+},
+
+{
+name:"Urinary Tract Infection",
+category:"Genitourinary",
+summary:"Infection involving urinary tract.",
+symptoms:"Dysuria, frequency, urgency, lower abdominal discomfort; fever may indicate upper tract disease.",
+investigation:"Urinalysis and culture where indicated.",
+management:"Hydration and appropriate antimicrobial treatment based on patient factors and local resistance guidance.",
+dose:"Antibiotic choice/dose should follow current protocol.",
+red:"Fever with flank pain, sepsis, vomiting, pregnancy or urinary obstruction."
+},
+
+{
+name:"Leptospirosis",
+category:"Infectious",
+summary:"Bacterial infection associated with exposure to contaminated water/soil.",
+symptoms:"Fever, severe myalgia, headache, conjunctival suffusion; severe cases may cause jaundice or renal failure.",
+investigation:"Clinical suspicion with appropriate laboratory testing.",
+management:"Early appropriate antibiotic therapy and organ-supportive care for severe disease.",
+dose:"Follow current infectious-disease protocol.",
+red:"Jaundice, oliguria, bleeding, respiratory distress or shock."
+},
+
+{
+name:"Scrub Typhus",
+category:"Infectious",
+summary:"Rickettsial infection transmitted by chigger mites.",
+symptoms:"Fever, headache, myalgia, rash; eschar may be present.",
+investigation:"Serology/rapid testing as available with clinical correlation.",
+management:"Early appropriate treatment is important; assess for complications.",
+dose:"Follow current rickettsial treatment guideline and patient-specific contraindications.",
+red:"Respiratory distress, encephalopathy, renal failure, myocarditis or shock."
+},
+
+{
+name:"Japanese Encephalitis",
+category:"Neurological",
+summary:"Mosquito-borne viral encephalitis.",
+symptoms:"Fever, headache, altered behaviour, seizures and neurological deficits.",
+investigation:"Urgent hospital evaluation and appropriate CSF/serologic testing.",
+management:"Supportive critical care and urgent referral.",
+dose:"No routine specific antiviral treatment; supportive management is required.",
+red:"Any altered consciousness, seizure, respiratory compromise or neurological deficit."
+},
+
+{
+name:"Heat Exhaustion",
+category:"Environmental",
+summary:"Heat-related illness with dehydration and physiological stress.",
+symptoms:"Heavy sweating, weakness, dizziness, headache, nausea.",
+investigation:"Temperature, vitals, hydration status and assessment for heat stroke.",
+management:"Move to cool area, remove excess clothing, active cooling and oral/IV fluids as clinically indicated.",
+dose:"Fluid replacement depends on clinical status.",
+red:"Altered mental status, collapse, seizures or very high core temperature suggests heat stroke."
+},
+
+{
+name:"Heat Stroke",
+category:"Emergency",
+summary:"Life-threatening heat illness with CNS dysfunction.",
+symptoms:"Altered mental status, collapse, very high body temperature, hot skin; sweating may be present.",
+investigation:"Immediate clinical assessment and monitoring of organ function.",
+management:"Emergency active cooling and immediate evacuation to definitive medical care.",
+dose:"Do not delay cooling for medication.",
+red:"All suspected heat stroke is an emergency."
+},
+
+{
+name:"Dehydration",
+category:"Emergency",
+summary:"Deficit of body water and electrolytes.",
+symptoms:"Thirst, dry mouth, weakness, dizziness, reduced urine.",
+investigation:"Clinical assessment, vitals and labs when moderate/severe.",
+management:"Oral rehydration when able; IV fluids for severe cases according to clinical assessment.",
+dose:"Fluid volume/rate depends on severity, age, comorbidities and haemodynamic status.",
+red:"Shock, altered consciousness, inability to drink or severe oliguria."
+},
+
+{
+name:"Snake Bite",
+category:"Emergency",
+summary:"Potential envenomation requiring urgent assessment.",
+symptoms:"Local swelling, pain, bleeding, neurotoxicity, ptosis, weakness or coagulopathy depending on species.",
+investigation:"Clinical monitoring and appropriate clotting/neuro/respiratory assessment.",
+management:"Immobilize limb, keep patient calm, urgent hospital referral; antivenom is given only when indicated under protocol.",
+dose:"Antivenom and other treatment must follow current national protocol and clinical syndrome.",
+red:"Neuroparalysis, bleeding, shock, rapidly progressive swelling or respiratory failure."
+},
+
+{
+name:"Dog / Animal Bite",
+category:"Emergency",
+summary:"Bite wound with risk of bacterial infection and rabies exposure.",
+symptoms:"Puncture/laceration, pain, bleeding; later infection may occur.",
+investigation:"Wound assessment and rabies exposure assessment.",
+management:"Immediate thorough wound washing, tetanus assessment, rabies PEP assessment and antibiotics when indicated.",
+dose:"Rabies vaccine/RIG and antibiotics follow current national protocol and exposure category.",
+red:"Deep wounds, face/hand injuries, severe bleeding or signs of infection."
+},
+
+{
+name:"Gunshot Injury",
+category:"Trauma",
+summary:"Penetrating ballistic trauma requiring immediate trauma assessment.",
+symptoms:"Bleeding, pain, tissue destruction, fracture, neurovascular deficit or shock.",
+investigation:"Primary trauma survey, haemorrhage assessment and definitive imaging at trauma facility.",
+management:"ABCDE, immediate life-threatening haemorrhage control, airway/breathing support, immobilization where indicated and urgent evacuation to trauma surgery.",
+dose:"Analgesia, antibiotics, tetanus and blood products depend on injury and current trauma protocol.",
+red:"Uncontrolled bleeding, airway compromise, tension pneumothorax, shock, altered consciousness or major vascular injury."
 }
 
-
-/* TODAY */
-
-function today(){
-
-  const d = new Date();
-
-  const y = d.getFullYear();
-
-  const m =
-    String(d.getMonth()+1).padStart(2,"0");
-
-  const day =
-    String(d.getDate()).padStart(2,"0");
-
-  return `${y}-${m}-${day}`;
-
-}
+];
 
 
 /* DATE */
 
-function niceDate(value){
+function today(){
+ const d=new Date();
+ return d.getFullYear()+"-"+
+ String(d.getMonth()+1).padStart(2,"0")+"-"+
+ String(d.getDate()).padStart(2,"0");
+}
 
-  if(!value) return "";
+function niceDate(v){
+ if(!v)return "";
+ const p=v.split("-");
+ const d=new Date(+p[0],+p[1]-1,+p[2]);
+ return d.toLocaleDateString("en-GB",{
+  day:"2-digit",month:"short",year:"numeric"
+ }).toUpperCase();
+}
 
-  const p = value.split("-");
-
-  const d = new Date(
-    Number(p[0]),
-    Number(p[1])-1,
-    Number(p[2])
-  );
-
-  return d.toLocaleDateString(
-    "en-GB",
-    {
-      day:"2-digit",
-      month:"short",
-      year:"numeric"
-    }
-  ).toUpperCase();
-
+function esc(v){
+ return String(v??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",
+ '"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
 
-/* WEEKDAY */
-
-function weekday(value){
-
-  if(!value) return "";
-
-  const p = value.split("-");
-
-  const d = new Date(
-    Number(p[0]),
-    Number(p[1])-1,
-    Number(p[2])
-  );
-
-  return d.toLocaleDateString(
-    "en-US",
-    {
-      weekday:"short"
-    }
-  ).toUpperCase();
-
-}
-
-
-/* STATUS COLOR */
-
-function statusClass(status){
-
-  if(status === "ADMIT")
-    return "admit";
-
-  if(status === "REFERRAL")
-    return "ref";
-
-  return "nil";
-
-}
-
-
-/* RANK OPTIONS */
-
-const ranks = [
-
-  "AC/GD",
-  "INSP/GD",
-  "HC/GD",
-  "CT/GD",
-  "CT/BBR",
-  "CT/SK",
-  "CT/WM"
-
-];
-
-
-/* COY OPTIONS */
-
-const coys = [
-
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "ADM",
-  "SPT"
-
-];
-
-
-/* AGE OPTIONS */
-
-const ages = [];
-
-for(
-  let age = 20;
-  age <= 80;
-  age++
-){
-
-  ages.push(age);
-
-}
-
-
-/* ADMIN FORM */
-
-function renderForm(data = {}){
-
-  $("formRows").innerHTML =
-
-  locations.map(function(location,index){
-
-    const d =
-      data[location] || {};
-
-    return `
-
-    <tr>
-
-      <td>
-        ${index + 1}
-      </td>
-
-
-      <td class="location">
-        ${esc(location)}
-      </td>
-
-
-      <!-- STATUS -->
-
-      <td
-        id="statusCell${index}"
-        class="${statusClass(d.status || "NIL")}"
-      >
-
-        <select
-          id="st${index}"
-          onchange="changeStatus(${index})"
-        >
-
-          <option
-            value="NIL"
-            ${d.status === "NIL" || !d.status ? "selected" : ""}
-          >
-            NIL
-          </option>
-
-          <option
-            value="ADMIT"
-            ${d.status === "ADMIT" ? "selected" : ""}
-          >
-            ADMIT
-          </option>
-
-          <option
-            value="REFERRAL"
-            ${d.status === "REFERRAL" ? "selected" : ""}
-          >
-            REFERRAL
-          </option>
-
-        </select>
-
-      </td>
-
-
-      <!-- REGT NO -->
-
-      <td>
-
-        <input
-          id="r${index}"
-          type="text"
-          value="${esc(d.regtNo || "")}"
-          placeholder="Regt No."
-        >
-
-      </td>
-
-
-      <!-- RANK -->
-
-      <td>
-
-        <select id="rk${index}">
-
-          <option value="">
-            Select Rank
-          </option>
-
-          ${ranks.map(function(rank){
-
-            return `
-
-              <option
-                value="${rank}"
-                ${d.rank === rank ? "selected" : ""}
-              >
-                ${rank}
-              </option>
-
-            `;
-
-          }).join("")}
-
-        </select>
-
-      </td>
-
-
-      <!-- NAME -->
-
-      <td>
-
-        <input
-          id="nm${index}"
-          type="text"
-          value="${esc(d.name || "")}"
-          placeholder="Name"
-        >
-
-      </td>
-
-
-      <!-- COY -->
-
-      <td>
-
-        <select id="cy${index}">
-
-          <option value="">
-            Select Coy
-          </option>
-
-          ${coys.map(function(coy){
-
-            return `
-
-              <option
-                value="${coy}"
-                ${d.coy === coy ? "selected" : ""}
-              >
-                ${coy}
-              </option>
-
-            `;
-
-          }).join("")}
-
-        </select>
-
-      </td>
-
-
-      <!-- AGE -->
-
-      <td>
-
-        <select id="ag${index}">
-
-          <option value="">
-            Age
-          </option>
-
-          ${ages.map(function(age){
-
-            return `
-
-              <option
-                value="${age}"
-                ${String(d.age || "") === String(age) ? "selected" : ""}
-              >
-                ${age}
-              </option>
-
-            `;
-
-          }).join("")}
-
-        </select>
-
-      </td>
-
-
-      <!-- SEX -->
-
-      <td>
-
-        <select id="sx${index}">
-
-          <option value="">
-            Sex
-          </option>
-
-          <option
-            value="M"
-            ${d.sex === "M" ? "selected" : ""}
-          >
-            M
-          </option>
-
-          <option
-            value="F"
-            ${d.sex === "F" ? "selected" : ""}
-          >
-            F
-          </option>
-
-        </select>
-
-      </td>
-
-
-      <!-- DIAGNOSIS -->
-
-      <td>
-
-        <input
-          id="d${index}"
-          type="text"
-          value="${esc(d.diagnosis || "")}"
-          placeholder="C/O / Diagnosis"
-        >
-
-      </td>
-
-
-      <!-- CONDITION -->
-
-      <td>
-
-        <input
-          id="c${index}"
-          type="text"
-          value="${esc(d.condition || "")}"
-          placeholder="Condition / Remarks"
-        >
-
-      </td>
-
-
-      <!-- AME -->
-
-      <td>
-
-        <input
-          id="m${index}"
-          type="number"
-          min="0"
-          value="${Number(d.ame || 0)}"
-        >
-
-      </td>
-
-    </tr>
-
-    `;
-
-  }).join("");
-
-
-  locations.forEach(function(location,index){
-
-    changeStatus(index);
-
-  });
-
-}
-
-
-/* STATUS CHANGE */
-
-window.changeStatus =
-function(index){
-
-  const select =
-    $("st"+index);
-
-  const cell =
-    $("statusCell"+index);
-
-  if(!select || !cell)
-    return;
-
-  cell.className =
-    statusClass(select.value);
-
-};
-
-
-/* COLLECT FORM */
-
-function collect(){
-
-  const output = {};
-
-  locations.forEach(function(location,index){
-
-    output[location] = {
-
-      status:
-        $("st"+index).value,
-
-      regtNo:
-        $("r"+index).value.trim(),
-
-      rank:
-        $("rk"+index).value,
-
-      name:
-        $("nm"+index).value.trim(),
-
-      coy:
-        $("cy"+index).value,
-
-      age:
-        $("ag"+index).value,
-
-      sex:
-        $("sx"+index).value,
-
-      diagnosis:
-        $("d"+index).value.trim(),
-
-      condition:
-        $("c"+index).value.trim(),
-
-      ame:
-        Number(
-          $("m"+index).value || 0
-        )
-
-    };
-
-  });
-
-  return output;
-
-}
-
-
-/* SUMMARY */
-
-function calculateSummary(data){
-
-  let admitted = 0;
-
-  let referred = 0;
-
-  let cob = 0;
-
-  let thq = 0;
-
-
-  Object.entries(
-    data.locations || {}
-  ).forEach(function([location,item]){
-
-    if(item.status === "ADMIT")
-      admitted++;
-
-    if(item.status === "REFERRAL")
-      referred++;
-
-
-    const n =
-      Number(item.ame || 0);
-
-
-    if(location.startsWith("THQ"))
-      thq += n;
-    else
-      cob += n;
-
-  });
-
-
-  const strength =
-    Number(
-      data.totalStrength || 0
-    );
-
-
-  const done =
-    data.ameDone != null
-      ? Number(data.ameDone)
-      : cob + thq;
-
-
-  return {
-
-    admitted,
-
-    referred,
-
-    cob:
-      Number(
-        data.ameCob ?? cob
-      ),
-
-    thq:
-      Number(
-        data.ameThq ?? thq
-      ),
-
-    done,
-
-    pending:
-      data.amePending != null
-        ? Number(data.amePending)
-        : Math.max(
-            0,
-            strength - done
-          ),
-
-    strength
-
-  };
-
-}
-
-
-/* REPORT HTML */
-
-function createReportHTML(id,data){
-
-  const summary =
-    calculateSummary(data);
-
-
-  let rows = "";
-
-
-  locations.forEach(function(location,index){
-
-    const item =
-      (data.locations || {})[location] || {};
-
-
-    const status =
-      item.status || "NIL";
-
-
-    rows += `
-
-    <tr>
-
-      <td>
-        ${index + 1}
-      </td>
-
-
-      <td class="location">
-        ${esc(location)}
-      </td>
-
-
-      <td class="${statusClass(status)}">
-        ${esc(status)}
-      </td>
-
-
-      <td>
-        ${esc(item.regtNo || "-")}
-      </td>
-
-
-      <td>
-        ${esc(item.rank || "-")}
-      </td>
-
-
-      <td>
-        ${esc(item.name || "-")}
-      </td>
-
-
-      <td>
-        ${esc(item.coy || "-")}
-      </td>
-
-
-      <td>
-        ${esc(item.age || "-")}
-      </td>
-
-
-      <td>
-        ${esc(item.sex || "-")}
-      </td>
-
-
-      <td>
-        ${esc(item.diagnosis || "-")}
-      </td>
-
-
-      <td>
-        ${esc(item.condition || "-")}
-      </td>
-
-
-      <td>
-        ${
-          Number(item.ame || 0)
-          || "NIL"
-        }
-      </td>
-
-    </tr>
-
-    `;
-
-  });
-
-
-  return `
-
-  <section class="report">
-
-    <div class="report-head">
-      DAILY MEDICAL REPORT - ALL COBs &amp; THQs
-    </div>
-
-
-    <div class="bn">
-      41 BN ITBP
-    </div>
-
-
-    <div class="date">
-
-      DATE:
-
-      <b>
-        ${niceDate(data.date)}
-        (${weekday(data.date)})
-      </b>
-
-    </div>
-
-
-    <div class="scroll">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>S. NO.</th>
-
-            <th>COB / LOCATION</th>
-
-            <th>STATUS</th>
-
-            <th>REGT. NO.</th>
-
-            <th>RANK</th>
-
-            <th>NAME</th>
-
-            <th>COY</th>
-
-            <th>AGE</th>
-
-            <th>SEX</th>
-
-            <th>C/O / DIAGNOSIS</th>
-
-            <th>CONDITION / REMARKS</th>
-
-            <th>AME DONE TODAY</th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody>
-
-          ${rows}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <div class="summary-title">
-      DAILY SUMMARY
-    </div>
-
-
-    <table class="summary">
-
-      <tr>
-        <td>TOTAL ADMITTED PATIENTS</td>
-        <td>${summary.admitted}</td>
-      </tr>
-
-      <tr>
-        <td>TOTAL REFERRED PATIENTS</td>
-        <td>${summary.referred}</td>
-      </tr>
-
-      <tr>
-        <td>AME DONE AT ALL COB</td>
-        <td>${summary.cob}</td>
-      </tr>
-
-      <tr>
-        <td>AME DONE AT THQ</td>
-        <td>${summary.thq}</td>
-      </tr>
-
-      <tr>
-        <td>TOTAL AME DONE</td>
-        <td>${summary.done}</td>
-      </tr>
-
-      <tr>
-        <td>AME PENDING</td>
-        <td>${summary.pending}</td>
-      </tr>
-
-      <tr>
-        <td>TOTAL STRENGTH</td>
-        <td>${summary.strength}</td>
-      </tr>
-
-    </table>
-
-
-    <div class="issue">
-
-      <b>
-        ANY OTHER ISSUE
-      </b>
-
-      <span>
-        ${esc(data.otherIssue || "NIL")}
-      </span>
-
-    </div>
-
-
-    ${
-      role === "admin"
-      ?
-
-      `
-
-      <div class="report-actions">
-
-        <button
-          class="blue"
-          onclick="editReport('${id}')"
-        >
-          ✏ Edit
-        </button>
-
-        <button
-          class="red"
-          onclick="deleteReport('${id}')"
-        >
-          🗑 Delete
-        </button>
-
-      </div>
-
-      `
-
-      :
-
-      ""
-
-    }
-
-  </section>
-
-  `;
-
+/* DROPDOWNS */
+
+function fillSelect(id,items,placeholder){
+ $(id).innerHTML=
+ `<option value="">${placeholder}</option>`+
+ items.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");
 }
 
 
 /* LOGIN */
 
-window.login =
-async function(){
+window.login=async function(){
 
-  const email =
-    $("email").value.trim();
+ const email=$("email").value.trim();
+ const password=$("password").value;
 
-  const password =
-    $("password").value;
+ try{
+  await signInWithEmailAndPassword(auth,email,password);
+ }
+ catch(e){
+  $("loginMsg").textContent=e.message;
+  $("loginMsg").classList.remove("hidden");
+ }
+};
 
-
-  $("loginMsg").style.display =
-    "none";
-
-
-  if(!email || !password){
-
-    $("loginMsg").textContent =
-      "Email aur password enter karein.";
-
-    $("loginMsg").style.display =
-      "block";
-
-    return;
-
-  }
-
-
-  try{
-
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  }
-
-  catch(error){
-
-    $("loginMsg").textContent =
-      error.message;
-
-    $("loginMsg").style.display =
-      "block";
-
-  }
-
+window.logout=async function(){
+ await signOut(auth);
 };
 
 
-/* LOGOUT */
+/* AUTH */
 
-window.logout =
-async function(){
+onAuthStateChanged(auth,async user=>{
 
-  await signOut(auth);
+ if(!user){
 
+  $("loginPage").classList.remove("hidden");
+  $("app").classList.add("hidden");
+  return;
+
+ }
+
+ try{
+
+  const snap=await getDoc(
+   doc(db,"users",user.uid)
+  );
+
+  role=snap.exists()
+   ? (snap.data().role||"staff")
+   : "staff";
+
+  $("loginPage").classList.add("hidden");
+  $("app").classList.remove("hidden");
+
+  $("userInfo").textContent=
+   user.email+" | "+role.toUpperCase();
+
+  setupRoleUI();
+  setDefaults();
+  await loadAll();
+
+  showPage("dashboard");
+
+ }
+ catch(e){
+
+  alert("Profile load error: "+e.message);
+
+ }
+
+});
+
+
+function setupRoleUI(){
+
+ if(role==="admin"){
+
+  $("adminArea").classList.remove("hidden");
+
+  $("ameAddBtn").classList.remove("hidden");
+  $("ameAdmin").classList.remove("hidden");
+
+  $("leaveAddBtn").classList.remove("hidden");
+  $("leaveAdmin").classList.remove("hidden");
+
+  $("medicAddBtn").classList.remove("hidden");
+  $("medicAdmin").classList.remove("hidden");
+
+  $("doctorAddBtn").classList.remove("hidden");
+  $("doctorAdmin").classList.remove("hidden");
+
+ }
+
+}
+
+
+function setDefaults(){
+
+ $("reportDate").value=today();
+
+ fillSelect("ameRank",ranks,"Select Rank");
+ fillSelect("ameCoy",coys,"Select Coy");
+ fillSelect("leaveRank",ranks,"Select Rank");
+ fillSelect("leaveCoy",coys,"Select Coy");
+ fillSelect("medicRank",ranks,"Select Rank");
+ fillSelect("medicCoy",coys,"Select Coy");
+ fillSelect("ameLocation",locations,"Select Location");
+
+ renderReportForm();
+
+}
+
+
+/* PAGE NAVIGATION */
+
+window.showPage=function(name){
+
+ document.querySelectorAll(".page")
+ .forEach(x=>x.classList.add("hidden"));
+
+ $(name).classList.remove("hidden");
+
+ document.querySelectorAll(".navbar button")
+ .forEach(x=>x.classList.remove("active"));
+
+ if(name==="reports"){
+  loadReports();
+ }
+
+ if(name==="ame"){
+  renderAME();
+ }
+
+ if(name==="leave"){
+  renderLeave();
+ }
+
+ if(name==="medic"){
+  $("medicContent").classList.add("hidden");
+ }
+
+ if(name==="doctor"){
+  renderDoctors();
+ }
+
+ if(name==="diseases"){
+  renderDiseases();
+ }
+
+ window.scrollTo({top:0,behavior:"smooth"});
 };
 
 
-/* AUTH STATE */
+/* LOAD ALL */
 
-onAuthStateChanged(
-  auth,
-  async function(user){
+async function loadAll(){
 
-    if(!user){
+ await Promise.all([
+  loadReports(),
+  loadAME(),
+  loadLeave(),
+  loadMedic(),
+  loadDoctors()
+ ]);
 
-      $("loginBox")
-        .classList
-        .remove("hidden");
+ updateDashboard();
 
-      $("app")
-        .classList
-        .add("hidden");
-
-      return;
-
-    }
+}
 
 
-    try{
+/* REPORT FORM */
 
-      const userSnap =
-        await getDoc(
-          doc(
-            db,
-            "users",
-            user.uid
-          )
-        );
+function renderReportForm(data={}){
 
+ let html="";
 
-      if(
-        userSnap.exists()
-      ){
+ locations.forEach((location,i)=>{
 
-        role =
-          userSnap.data().role
-          || "staff";
+  const d=data[location]||{};
 
-      }
-      else{
-
-        role = "staff";
-
-      }
-
-
-      $("loginBox")
-        .classList
-        .add("hidden");
-
-      $("app")
-        .classList
-        .remove("hidden");
-
-
-      $("userInfo").textContent =
-        "Logged in: " + user.email;
-
-
-      if(role === "admin"){
-
-        $("adminPanel")
-          .classList
-          .remove("hidden");
-
-        $("date").value =
-          today();
-
-        renderForm();
-
-      }
-      else{
-
-        $("adminPanel")
-          .classList
-          .add("hidden");
-
-      }
-
-
-      loadReports();
-
-    }
-
-    catch(error){
-
-      console.error(error);
-
-      $("loginMsg").textContent =
-        "User profile load nahi hua: "
-        + error.message;
-
-      $("loginMsg").style.display =
-        "block";
-
-    }
-
+  let ages="";
+  for(let a=20;a<=80;a++){
+   ages+=`<option value="${a}" ${String(d.age||"")===String(a)?"selected":""}>${a}</option>`;
   }
 
-);
+  html+=`
+
+  <tr>
+
+   <td>${i+1}</td>
+
+   <td class="location">${location}</td>
+
+   <td id="statusCell${i}" class="${statusClass(d.status||"NIL")}">
+
+    <select id="st${i}" onchange="changeStatus(${i})">
+
+     <option value="NIL" ${!d.status||d.status==="NIL"?"selected":""}>NIL</option>
+     <option value="ADMIT" ${d.status==="ADMIT"?"selected":""}>ADMIT</option>
+     <option value="REFERRAL" ${d.status==="REFERRAL"?"selected":""}>REFERRAL</option>
+
+    </select>
+
+   </td>
+
+   <td>
+    <input id="regt${i}" value="${esc(d.regtNo||"")}" placeholder="Regt No.">
+   </td>
+
+   <td>
+    <select id="rank${i}">
+     <option value="">Rank</option>
+     ${ranks.map(r=>`
+      <option value="${r}" ${d.rank===r?"selected":""}>${r}</option>
+     `).join("")}
+    </select>
+   </td>
+
+   <td>
+    <input id="name${i}" value="${esc(d.name||"")}" placeholder="Name">
+   </td>
+
+   <td>
+    <select id="coy${i}">
+     <option value="">Coy</option>
+     ${coys.map(c=>`
+      <option value="${c}" ${d.coy===c?"selected":""}>${c}</option>
+     `).join("")}
+    </select>
+   </td>
+
+   <td>
+    <select id="age${i}">
+     <option value="">Age</option>
+     ${ages}
+    </select>
+   </td>
+
+   <td>
+    <select id="sex${i}">
+     <option value="">Sex</option>
+     <option value="M" ${d.sex==="M"?"selected":""}>M</option>
+     <option value="F" ${d.sex==="F"?"selected":""}>F</option>
+    </select>
+   </td>
+
+   <td>
+    <input id="diag${i}" value="${esc(d.diagnosis||"")}" placeholder="C/O / Diagnosis">
+   </td>
+
+   <td>
+    <input id="cond${i}" value="${esc(d.condition||"")}" placeholder="Condition / Remarks">
+   </td>
+
+   <td>
+    <input id="ame${i}" type="number" min="0" value="${Number(d.ame||0)}">
+   </td>
+
+  </tr>`;
+
+ });
+
+ $("reportFormRows").innerHTML=html;
+
+ locations.forEach((x,i)=>changeStatus(i));
+}
 
 
-/* LOAD REPORTS */
+function statusClass(s){
+ if(s==="ADMIT")return"admit";
+ if(s==="REFERRAL")return"ref";
+ return"nil";
+}
 
-window.loadReports =
-async function(){
-
-  $("reports").innerHTML =
-    `<div class="card loading">
-      Loading reports...
-    </div>`;
-
-
-  try{
-
-    const snap =
-      await getDocs(
-        collection(
-          db,
-          "daily_reports"
-        )
-      );
-
-
-    reportCache.clear();
-
-
-    if(snap.empty){
-
-      $("reports").innerHTML =
-        `<div class="card empty">
-          No daily reports available.
-        </div>`;
-
-      return;
-
-    }
-
-
-    const reports = [];
-
-
-    snap.forEach(function(item){
-
-      const data =
-        item.data();
-
-
-      if(data.setup === true)
-        return;
-
-
-      reportCache.set(
-        item.id,
-        data
-      );
-
-
-      reports.push({
-
-        id:item.id,
-
-        data:data
-
-      });
-
-    });
-
-
-    reports.sort(
-      function(a,b){
-
-        return String(
-          b.data.date || ""
-        ).localeCompare(
-          String(a.data.date || "")
-        );
-
-      }
-    );
-
-
-    if(reports.length === 0){
-
-      $("reports").innerHTML =
-        `<div class="card empty">
-          No daily reports available.
-        </div>`;
-
-      return;
-
-    }
-
-
-    $("reports").innerHTML =
-      reports.map(function(item){
-
-        return createReportHTML(
-          item.id,
-          item.data
-        );
-
-      }).join("");
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    $("reports").innerHTML = `
-
-      <div class="card error">
-
-        <h3>
-          Reports load nahi ho rahe.
-        </h3>
-
-        <p>
-          ${esc(error.message)}
-        </p>
-
-        <button
-          class="blue"
-          onclick="loadReports()"
-        >
-          Retry
-        </button>
-
-      </div>
-
-    `;
-
-  }
-
+window.changeStatus=function(i){
+ const c=$("statusCell"+i);
+ const s=$("st"+i);
+ if(c&&s)c.className=statusClass(s.value);
 };
+
+
+function collectReport(){
+
+ const data={};
+
+ locations.forEach((location,i)=>{
+
+  data[location]={
+   status:$("st"+i).value,
+   regtNo:$("regt"+i).value.trim(),
+   rank:$("rank"+i).value,
+   name:$("name"+i).value.trim(),
+   coy:$("coy"+i).value,
+   age:$("age"+i).value,
+   sex:$("sex"+i).value,
+   diagnosis:$("diag"+i).value.trim(),
+   condition:$("cond"+i).value.trim(),
+   ame:Number($("ame"+i).value||0)
+  };
+
+ });
+
+ return data;
+}
 
 
 /* SAVE REPORT */
 
-window.saveReport =
-async function(){
+window.saveReport=async function(){
 
-  if(role !== "admin"){
+ if(role!=="admin")return;
 
-    alert(
-      "Only Admin can save reports."
-    );
+ const locationsData=collectReport();
 
-    return;
+ let admitted=0;
+ let referred=0;
+ let cob=0;
+ let thq=0;
+
+ Object.entries(locationsData).forEach(([loc,d])=>{
+
+  if(d.status==="ADMIT")admitted++;
+  if(d.status==="REFERRAL")referred++;
+
+  if(loc.startsWith("THQ"))
+   thq+=Number(d.ame||0);
+  else
+   cob+=Number(d.ame||0);
+
+ });
+
+ const total=Number($("totalStrength").value||0);
+
+ const ameCob=Number($("ameCob").value||cob);
+ const ameThq=Number($("ameThq").value||thq);
+
+ const report={
+  date:$("reportDate").value,
+  totalStrength:total,
+  ameCob,
+  ameThq,
+  ameDone:ameCob+ameThq,
+  amePending:Math.max(0,total-(ameCob+ameThq)),
+  totalAdmitted:admitted,
+  totalReferred:referred,
+  locations:locationsData,
+  otherIssue:$("otherIssue").value.trim()||"NIL",
+  updatedAt:Date.now()
+ };
+
+ try{
+
+  const edit=$("editReportId").value;
+
+  if(edit){
+
+   await updateDoc(
+    doc(db,"daily_reports",edit),
+    report
+   );
+
+   $("saveMsg").textContent="Report updated successfully.";
+
+  }else{
+
+   await addDoc(
+    collection(db,"daily_reports"),
+    report
+   );
+
+   $("saveMsg").textContent="Report saved successfully.";
 
   }
 
+  clearReportForm();
+  await loadReports();
+  updateDashboard();
 
-  const date =
-    $("date").value;
+ }catch(e){
 
+  $("saveMsg").textContent="Error: "+e.message;
 
-  if(!date){
-
-    alert(
-      "Date select karein."
-    );
-
-    return;
-
-  }
-
-
-  const locationsData =
-    collect();
-
-
-  const totalStrength =
-    Number(
-      $("strength").value || 0
-    );
-
-
-  let cobAME = 0;
-
-  let thqAME = 0;
-
-
-  Object.entries(
-    locationsData
-  ).forEach(function([location,item]){
-
-    const n =
-      Number(item.ame || 0);
-
-
-    if(location.startsWith("THQ"))
-      thqAME += n;
-    else
-      cobAME += n;
-
-  });
-
-
-  const manualCob =
-    Number(
-      $("ameCob").value || 0
-    );
-
-
-  const manualThq =
-    Number(
-      $("ameThq").value || 0
-    );
-
-
-  const ameCob =
-    manualCob || cobAME;
-
-
-  const ameThq =
-    manualThq || thqAME;
-
-
-  const ameDone =
-    ameCob + ameThq;
-
-
-  const amePending =
-    Math.max(
-      0,
-      totalStrength - ameDone
-    );
-
-
-  const report = {
-
-    date:
-
-      date,
-
-    totalStrength:
-
-      totalStrength,
-
-    ameCob:
-
-      ameCob,
-
-    ameThq:
-
-      ameThq,
-
-    ameDone:
-
-      ameDone,
-
-    amePending:
-
-      amePending,
-
-    totalAdmitted:
-
-      0,
-
-    totalReferred:
-
-      0,
-
-    locations:
-
-      locationsData,
-
-    otherIssue:
-
-      $("issue").value.trim()
-      || "NIL"
-
-  };
-
-
-  Object.values(
-    locationsData
-  ).forEach(function(item){
-
-    if(item.status === "ADMIT")
-      report.totalAdmitted++;
-
-    if(item.status === "REFERRAL")
-      report.totalReferred++;
-
-  });
-
-
-  try{
-
-    const editId =
-      $("editId").value;
-
-
-    if(editId){
-
-      await updateDoc(
-
-        doc(
-          db,
-          "daily_reports",
-          editId
-        ),
-
-        report
-
-      );
-
-      $("saveMsg").textContent =
-        "Report updated successfully.";
-
-    }
-    else{
-
-      await addDoc(
-
-        collection(
-          db,
-          "daily_reports"
-        ),
-
-        report
-
-      );
-
-      $("saveMsg").textContent =
-        "Report saved successfully.";
-
-    }
-
-
-    $("editId").value = "";
-
-    $("adminTitle").textContent =
-      "Admin - Create Daily Report";
-
-
-    await loadReports();
-
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    $("saveMsg").textContent =
-      "Save failed: " + error.message;
-
-  }
+ }
 
 };
 
 
-/* EDIT REPORT */
+/* LOAD REPORTS */
 
-window.editReport =
-function(id){
+window.loadReports=async function(){
 
-  if(role !== "admin")
-    return;
+ try{
 
-
-  const data =
-    reportCache.get(id);
-
-
-  if(!data)
-    return;
-
-
-  $("editId").value =
-    id;
-
-
-  $("adminTitle").textContent =
-    "Admin - Edit Daily Report";
-
-
-  $("date").value =
-    data.date || today();
-
-
-  $("strength").value =
-    data.totalStrength || 0;
-
-
-  $("ameCob").value =
-    data.ameCob || 0;
-
-
-  $("ameThq").value =
-    data.ameThq || 0;
-
-
-  $("issue").value =
-    data.otherIssue || "";
-
-
-  renderForm(
-    data.locations || {}
+  const snap=await getDocs(
+   collection(db,"daily_reports")
   );
 
+  reportsData=[];
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
+  snap.forEach(d=>{
+
+   const x=d.data();
+
+   if(!x.setup)
+    reportsData.push({
+     id:d.id,
+     ...x
+    });
+
   });
 
+  reportsData.sort((a,b)=>
+   String(b.date||"").localeCompare(String(a.date||""))
+  );
+
+  renderReports();
+
+  updateDashboard();
+
+ }catch(e){
+
+  $("reportsList").innerHTML=
+   `<div class="card">${esc(e.message)}</div>`;
+
+ }
+
 };
 
 
-/* DELETE REPORT */
+function reportMatches(r,q,date){
 
-window.deleteReport =
-async function(id){
+ let text=JSON.stringify(r).toLowerCase();
 
-  if(role !== "admin")
-    return;
+ if(q && !text.includes(q.toLowerCase()))
+  return false;
 
+ if(date && r.date!==date)
+  return false;
 
-  const ok =
-    confirm(
-      "Kya aap ye report delete karna chahte hain?"
-    );
-
-
-  if(!ok)
-    return;
+ return true;
+}
 
 
-  try{
+window.filterReports=renderReports;
 
-    await deleteDoc(
-      doc(
-        db,
-        "daily_reports",
-        id
-      )
-    );
+function renderReports(){
+
+ const q=$("reportSearch")?.value.trim()||"";
+ const date=$("reportFrom")?.value||"";
+
+ const arr=reportsData.filter(r=>
+  reportMatches(r,q,date)
+ );
+
+ if(!arr.length){
+
+  $("reportsList").innerHTML=
+   `<div class="card empty">No reports found.</div>`;
+
+  return;
+
+ }
+
+ $("reportsList").innerHTML=
+  arr.map(reportHTML).join("");
+
+}
 
 
-    await loadReports();
+function reportHTML(r){
 
+ let rows="";
+
+ locations.forEach((loc,i)=>{
+
+  const d=(r.locations||{})[loc]||{};
+
+  rows+=`
+
+  <tr>
+
+   <td>${i+1}</td>
+   <td class="location">${esc(loc)}</td>
+   <td class="${statusClass(d.status||"NIL")}">${esc(d.status||"NIL")}</td>
+   <td>${esc(d.regtNo||"-")}</td>
+   <td>${esc(d.rank||"-")}</td>
+   <td>${esc(d.name||"-")}</td>
+   <td>${esc(d.coy||"-")}</td>
+   <td>${esc(d.age||"-")}</td>
+   <td>${esc(d.sex||"-")}</td>
+   <td>${esc(d.diagnosis||"-")}</td>
+   <td>${esc(d.condition||"-")}</td>
+   <td>${Number(d.ame||0)||"NIL"}</td>
+
+  </tr>`;
+
+ });
+
+ return`
+
+ <div class="report">
+
+  <div class="report-title">
+   DAILY MEDICAL REPORT - ALL COBs & THQs
+  </div>
+
+  <div class="report-bn">
+   41 BN ITBP
+  </div>
+
+  <div class="report-date">
+   DATE:
+   <span>${niceDate(r.date)}</span>
+  </div>
+
+  <div class="scroll">
+
+   <table>
+
+    <thead>
+     <tr>
+      <th>S. NO.</th>
+      <th>COB / LOCATION</th>
+      <th>STATUS</th>
+      <th>REGT. NO.</th>
+      <th>RANK</th>
+      <th>NAME</th>
+      <th>COY</th>
+      <th>AGE</th>
+      <th>SEX</th>
+      <th>C/O / DIAGNOSIS</th>
+      <th>CONDITION / REMARKS</th>
+      <th>AME DONE TODAY</th>
+     </tr>
+    </thead>
+
+    <tbody>${rows}</tbody>
+
+   </table>
+
+  </div>
+
+  <div class="summary-title">DAILY SUMMARY</div>
+
+  <table class="summary">
+
+   <tr>
+    <td>TOTAL ADMITTED PATIENTS</td>
+    <td>${r.totalAdmitted||0}</td>
+   </tr>
+
+   <tr>
+    <td>TOTAL REFERRED PATIENTS</td>
+    <td>${r.totalReferred||0}</td>
+   </tr>
+
+   <tr>
+    <td>AME DONE AT ALL COB</td>
+    <td>${r.ameCob||0}</td>
+   </tr>
+
+   <tr>
+    <td>AME DONE AT THQ</td>
+    <td>${r.ameThq||0}</td>
+   </tr>
+
+   <tr>
+    <td>TOTAL AME DONE</td>
+    <td>${r.ameDone||0}</td>
+   </tr>
+
+   <tr>
+    <td>AME PENDING</td>
+    <td>${r.amePending||0}</td>
+   </tr>
+
+   <tr>
+    <td>TOTAL STRENGTH</td>
+    <td>${r.totalStrength||0}</td>
+   </tr>
+
+  </table>
+
+  <div class="issue">
+   <b>ANY OTHER ISSUE</b>
+   <span>${esc(r.otherIssue||"NIL")}</span>
+  </div>
+
+  ${
+   role==="admin"
+   ?`
+   <div class="report-actions">
+    <button class="primary" onclick="editReport('${r.id}')">✏ EDIT</button>
+    <button class="danger" onclick="deleteReport('${r.id}')">🗑 DELETE</button>
+    <button class="secondary" onclick="printReport('${r.id}')">🖨 PRINT</button>
+   </div>`
+   :`
+   <div class="report-actions">
+    <button class="secondary" onclick="printReport('${r.id}')">🖨 PRINT</button>
+   </div>`
   }
 
-  catch(error){
+ </div>`;
 
-    alert(
-      "Delete failed: "
-      + error.message
-    );
+}
 
+
+window.editReport=function(id){
+
+ const r=reportsData.find(x=>x.id===id);
+
+ if(!r)return;
+
+ $("editReportId").value=id;
+ $("formTitle").textContent="Edit Daily Medical Report";
+
+ $("reportDate").value=r.date||today();
+ $("totalStrength").value=r.totalStrength||0;
+ $("ameCob").value=r.ameCob||0;
+ $("ameThq").value=r.ameThq||0;
+ $("otherIssue").value=r.otherIssue||"";
+
+ renderReportForm(r.locations||{});
+
+ showPage("reports");
+
+ window.scrollTo({top:0,behavior:"smooth"});
+
+};
+
+
+window.deleteReport=async function(id){
+
+ if(!confirm("Delete this report?"))return;
+
+ await deleteDoc(
+  doc(db,"daily_reports",id)
+ );
+
+ await loadReports();
+
+};
+
+
+window.clearReportForm=function(){
+
+ $("editReportId").value="";
+ $("formTitle").textContent="Create Daily Medical Report";
+ $("reportDate").value=today();
+ $("totalStrength").value="";
+ $("ameCob").value="";
+ $("ameThq").value="";
+ $("otherIssue").value="";
+ $("saveMsg").textContent="";
+
+ renderReportForm();
+
+};
+
+
+window.clearReportSearch=function(){
+
+ $("reportSearch").value="";
+ $("reportFrom").value="";
+ renderReports();
+
+};
+
+
+window.printReport=function(id){
+
+ const r=reportsData.find(x=>x.id===id);
+
+ if(!r)return;
+
+ const w=window.open("","_blank");
+
+ w.document.write(`
+ <html>
+ <head>
+ <title>41 BN Medical Report</title>
+ <style>
+ body{font-family:Arial;margin:15px}
+ h1,h2{text-align:center}
+ table{border-collapse:collapse;width:100%;font-size:10px}
+ th,td{border:1px solid #333;padding:5px;text-align:center}
+ th{background:#063b73;color:white}
+ </style>
+ </head>
+ <body>
+ ${reportHTML(r)}
+ <script>
+ window.onload=function(){window.print()}
+ <\/script>
+ </body>
+ </html>`);
+
+ w.document.close();
+
+};
+
+
+/* AME */
+
+async function loadAME(){
+
+ const snap=await getDocs(
+  collection(db,"ame_2026")
+ );
+
+ ameData=[];
+
+ snap.forEach(d=>
+  ameData.push({id:d.id,...d.data()})
+ );
+
+ renderAME();
+
+}
+
+
+window.openAMEForm=function(){
+ $("ameAdmin").classList.remove("hidden");
+};
+
+window.closeAMEForm=function(){
+ $("ameAdmin").classList.add("hidden");
+};
+
+
+window.saveAME=async function(){
+
+ if(role!=="admin")return;
+
+ const data={
+  regt:$("ameRegt").value.trim(),
+  rank:$("ameRank").value,
+  name:$("ameName").value.trim(),
+  coy:$("ameCoy").value,
+  category:$("ameCategory").value,
+  location:$("ameLocation").value,
+  status:$("ameStatus").value,
+  updatedAt:Date.now()
+ };
+
+ await addDoc(
+  collection(db,"ame_2026"),
+  data
+ );
+
+ $("ameRegt").value="";
+ $("ameName").value="";
+
+ await loadAME();
+
+};
+
+
+window.renderAME=function(){
+
+ const q=($("ameSearch")?.value||"").toLowerCase();
+
+ const arr=ameData.filter(x=>
+  JSON.stringify(x).toLowerCase().includes(q)
+ );
+
+ let done=arr.filter(x=>x.status==="DONE").length;
+ let pending=arr.filter(x=>x.status==="PENDING").length;
+
+ $("ameDone").textContent=done;
+ $("amePending").textContent=pending;
+ $("ameTotal").textContent=done+pending;
+
+ if(!arr.length){
+  $("ameList").innerHTML=
+   `<div class="card empty">No AME records found.</div>`;
+  return;
+ }
+
+ $("ameList").innerHTML=arr.map(x=>`
+
+ <div class="list-card">
+
+  <h3>
+   ${esc(x.name||"-")}
+   <span class="badge">${esc(x.status||"-")}</span>
+  </h3>
+
+  <div>
+   <b>Regt:</b> ${esc(x.regt||"-")}
+   &nbsp; | &nbsp;
+   <b>Rank:</b> ${esc(x.rank||"-")}
+   &nbsp; | &nbsp;
+   <b>Coy:</b> ${esc(x.coy||"-")}
+   &nbsp; | &nbsp;
+   <b>Category:</b> ${esc(x.category||"-")}
+   &nbsp; | &nbsp;
+   <b>Location:</b> ${esc(x.location||"-")}
+  </div>
+
+  ${
+   role==="admin"
+   ?`
+   <br>
+   <button class="danger"
+    onclick="deleteAME('${x.id}')">
+    Delete
+   </button>`
+   :""
   }
 
-};
+ </div>
 
-
-/* CLEAR FORM */
-
-window.clearForm =
-function(){
-
-  $("editId").value =
-    "";
-
-  $("adminTitle").textContent =
-    "Admin - Create Daily Report";
-
-
-  $("date").value =
-    today();
-
-
-  $("strength").value =
-    "";
-
-
-  $("ameCob").value =
-    "";
-
-
-  $("ameThq").value =
-    "";
-
-
-  $("issue").value =
-    "";
-
-
-  $("saveMsg").textContent =
-    "";
-
-
-  renderForm();
+ `).join("");
 
 };
 
 
-/* INITIAL FORM */
+window.deleteAME=async function(id){
 
-$("date").value =
-today();
+ if(!confirm("Delete AME record?"))return;
+
+ await deleteDoc(
+  doc(db,"ame_2026",id)
+ );
+
+ await loadAME();
+
+};
+
+
+/* LEAVE */
+
+async function loadLeave(){
+
+ const snap=await getDocs(
+  collection(db,"staff_leave_plan")
+ );
+
+ leaveData=[];
+
+ snap.forEach(d=>
+  leaveData.push({id:d.id,...d.data()})
+ );
+
+ renderLeave();
+
+}
+
+
+window.openLeaveForm=function(){
+ $("leaveAdmin").classList.remove("hidden");
+};
+
+window.closeLeaveForm=function(){
+ $("leaveAdmin").classList.add("hidden");
+};
+
+
+window.saveLeave=async function(){
+
+ const data={
+  regt:$("leaveRegt").value.trim(),
+  rank:$("leaveRank").value,
+  name:$("leaveName").value.trim(),
+  coy:$("leaveCoy").value,
+  location:$("leaveLocation").value.trim(),
+  availed:$("leaveAvailed").value.trim(),
+  nextDate:$("leaveDate").value,
+  remarks:$("leaveRemarks").value.trim(),
+  updatedAt:Date.now()
+ };
+
+ await addDoc(
+  collection(db,"staff_leave_plan"),
+  data
+ );
+
+ closeLeaveForm();
+
+ await loadLeave();
+
+};
+
+
+window.renderLeave=function(){
+
+ const q=($("leaveSearch")?.value||"").toLowerCase();
+
+ const arr=leaveData.filter(x=>
+  JSON.stringify(x).toLowerCase().includes(q)
+ );
+
+ if(!arr.length){
+  $("leaveList").innerHTML=
+   `<div class="card empty">No leave data available.</div>`;
+  return;
+ }
+
+ $("leaveList").innerHTML=arr.map(x=>`
+
+ <div class="list-card">
+
+  <h3>${esc(x.name||"-")}</h3>
+
+  <div>
+   <b>Regt:</b> ${esc(x.regt||"-")}
+   | <b>Rank:</b> ${esc(x.rank||"-")}
+   | <b>Coy:</b> ${esc(x.coy||"-")}
+   | <b>Location:</b> ${esc(x.location||"-")}
+  </div>
+
+  <div>
+   <b>Leave Availed:</b> ${esc(x.availed||"-")}
+   | <b>Next Leave:</b> ${esc(x.nextDate||"-")}
+  </div>
+
+  <div>
+   <b>Remarks:</b> ${esc(x.remarks||"-")}
+  </div>
+
+  ${
+   role==="admin"
+   ?`
+   <br>
+   <button class="danger"
+    onclick="deleteLeave('${x.id}')">
+    Delete
+   </button>`
+   :""
+  }
+
+ </div>
+
+ `).join("");
+
+};
+
+
+window.deleteLeave=async function(id){
+
+ if(!confirm("Delete leave record?"))return;
+
+ await deleteDoc(
+  doc(db,"staff_leave_plan",id)
+ );
+
+ await loadLeave();
+
+};
+
+
+/* MEDIC */
+
+async function loadMedic(){
+
+ const snap=await getDocs(
+  collection(db,"medic_deployment")
+ );
+
+ medicData=[];
+
+ snap.forEach(d=>
+  medicData.push({id:d.id,...d.data()})
+ );
+
+};
+
+
+window.showMedicType=function(type){
+
+ currentMedicType=type;
+
+ $("medicContent").classList.remove("hidden");
+
+ $("medicTitle").textContent=
+  type==="PARAMEDIC"
+  ? "PARAMEDIC DEPLOYMENT"
+  : "GD / MEDIC DEPLOYMENT";
+
+ renderMedic();
+
+};
+
+
+window.openMedicForm=function(){
+ $("medicAdmin").classList.remove("hidden");
+};
+
+window.closeMedicForm=function(){
+ $("medicAdmin").classList.add("hidden");
+};
+
+
+window.saveMedic=async function(){
+
+ const data={
+  type:currentMedicType,
+  regt:$("medicRegt").value.trim(),
+  rank:$("medicRank").value,
+  name:$("medicName").value.trim(),
+  coy:$("medicCoy").value,
+  location:$("medicLocation").value.trim(),
+  from:$("medicFrom").value,
+  to:$("medicTo").value,
+  remarks:$("medicRemarks").value.trim(),
+  updatedAt:Date.now()
+ };
+
+ await addDoc(
+  collection(db,"medic_deployment"),
+  data
+ );
+
+ closeMedicForm();
+
+ await loadMedic();
+ renderMedic();
+
+};
+
+
+window.renderMedic=function(){
+
+ const q=($("medicSearch")?.value||"").toLowerCase();
+
+ const arr=medicData.filter(x=>
+  x.type===currentMedicType &&
+  JSON.stringify(x).toLowerCase().includes(q)
+ );
+
+ if(!arr.length){
+
+  $("medicList").innerHTML=
+   `<div class="card empty">
+    No ${currentMedicType} deployment data.
+   </div>`;
+
+  return;
+
+ }
+
+ $("medicList").innerHTML=arr.map(x=>`
+
+ <div class="list-card">
+
+  <h3>${esc(x.name||"-")}</h3>
+
+  <span class="badge">${esc(x.type)}</span>
+
+  <p>
+   <b>Regt:</b> ${esc(x.regt||"-")}
+   |
+   <b>Rank:</b> ${esc(x.rank||"-")}
+   |
+   <b>Coy:</b> ${esc(x.coy||"-")}
+  </p>
+
+  <p>
+   <b>Location:</b> ${esc(x.location||"-")}
+   |
+   <b>From:</b> ${esc(x.from||"-")}
+   |
+   <b>To:</b> ${esc(x.to||"-")}
+  </p>
+
+  <p>
+   <b>Remarks:</b> ${esc(x.remarks||"-")}
+  </p>
+
+  ${
+   role==="admin"
+   ?`
+   <button class="danger"
+    onclick="deleteMedic('${x.id}')">
+    Delete
+   </button>`
+   :""
+  }
+
+ </div>
+
+ `).join("");
+
+};
+
+
+window.deleteMedic=async function(id){
+
+ if(!confirm("Delete deployment?"))return;
+
+ await deleteDoc(
+  doc(db,"medic_deployment",id)
+ );
+
+ await loadMedic();
+ renderMedic();
+
+};
+
+
+/* DOCTOR */
+
+async function loadDoctors(){
+
+ const snap=await getDocs(
+  collection(db,"doctor_deployment")
+ );
+
+ doctorData=[];
+
+ snap.forEach(d=>
+  doctorData.push({id:d.id,...d.data()})
+ );
+
+ renderDoctors();
+
+};
+
+
+window.openDoctorForm=function(){
+ $("doctorAdmin").classList.remove("hidden");
+};
+
+window.closeDoctorForm=function(){
+ $("doctorAdmin").classList.add("hidden");
+};
+
+
+window.saveDoctor=async function(){
+
+ const data={
+  name:$("doctorName").value.trim(),
+  rank:$("doctorRank").value.trim(),
+  speciality:$("doctorSpeciality").value.trim(),
+  location:$("doctorLocation").value.trim(),
+  from:$("doctorFrom").value,
+  to:$("doctorTo").value,
+  remarks:$("doctorRemarks").value.trim(),
+  updatedAt:Date.now()
+ };
+
+ await addDoc(
+  collection(db,"doctor_deployment"),
+  data
+ );
+
+ closeDoctorForm();
+
+ await loadDoctors();
+
+};
+
+
+window.renderDoctors=function(){
+
+ const q=($("doctorSearch")?.value||"").toLowerCase();
+
+ const arr=doctorData.filter(x=>
+  JSON.stringify(x).toLowerCase().includes(q)
+ );
+
+ if(!arr.length){
+
+  $("doctorList").innerHTML=
+   `<div class="card empty">
+    No doctor deployment data.
+   </div>`;
+
+  return;
+
+ }
+
+ $("doctorList").innerHTML=arr.map(x=>`
+
+ <div class="list-card">
+
+  <h3>${esc(x.name||"-")}</h3>
+
+  <p>
+   <b>Rank:</b> ${esc(x.rank||"-")}
+   |
+   <b>Speciality:</b> ${esc(x.speciality||"-")}
+  </p>
+
+  <p>
+   <b>Location:</b> ${esc(x.location||"-")}
+   |
+   <b>From:</b> ${esc(x.from||"-")}
+   |
+   <b>To:</b> ${esc(x.to||"-")}
+  </p>
+
+  <p>
+   <b>Remarks:</b> ${esc(x.remarks||"-")}
+  </p>
+
+  ${
+   role==="admin"
+   ?`
+   <button class="danger"
+    onclick="deleteDoctor('${x.id}')">
+    Delete
+   </button>`
+   :""
+  }
+
+ </div>
+
+ `).join("");
+
+};
+
+
+window.deleteDoctor=async function(id){
+
+ if(!confirm("Delete doctor record?"))return;
+
+ await deleteDoc(
+  doc(db,"doctor_deployment",id)
+ );
+
+ await loadDoctors();
+
+};
+
+
+/* DISEASE */
+
+window.renderDiseases=function(){
+
+ const q=($("diseaseSearch").value||"").toLowerCase();
+
+ const arr=diseases.filter(d=>
+  (d.name+" "+d.category+" "+d.summary)
+  .toLowerCase()
+  .includes(q)
+ );
+
+ $("diseaseGrid").innerHTML=
+  arr.map((d,i)=>`
+
+  <div class="disease-card"
+       onclick="openDisease(${i})">
+
+   <span class="badge">${esc(d.category)}</span>
+
+   <h3>${esc(d.name)}</h3>
+
+   <p>${esc(d.summary)}</p>
+
+  </div>
+
+  `).join("");
+
+};
+
+
+window.openDisease=function(index){
+
+ const d=diseases[index];
+
+ $("diseaseDetail").classList.remove("hidden");
+
+ $("diseaseDetail").innerHTML=`
+
+ <div class="disease-detail">
+
+  <button class="secondary"
+          onclick="closeDisease()">
+   ← Back to Diseases
+  </button>
+
+  <h2 class="page-title">
+   ${esc(d.name)}
+  </h2>
+
+  <span class="badge">
+   ${esc(d.category)}
+  </span>
+
+  <h3>Definition / Overview</h3>
+  <p>${esc(d.summary)}</p>
+
+  <h3>Signs & Symptoms</h3>
+  <p>${esc(d.symptoms)}</p>
+
+  <h3>Investigations</h3>
+  <p>${esc(d.investigation)}</p>
+
+  <h3>Management</h3>
+  <p>${esc(d.management)}</p>
+
+  <h3>Medication / Dose Guidance</h3>
+  <p>${esc(d.dose)}</p>
+
+  <h3>Red Flags / Referral</h3>
+  <p>${esc(d.red)}</p>
+
+  <div class="alert">
+   <b>Clinical Safety:</b>
+   This reference does not replace examination, CMO/doctor
+   assessment, current ITBP/unit SOP, NTEP/WHO/GoI guidance,
+   or emergency referral where indicated.
+  </div>
+
+ </div>`;
+
+ $("diseaseDetail").scrollIntoView({
+  behavior:"smooth"
+ });
+
+};
+
+
+window.closeDisease=function(){
+ $("diseaseDetail").classList.add("hidden");
+};
+
+
+/* DASHBOARD */
+
+function updateDashboard(){
+
+ let latest=reportsData[0];
+
+ if(!latest){
+
+  $("dashStrength").textContent="0";
+  $("dashAME").textContent="0";
+  $("dashPending").textContent="0";
+  $("dashAdmit").textContent="0";
+  $("dashReferral").textContent="0";
+
+  return;
+
+ }
+
+ $("dashStrength").textContent=
+  latest.totalStrength||0;
+
+ $("dashAME").textContent=
+  latest.ameDone||0;
+
+ $("dashPending").textContent=
+  latest.amePending||0;
+
+ $("dashAdmit").textContent=
+  latest.totalAdmitted||0;
+
+ $("dashReferral").textContent=
+  latest.totalReferred||0;
+
+}
 
 </script>
 
