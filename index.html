@@ -8,6 +8,27 @@
 .visual-picture .visual-icon{font-size:52px;filter:drop-shadow(0 5px 3px #17324d22);z-index:1}.visual-picture .visual-caption{position:absolute;bottom:7px;left:10px;right:10px;font-size:10px;font-weight:900;letter-spacing:1px;color:#163451;text-transform:uppercase;z-index:2}
 .ref{overflow:hidden;background:linear-gradient(180deg,#fff,#f8fbff);border-top:4px solid var(--pic1,#60a5fa)}.ref h4{font-size:16px;color:#082b55}.ref p{color:#334155}.tool{border-top:4px solid #0d5ea8;background:linear-gradient(180deg,#fff,#f8fbff)}.tool .visual-picture{height:85px;margin:0 0 10px}.tool .visual-icon{font-size:40px}.tool h4{font-size:15px}
 @media print{.visual-picture{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+/* Professional colour hierarchy for disease reference text */
+#refs .ref{position:relative;padding:15px 15px 16px;border-radius:17px;box-shadow:0 8px 24px #082b5510;}
+#refs .ref h4{display:flex;align-items:center;gap:8px;margin:2px 0 12px;padding:9px 11px;border-radius:10px;background:linear-gradient(100deg,var(--pic1,#dbeafe),#ffffff 90%);color:#082b55;font-size:19px;font-weight:900;letter-spacing:.15px;border-left:4px solid var(--pic2,#60a5fa);}
+#refs .ref p{margin:9px 0;padding:8px 10px;border-radius:9px;background:#f8fafc;border-left:3px solid #cbd5e1;color:#334155;font-size:13px;line-height:1.58;}
+#refs .ref p:nth-of-type(1){background:#eff6ff;border-left-color:#3b82f6;}
+#refs .ref p:nth-of-type(2){background:#f0fdf4;border-left-color:#22c55e;}
+#refs .ref p:nth-of-type(3){background:#f5f3ff;border-left-color:#8b5cf6;}
+#refs .ref p:nth-of-type(4){background:#fff7ed;border-left-color:#f97316;}
+#refs .ref p:nth-of-type(5){background:#fdf2f8;border-left-color:#ec4899;}
+#refs .ref p:nth-of-type(6){background:#ecfeff;border-left-color:#06b6d4;}
+#refs .ref p b{font-weight:900;color:#0f3b66;}
+#refs .ref p:nth-of-type(1) b{color:#1d4ed8;}
+#refs .ref p:nth-of-type(2) b{color:#15803d;}
+#refs .ref p:nth-of-type(3) b{color:#6d28d9;}
+#refs .ref p:nth-of-type(4) b{color:#c2410c;}
+#refs .ref p:nth-of-type(5) b{color:#be185d;}
+#refs .ref p:nth-of-type(6) b{color:#0e7490;}
+#refs .ref .visual-caption{font-size:10px;letter-spacing:1.05px;text-shadow:0 1px 0 #ffffff88;}
+@media(max-width:560px){#refs .ref{padding:12px;}#refs .ref h4{font-size:18px;padding:8px 10px;}#refs .ref p{font-size:12.5px;padding:8px;margin:8px 0;}}
+
 </style></head><body>
 <header class="head"><div class="line"><span class="cross">✚</span></div><div class="unit">UNIT HOSPITAL</div><div class="bn">41 BN ITBP</div><div class="sub">MEDICAL REPORT • HEALTH • DEPLOYMENT • REFERENCE</div></header><main class="wrap">
 <section id="login" class="page on"><div class="card login"><h2>Secure Staff Login</h2><div class="f"><label>Email</label><input id="email" type="email"></div><div class="f" style="margin-top:8px"><label>Password</label><input id="pass" type="password"></div><button class="btn" style="width:100%;margin-top:10px" onclick="loginUser()">LOGIN</button><div id="lm" style="margin-top:9px"></div></div></section>
