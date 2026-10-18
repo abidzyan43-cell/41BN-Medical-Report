@@ -9,26 +9,21 @@
 .ref{overflow:hidden;background:linear-gradient(180deg,#fff,#f8fbff);border-top:4px solid var(--pic1,#60a5fa)}.ref h4{font-size:16px;color:#082b55}.ref p{color:#334155}.tool{border-top:4px solid #0d5ea8;background:linear-gradient(180deg,#fff,#f8fbff)}.tool .visual-picture{height:85px;margin:0 0 10px}.tool .visual-icon{font-size:40px}.tool h4{font-size:15px}
 @media print{.visual-picture{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
-/* Professional colour hierarchy for disease reference text */
-#refs .ref{position:relative;padding:15px 15px 16px;border-radius:17px;box-shadow:0 8px 24px #082b5510;}
-#refs .ref h4{display:flex;align-items:center;gap:8px;margin:2px 0 12px;padding:9px 11px;border-radius:10px;background:linear-gradient(100deg,var(--pic1,#dbeafe),#ffffff 90%);color:#082b55;font-size:19px;font-weight:900;letter-spacing:.15px;border-left:4px solid var(--pic2,#60a5fa);}
-#refs .ref p{margin:9px 0;padding:8px 10px;border-radius:9px;background:#f8fafc;border-left:3px solid #cbd5e1;color:#334155;font-size:13px;line-height:1.58;}
-#refs .ref p:nth-of-type(1){background:#eff6ff;border-left-color:#3b82f6;}
-#refs .ref p:nth-of-type(2){background:#f0fdf4;border-left-color:#22c55e;}
-#refs .ref p:nth-of-type(3){background:#f5f3ff;border-left-color:#8b5cf6;}
-#refs .ref p:nth-of-type(4){background:#fff7ed;border-left-color:#f97316;}
-#refs .ref p:nth-of-type(5){background:#fdf2f8;border-left-color:#ec4899;}
-#refs .ref p:nth-of-type(6){background:#ecfeff;border-left-color:#06b6d4;}
-#refs .ref p b{font-weight:900;color:#0f3b66;}
-#refs .ref p:nth-of-type(1) b{color:#1d4ed8;}
-#refs .ref p:nth-of-type(2) b{color:#15803d;}
-#refs .ref p:nth-of-type(3) b{color:#6d28d9;}
-#refs .ref p:nth-of-type(4) b{color:#c2410c;}
-#refs .ref p:nth-of-type(5) b{color:#be185d;}
-#refs .ref p:nth-of-type(6) b{color:#0e7490;}
-#refs .ref .visual-caption{font-size:10px;letter-spacing:1.05px;text-shadow:0 1px 0 #ffffff88;}
-@media(max-width:560px){#refs .ref{padding:12px;}#refs .ref h4{font-size:18px;padding:8px 10px;}#refs .ref p{font-size:12.5px;padding:8px;margin:8px 0;}}
-
+/* Official sheet formatting requested from the supplied AME and leave-plan samples. */
+.ame-sheet{background:#fff;border:1px solid #cbd5e1;border-radius:12px;padding:14px;overflow:auto}
+.ame-sheet-title{display:block!important;font-size:20px;text-align:center;font-weight:900;color:#082b55;margin:3px 0 5px}
+.ame-sheet-meta{font-weight:800;text-align:center;margin:4px 0 12px;color:#334155}
+.ame-sheet table{width:100%;min-width:620px;border-collapse:collapse;table-layout:auto}
+.ame-sheet th{background:#e8eef5;color:#111827;font-size:13px;text-align:center;border:1px solid #b8c3cf;padding:10px}
+.ame-sheet td{font-size:13px;text-align:center;border:1px solid #cbd5e1;padding:10px}
+.ame-sheet .company{text-align:left;font-weight:700;white-space:nowrap}
+.ame-sheet input{width:100%;min-width:45px;padding:7px;border:1px solid #cbd5e1;border-radius:5px;text-align:center}
+.ame-sheet .grand td{font-weight:900;background:#f1f5f9;color:#111827}
+#leavel h3{font-size:18px;text-align:center;letter-spacing:.3px}
+#leavel table{min-width:1250px;border-collapse:collapse;width:100%}
+#leavel th{background:#e8edf3;color:#111827;text-align:center;border:1px solid #9ca3af;font-size:11px}
+#leavel td{border:1px solid #9ca3af;text-align:center;font-size:11px}
+@media print{.ame-sheet{border:0;padding:0}.ame-sheet-title{display:block!important}.ame-sheet table{min-width:0!important;width:100%!important}.ame-sheet th,.ame-sheet td{font-size:10px;padding:5px}.ame-sheet input{border:0!important;background:transparent!important;color:#000!important;text-align:center;padding:0}#leavel table{min-width:0!important;width:100%!important}#leavel th,#leavel td{font-size:8px;padding:4px}}
 </style></head><body>
 <header class="head"><div class="line"><span class="cross">✚</span></div><div class="unit">UNIT HOSPITAL</div><div class="bn">41 BN ITBP</div><div class="sub">MEDICAL REPORT • HEALTH • DEPLOYMENT • REFERENCE</div></header><main class="wrap">
 <section id="login" class="page on"><div class="card login"><h2>Secure Staff Login</h2><div class="f"><label>Email</label><input id="email" type="email"></div><div class="f" style="margin-top:8px"><label>Password</label><input id="pass" type="password"></div><button class="btn" style="width:100%;margin-top:10px" onclick="loginUser()">LOGIN</button><div id="lm" style="margin-top:9px"></div></div></section>
@@ -131,4 +126,7 @@ const toolVisualX={'BMI':['⚖️','Body mass index'],'BMR':['🔥','Basal metab
 function addToolVisualsX(){document.querySelectorAll('#tools .tool').forEach((el,i)=>{if(el.querySelector('.visual-picture'))return;const title=el.querySelector('h4')?.textContent.trim()||'Medical tool';const v=toolVisualX[title]||['⚕️','Medical calculator'];const theme=visualThemesX[i%visualThemesX.length];const picture=document.createElement('div');picture.className='visual-picture';picture.style.setProperty('--pic1',theme[0]);picture.style.setProperty('--pic2',theme[1]);picture.setAttribute('role','img');picture.setAttribute('aria-label',title+' illustrative visual');const icon=document.createElement('span');icon.className='visual-icon';icon.textContent=v[0];const caption=document.createElement('span');caption.className='visual-caption';caption.textContent=v[1]+' · illustrative visual';picture.append(icon,caption);el.prepend(picture)})}
 addToolVisualsX();
 
+
+window.loadAdvancedAME=async function(){if(!$('ameGrid'))return;const y=+$('ameYear').value||new Date().getFullYear(),m=+$('ameMonth').value||new Date().getMonth()+1;let rows=companiesX.map(company=>({company,gos:0,sos:0,ors:0}));try{const snap=await getDocs(collection(db,'ame_monthly_status'));const found=snap.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.year===y&&x.month===m).sort((a,b)=>(b.updatedAt?.seconds||b.createdAt?.seconds||0)-(a.updatedAt?.seconds||a.createdAt?.seconds||0))[0];if(found?.rows)rows=found.rows}catch(e){$('ameGrid').innerHTML='<div class="notice">Cannot read AME data. Check Firestore rules for ame_monthly_status: '+safeTextX(e.message)+'</div>';return}
+$('ameGrid').innerHTML='<div class="ame-sheet"><div class="ame-sheet-title">41 BN ITBP</div><div class="ame-sheet-meta">AME STATUS — '+safeTextX(monthsX[m-1])+' '+y+'</div><div class="report"><table><thead><tr><th>COY / CATEGORY</th><th>GOs</th><th>SOs</th><th>ORs</th><th>Total</th></tr></thead><tbody>'+rows.map((x,i)=>'<tr><td class="company">'+safeTextX(x.company)+'</td><td><input id="ag'+i+'" aria-label="'+safeTextX(x.company)+' GOs" type="number" min="0" value="'+(+x.gos||0)+'" '+(role!=='admin'?'disabled':'')+' oninput="ameTotalsX()"></td><td><input id="as'+i+'" aria-label="'+safeTextX(x.company)+' SOs" type="number" min="0" value="'+(+x.sos||0)+'" '+(role!=='admin'?'disabled':'')+' oninput="ameTotalsX()"></td><td><input id="ao'+i+'" aria-label="'+safeTextX(x.company)+' ORs" type="number" min="0" value="'+(+x.ors||0)+'" '+(role!=='admin'?'disabled':'')+' oninput="ameTotalsX()"></td><td id="at'+i+'">0</td></tr>').join('')+'</tbody><tfoot><tr class="grand"><td>Grand Total</td><td id="agT">0</td><td id="asT">0</td><td id="aoT">0</td><td id="atT">0</td></tr></tfoot></table></div><div class="actions no-print"><button class="btn green admin-only" onclick="saveAdvancedAME()">Save Monthly AME</button><button class="sec" onclick="window.print()">Print / Save PDF</button><button class="sec" onclick="loadAdvancedAME()">Refresh</button></div></div>';document.querySelectorAll('.admin-only').forEach(e=>e.style.display=role==='admin'?'':'none');ameTotalsX()};
 </script></body></html>
