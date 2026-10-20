@@ -129,7 +129,7 @@ const $=id=>document.getElementById(id);
 const emailEl=$('email'),passEl=$('pass'),loginMsg=$('lm'),roleBadge=$('role'),userEmailEl=$('ue');
 let user=null,role='',reports=[];window.role=role;window.reports=reports;
 for(let i=20;i<=80;i++)ra.insertAdjacentHTML('beforeend',`<option>${i}</option>`);rd.value=new Date().toISOString().slice(0,10);ad.value=rd.value;
-window.go=id=>{document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));const page=$(id);if(page)page.classList.add('on');if(id==='report')loadReports();if(id==='ame')loadCol('ame_2026','amel');if(id==='leave')loadCol('staff_leave_plan','leavel');if(id==='medic')loadCol('medic_deployment','medicl');if(id==='doctor')loadCol('doctor_deployment','doctorl');if(id==='disease')renderDiseases();if(id==='gunshot'){}if(id==='ame')loadAdvancedAME();if(id==='monthly')loadMonthlyX();scrollTo({top:0,behavior:'smooth'})};
+window.go=id=>{document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));const page=$(id);if(page)page.classList.add('on');if(id==='report')loadReports();if(id==='ame')loadCol('ame_2026','amel');if(id==='medic')loadCol('medic_deployment','medicl');if(id==='doctor')loadCol('doctor_deployment','doctorl');if(id==='disease')renderDiseases();if(id==='gunshot'){}if(id==='ame')loadAdvancedAME();if(id==='monthly')loadMonthlyX();scrollTo({top:0,behavior:'smooth'})};
 window.loginUser=async()=>{
  const email=emailEl.value.trim(),pass=passEl.value;
  loginMsg.style.display='block';loginMsg.className='notice';loginMsg.textContent='Connecting securely…';
