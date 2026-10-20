@@ -36,7 +36,6 @@
 .leave-mobile{display:none}.leave-mobile-card{background:#fff;border:1px solid #cbd8e5;border-radius:12px;padding:11px;margin:10px 0;box-shadow:0 3px 12px #082b550d}.leave-mobile-title{display:flex;justify-content:space-between;gap:8px;align-items:center;color:#082b55;border-bottom:2px solid #0d5ea8;padding-bottom:8px;margin-bottom:8px}.leave-mobile-title b{font-size:13px}.leave-mobile-title span{font-size:11px;font-weight:800;background:#e7f2ff;padding:4px 7px;border-radius:6px}.leave-mobile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.leave-mobile-field{min-width:0;background:#f5f9ff;border-left:3px solid #0d5ea8;border-radius:6px;padding:7px}.leave-mobile-field:nth-child(3n){border-left-color:#15803d}.leave-mobile-field.wide{grid-column:1/-1}.leave-mobile-field small{display:block;font-size:9px;line-height:1.3;color:#53657b;font-weight:850;text-transform:uppercase;margin-bottom:3px}.leave-mobile-field span{display:block;font-size:12px;line-height:1.4;color:#172033;overflow-wrap:anywhere;white-space:normal}
 @media(max-width:560px){#leavel>.report{display:none!important}#leavel>.leave-mobile{display:block!important}}
 @media print{@page{size:A4 landscape;margin:8mm}#leavel>.leave-mobile{display:none!important}#leavel>.report{display:block!important}#leavel table{min-width:0!important;width:100%!important;table-layout:fixed}#leavel th,#leavel td{font-size:8pt;padding:4px 3px;overflow-wrap:anywhere;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-</style>
 /* Staff Leave Plan: visual style based on the user's official sample sheet */
 #leavel{padding:0!important;overflow:hidden;border-radius:15px}
 #leavel>h3{display:none}
@@ -223,6 +222,8 @@ const toolVisualX={'BMI':['⚖️','Body mass index'],'BMR':['🔥','Basal metab
 function addToolVisualsX(){document.querySelectorAll('#tools .tool').forEach((el,i)=>{if(el.querySelector('.visual-picture'))return;const title=el.querySelector('h4')?.textContent.trim()||'Medical tool';const v=toolVisualX[title]||['⚕️','Medical calculator'];const theme=visualThemesX[i%visualThemesX.length];const picture=document.createElement('div');picture.className='visual-picture';picture.style.setProperty('--pic1',theme[0]);picture.style.setProperty('--pic2',theme[1]);picture.setAttribute('role','img');picture.setAttribute('aria-label',title+' illustrative visual');const icon=document.createElement('span');icon.className='visual-icon';icon.textContent=v[0];const caption=document.createElement('span');caption.className='visual-caption';caption.textContent=v[1]+' · illustrative visual';picture.append(icon,caption);el.prepend(picture)})}
 addToolVisualsX();
 </script>
+
+</style>
 <style>
 /* Official daily patient report sheet — scoped to the report listing only */
 #desk .official-daily{font-family:Georgia,'Times New Roman',serif;color:#092d59;background:#fff;border:2px solid #1763a5;overflow-x:auto}
