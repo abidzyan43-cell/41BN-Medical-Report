@@ -147,7 +147,7 @@ const safeTextX=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 // Restrict all write actions to the designated admin UID.
 window.saveMedic=()=>saveCol('medic_deployment',{regt:$('mr').value.trim(),rank:$('mc').value,name:$('mn').value.trim(),coy:$('mcoy').value,location:$('ml').value.trim()});
 window.saveDoctor=()=>saveCol('doctor_deployment',{regt:$('dr').value.trim(),rank:$('ds').value,name:$('dn').value.trim(),coy:$('dcoy').value,location:$('dl').value.trim()});
-window.calcLeaveTotalX=()=>{const el=Math.max(0,Number($('le')?.value)||0),cl=Math.max(0,Number($('lcnt')?.value)||0);if($('ltotal'))$('ltotal').value=el+cl;return el+cl};
+
 
 // Render deployment/leave tables with fixed official columns and automatic S. No.
 window.loadCol=async function(c,id){
@@ -166,7 +166,7 @@ window.loadCol=async function(c,id){
   const z=cfg[c]||{title:c.replaceAll('_',' ').toUpperCase(),keys:[],heads:[]};
   if(!rows.length){e.innerHTML='<h3>'+safeTextX(z.title)+'</h3><div class="empty">No records available.</div>';return}
   let h='<h3>'+safeTextX(z.title)+'</h3><div class="report"><table><thead><tr><th>S. No.</th>'+z.heads.map(s=>'<th>'+safeTextX(s)+'</th>').join('')+(role==='admin'?'<th>Action</th>':'')+'</tr></thead><tbody>';
-  rows.forEach((x,i)=>{const el=Number(x.el)||0,cl=Number(x.cl)||0;h+='<tr><td>'+(i+1)+'</td>'+z.keys.map(k=>{let v=x[k]??'';if(c==='staff_leave_plan'&&k==='totalLeave')v=el+cl;return '<td>'+safeTextX(v)+'</td>'}).join('')+(role==='admin'?(c==='staff_leave_plan'?'<td><button class="sec small" onclick="editLeavePlanX(\''+x.id+'\')">Edit</button> <button class="btn red small" onclick="delCol(\''+c+'\',\''+x.id+'\',\''+id+'\')">Delete</button></td>':'<td><button class="btn red small" onclick="delCol(\''+c+'\',\''+x.id+'\',\''+id+'\')">Delete</button></td>'):'')+'</tr>'});
+  rows.forEach((x,i)=>{const el=Number(x.el)||0,cl=Number(x.cl)||0;h+='<tr><td>'+(i+1)+'</td>'+z.keys.map(k=>{let v=x[k]??'';return '<td>'+safeTextX(v)+'</td>'}).join('')+(role==='admin'?'<td><button class="btn red small" onclick="delCol(\''+c+'\',\''+x.id+'\',\''+id+'\')">Delete</button></td>':'')+'</tr>'});
   h+='</tbody></table></div>';
   // Mobile-friendly cards: users never need to rotate the phone to read all columns.
   
@@ -270,7 +270,7 @@ window.prepareReportEntry=function(location){if(window.role!=='admin')return;if(
 
 window.loadCol=async function(c,id){catch(err){box.innerHTML='<div class="notice">Cannot load Medic Deployment: '+safeTextX(err.message)+'</div>'}
 };
-const oldGoLeaveFixX=window.go;window.go=function(id){oldGoLeaveFixX(id);if(id==='leave')loadLeaveGridX()};
+
 
 });
 </script>
