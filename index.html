@@ -350,25 +350,46 @@ window.go = function(id) {
 window.showPersonnelList = async function(collectionName, targetId, heading) {
   const box = document.getElementById(targetId);
   if (!box) return;
-  box.innerHTML = '<div class="empty">Loading records…</div>';
+  box.innerHTML = '<div class="empty">Loading records...</div>';
+
   try {
-    const snap = await getDocs(collection(db, collectionName));
-    const rows = snap.docs.map(d => ({id:d.id, ...d.data()}));
-    const stamp = x => {
-      const t = x.createdAt || x.updatedAt;
-      return t && typeof t.toMillis === 'function' ? t.toMillis()
-        : (t && typeof t.seconds === 'number' ? t.seconds * 1000 : 0);
-    };
-    rows.sort((a,b) => stamp(a)-stamp(b) || String(a.id).localeCompare(String(b.id)));
-    const esc = v => safeTextX(v == null ? '' : String(v));
-    let html = '<h3>'+esc(heading)+'</h3><div class="report"><table><thead><tr><th>S. No.</th><th>Regt No.</th><th>Rank</th><th>Name</th><th>Present Location</th><th>Remarks</th></tr></thead><tbody>';
-    if (!rows.length) html += '<tr><td colspan="6">No records available.</td></tr>';
-    rows.forEach((x,i) => {
-      html += '<tr><td>'+(i+1)+'.</td><td>'+esc(x.regt)+'</td><td>'+esc(x.rank || x.category)+'</td><td>'+esc(x.name)+'</td><td>'+esc(x.location)+'</td><td>'+esc(x.remarks)+'</td></tr>';
-    });
-    box.innerHTML = html+'</tbody></table></div>';
+    if (collectionName === 'doctor_deployment' ||
+        collectionName === 'medic_deployment') {
+      await window.loadCol(collectionName, targetId);
+
+      const title = box.querySelector('h3');
+      if (title) title.textContent = heading;
+
+      const table = box.querySelector('table');
+      if (table) {
+        Array.from(table.rows).forEach((row, i) => {
+          if (row.cells.length > 4) row.deleteCell(4);
+          const cell = document.createElement(i === 0 ? 'th' : 'td');
+          cell.textContent = i === 0 ? 'Remarks' : '';
+          const pos = role === 'admin'
+            ? Math.max(0, row.cells.length - 1)
+            : row.cells.length;
+          row.insertBefore(cell, row.cells[pos] || null);
+        });
+      }
+      return;
+    }
+
+    if (collectionName === 'other_staff_deployment') {
+      if (typeof window.loadOtherStaffX !== 'function') {
+        throw new Error('Other Staff loader not found.');
+      }
+      await window.loadOtherStaffX();
+      const source = document.getElementById('otherStaffList');
+      if (!source) throw new Error('Other Staff list not found.');
+      box.innerHTML = '<h3>' + safeTextX(heading) + '</h3>' + source.innerHTML;
+      return;
+    }
+
+    throw new Error('Unknown deployment option.');
   } catch (e) {
-    box.innerHTML = '<div class="notice">Cannot load records: '+safeTextX(e.message || 'Unknown error')+'</div>';
+    box.innerHTML = '<div class="notice">Cannot load records: ' +
+      safeTextX(e.message || 'Unknown error') + '</div>';
   }
 };
 
