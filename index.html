@@ -52,7 +52,34 @@
 </style></head><body>
 <header class="head"><div class="line"><span class="cross">✚</span></div><div class="unit">UNIT HOSPITAL</div><div class="bn">41 BN ITBP</div><div class="sub">MEDICAL REPORT • HEALTH • DEPLOYMENT • REFERENCE</div></header><main class="wrap">
 <section id="login" class="page on"><div class="card login"><h2>Secure Staff Login</h2><div class="f"><label>Email</label><input id="email" type="email"></div><div class="f" style="margin-top:8px"><label>Password</label><input id="pass" type="password"></div><button class="btn" style="width:100%;margin-top:10px" onclick="loginUser()">LOGIN</button><div id="lm" style="margin-top:9px"></div></div></section>
-<section id="dash" class="page"><div class="userbar"><div><span id="role" class="badge"></span> <span id="ue" style="font-size:11px;color:#64748b"></span></div><button class="sec small" onclick="logoutUser()">Logout</button></div><div class="title">Medical Dashboard</div><div style="color:#64748b;font-size:12px;margin:-7px 0 13px">Select a module. Only the selected module opens.</div><div class="grid"><button class="dash" onclick="go('patienthub')"><div class="dt">Patient Reports</div><div class="ds">Daily and monthly admission registers</div></button><button class="dash" onclick="go('gunshot')"><div class="ico">🩹</div><div class="dt">Gunshot Treatment</div><div class="ds">Head-to-toe first-aid guide</div></button><button class="dash" onclick="go('ame')"><div class="ico">📋</div><div class="dt">AME STATUS</div><div class="ds">Year-wise monthly GOs / SOs / ORs</div></button><button class="dash" onclick="go('leave')"><div class="ico">🗂️</div><div class="dt">LEAVE HUB</div><div class="ds">Leave Plan • Medic on Leave</div></button><button class="dash" onclick="go('medic')"><div class="ico">👨‍⚕️</div><div class="dt">Medic Deployment</div><div class="ds">Paramedic & GD/Medic</div></button><button class="dash" onclick="go('doctor')"><div class="ico">👩‍⚕️</div><div class="dt">Doctor Deployment</div><div class="ds">Doctor availability</div></button><button class="dash" onclick="go('disease')"><div class="ico">📚</div><div class="dt">Disease Reference</div><div class="ds">Quick medical reference</div></button><button class="dash" onclick="go('tools')"><div class="ico">🧮</div><div class="dt">Medical Tools</div><div class="ds">BMI, GCS, MAP, drip & more</div></button><button class="dash" onclick="go('calendar')"><div class="ico">📅</div><div class="dt">ITBP Calendar 2026</div><div class="ds">Original calendar, holidays and print</div></button></div></section>
+<section id="dash" class="page"><div class="userbar"><div><span id="role" class="badge"></span> <span id="ue" style="font-size:11px;color:#64748b"></span></div><button class="sec small" onclick="logoutUser()">Logout</button></div><div class="title">Medical Dashboard</div><div style="color:#64748b;font-size:12px;margin:-7px 0 13px">Select a module. Only the selected module opens.</div><div class="grid"><button class="dash" onclick="go('patienthub')"><div class="dt">Patient Reports</div><div class="ds">Daily and monthly admission registers</div></button><button class="dash" onclick="go('gunshot')"><div class="ico">🩹</div><div class="dt">Gunshot Treatment</div><div class="ds">Head-to-toe first-aid guide</div></button><button class="dash" onclick="go('ame')"><div class="ico">📋</div><div class="dt">AME STATUS</div><div class="ds">Year-wise monthly GOs / SOs / ORs</div></button><button class="dash" onclick="go('leave')"><div class="ico">🗂️</div><div class="dt">LEAVE HUB</div><div class="ds">Leave Plan • Medic on Leave</div></button><button class="dash" onclick="go('medic')"><div class="ico">👨‍⚕️</div><div class="dt">Medic Deployment</div><div class="ds">Paramedic & GD/Medic</div></button><button class="dash" onclick="go('doctor')"><div class="ico">👩‍⚕️</div><div class="dt">Doctor Deployment</div><div class="ds">Doctor availability</div></button><button class="dash" onclick="go('personnel')"><div class="ico">👥</div><div class="dt">Personnel Management</div><div class="ds">Doctor • Medic • Other Staff</div></button><button class="dash" onclick="go('disease')"><div class="ico">📚</div><div class="dt">Disease Reference</div><div class="ds">Quick medical reference</div></button><button class="dash" onclick="go('tools')"><div class="ico">🧮</div><div class="dt">Medical Tools</div><div class="ds">BMI, GCS, MAP, drip & more</div></button><button class="dash" onclick="go('calendar')"><div class="ico">📅</div><div class="dt">ITBP Calendar 2026</div><div class="ds">Original calendar, holidays and print</div></button></div></section>
+<section id="personnel" class="page">
+<div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Personnel Management</h2></div>
+<div class="grid">
+<button class="dash" onclick="go('doctor')"><div class="ico">👩‍⚕️</div><div class="dt">Doctor Deployment</div><div class="ds">Doctor availability</div></button>
+<button class="dash" onclick="go('medic')"><div class="ico">👨‍⚕️</div><div class="dt">Medic Deployment</div><div class="ds">Paramedic & GD/Medic</div></button>
+<button class="dash" onclick="go('otherstaff')"><div class="ico">👥</div><div class="dt">Other Staff Deployment</div><div class="ds">Personnel deployment register</div></button>
+</div>
+</section>
+<section id="otherstaff" class="page">
+<div class="headrow"><button class="back" onclick="go('personnel')">← Personnel Management</button><h2>Other Staff Deployment</h2></div>
+<div class="card">
+<h3>OTHER STAFF DEPLOYMENT REGISTER</h3>
+<div class="notice">Format: S. No. • Regt No. • Rank • Name • Present Location • Remarks</div>
+<div class="admin-only">
+<div class="fg">
+<div class="f"><label>Regt No.</label><input id="osRegt"></div>
+<div class="f"><label>Rank</label><input id="osRank"></div>
+<div class="f"><label>Name</label><input id="osName"></div>
+<div class="f"><label>Present Location</label><input id="osLocation"></div>
+<div class="f full"><label>Remarks</label><input id="osRemarks"></div>
+</div>
+<div class="actions"><button class="btn green" onclick="saveOtherStaffX()">Save Personnel</button></div>
+</div>
+<div class="actions"><button class="sec" onclick="loadOtherStaffX()">Refresh</button><button class="sec" onclick="print()">Print</button></div>
+<div id="otherStaffList" class="report"></div>
+</div>
+</section>
 <section id="patienthub" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Patient Reports</h2></div><div class="grid"><button class="dash" onclick="go('report')"><div class="ico">🩺</div><div class="dt">Daily Patient Reports</div></button><button class="dash" onclick="openMonthly('monthly_admissions','Patients Admitted During the Month')"><div class="ico">🏥</div><div class="dt">Patients Admitted During the Month</div></button><button class="dash" onclick="openMonthly('outside_hospital_admissions','Patients Admitted to Other Hospitals During the Month')"><div class="ico">🚑</div><div class="dt">Patients Admitted to Other Hospitals During the Month</div></button></div></section>
 <section id="monthly" class="page"><div class="headrow"><button class="back" onclick="go('patienthub')">← Patient Reports</button><h2 id="monthlyTitle">Monthly Register</h2></div><div class="card"><h3>UNIT HOSPITAL — 41 BN ITBP</h3><div class="fg"><div class="f"><label>Month</label><select id="monthPick"></select></div><div class="f"><label>Year</label><select id="monthYear"></select></div></div><div class="admin-only card" style="margin-top:12px"><h3>Admin — Add Patient Admission Record</h3><div class="fg"><div class="f"><label>Regt. No.</label><input id="mrRegt"></div><div class="f"><label>Rank</label><input id="mrRank"></div><div class="f"><label>Name</label><input id="mrName"></div><div class="f"><label>Age</label><input id="mrAge" type="number"></div><div class="f"><label>Coy</label><input id="mrCoy"></div><div class="f"><label>Diagnosis</label><input id="mrDiagnosis"></div><div class="f full"><label>Remarks</label><input id="mrRemarks"></div></div><div class="actions"><button class="btn green" onclick="saveMonthly()">Add Record</button></div></div><div class="actions"><button class="sec" onclick="print()">Print</button><button class="sec" onclick="loadMonthly()">Refresh</button></div><div id="monthlyList" class="report"></div><div id="monthlyMobile"></div></div></section>
 <section id="calendar" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>ITBP Calendar 2026</h2></div><div class="card"><div class="notice">Original ITBP Table Calendar 2026. Dates, holiday names and artwork are unchanged.</div><div class="actions"><a class="btn" href="ITBP%20TABLE%20CALENDAR-2026.pdf" target="_blank" rel="noopener">Open Original Calendar PDF</a><a class="sec" href="ITBP%20TABLE%20CALENDAR-2026.pdf" download>Download PDF</a><button class="sec" onclick="document.getElementById('calendarFrame').contentWindow.print()">Print Calendar</button></div><iframe id="calendarFrame" title="Original ITBP Calendar 2026" src="ITBP%20TABLE%20CALENDAR-2026.pdf" style="width:100%;height:75vh;border:1px solid #d9e3ee;border-radius:12px;margin-top:12px"></iframe></div></section>
@@ -101,7 +128,7 @@
 <div class="f full"><label>Remarks</label><input id="lrm" placeholder="Remarks"></div>
 </div><div class="actions"><button class="btn green" onclick="saveLeave()">Save Leave Plan</button><button class="sec" onclick="resetLeavePlanFormX()">Clear Form</button><button class="sec" onclick="loadLeavePlanTableX()">Refresh</button><button class="sec" onclick="window.print()">Print / Save PDF</button></div><div id="leavePlanMsgX" style="margin-top:8px"></div></div>
 <div id="leavel" class="card"></div></div><div id="currentLeavePanel" style="display:none"><div class="card admin-only"><h3>Staff Currently on Leave</h3><div class="fg"><div class="f"><label>Regt No</label><input id="clRegt"></div><div class="f"><label>Rank</label><select id="clRank"><option>ASI/MED</option><option>HC/MED</option><option>CT/MED</option><option>HC/GD(MEDIC)</option><option>CT/GD(MEDIC)</option></select></div><div class="f"><label>Name</label><input id="clName"></div><div class="f"><label>Coy</label><select id="clCoy"><option>A Coy</option><option>B Coy</option><option>C Coy</option><option>D Coy</option><option>E Coy</option><option>F Coy</option><option>SPT Coy</option><option>ADM Coy</option><option>MT</option><option>WT</option></select></div><div class="f"><label>Leave From</label><input id="clFrom" type="date"></div><div class="f"><label>Expected Arriving Date (manual)</label><input id="clArrive" type="date"></div><div class="f"><label>Leave Type</label><input id="clType"></div><div class="f"><label>Remarks</label><input id="clRemarks"></div></div><div class="actions"><button class="btn green admin-only" onclick="saveCurrentLeave()">Save Staff on Leave</button><button class="sec" onclick="loadCurrentLeave()">Refresh</button></div></div><div id="currentLeaveList" class="card report"></div></div></section>
-<section id="medic" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Medic Deployment</h2></div><div class="card"><h3>Medic Deployment Entry</h3><div class="fg"><div class="f"><label>Regt. No.</label><input id="mr"></div><div class="f"><label>Rank</label><select id="mc"><option>ASI/MEDIC</option><option>HC/MEDIC</option><option>CT/MEDIC</option><option>HC/GD(MEDIC)</option><option>CT/GD(MEDIC)</option></select></div><div class="f"><label>Name</label><input id="mn"></div><div class="f"><label>Coy</label><select id="mcoy"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>ADM</option><option>SPT</option></select></div><div class="f"><label>Present Location</label><input id="ml"></div></div><div class="actions"><button class="btn green admin-only" onclick="saveMedic()">Save Deployment</button><button class="sec" onclick="loadCol('medic_deployment','medicl')">Refresh</button><button class="sec" onclick="print()">Print</button></div></div><div id="medicl" class="card"></div></section>
+<section id="medic" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Medic Deployment</h2></div><div class="card"><h3>Medic Deployment Entry</h3><div class="fg"><div class="f"><label>Regt. No.</label><input id="mr"></div><div class="f"><label>Rank</label><select id="mc"><option>ASI/MEDIC</option><option>HC/MEDIC</option><option>CT/MEDIC</option><option>HC/GD(MEDIC)</option><option>CT/GD(MEDIC)</option></select></div><div class="f"><label>Name</label><input id="mn"></div><div class="f"><label>Coy</label><select id="mcoy"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>ADM</option><option>SPT</option></select></div><div class="f"><label>Present Location</label><input id="ml"></div></div><div class="actions"><button class="btn green admin-only" onclick="saveMedic()">Save Deployment</button><button class="sec" onclick="loadMedicDeploymentX()">Refresh</button><button class="sec" onclick="print()">Print</button></div></div><div id="medicl" class="card"></div></section>
 <section id="doctor" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Doctor Deployment</h2></div><div class="card"><h3>Doctor Deployment Entry</h3><div class="fg"><div class="f"><label>Regt. No.</label><input id="dr"></div><div class="f"><label>Rank</label><select id="ds"><option>CMO(SG)</option><option>CMO(OG)</option><option>DC/MO</option><option>AC/MO</option></select></div><div class="f"><label>Name</label><input id="dn"></div><div class="f"><label>Coy</label><input id="dcoy"></div><div class="f"><label>Present Location</label><input id="dl"></div></div><div class="actions"><button class="btn green admin-only" onclick="saveDoctor()">Save Deployment</button><button class="sec" onclick="loadCol('doctor_deployment','doctorl')">Refresh</button><button class="sec" onclick="print()">Print</button></div></div><div id="doctorl" class="card"></div></section>
 <section id="disease" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Disease Reference</h2></div><div class="card"><div class="f"><label>Search</label><input id="dq" oninput="renderDiseases()" placeholder="malaria, dengue, snake bite..."></div></div><div id="refs" class="refs"></div></section>
 <section id="tools" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Medical Tools</h2></div><div class="tools">
@@ -237,6 +264,124 @@ window.saveLeave=async()=>{if(!ok())return;const data={regt:$('lr').value.trim()
 window.editLeavePlanFormX=async id=>{if(!ok())return;try{const snap=await getDocs(collection(db,'staff_leave_plan'));const d=snap.docs.find(x=>x.id===id);if(!d){alert('Record not found.');return}const x=d.data();editingLeaveFormIdX=id;[['lr','regt'],['lk','rank'],['ln','name'],['lc','coy'],['ll','location'],['le','el'],['lcnt','cl'],['lnext','nextLeave'],['ltype','leaveTypeDays'],['lrm','remarks']].forEach(([a,k])=>{if($(a))$(a).value=x[k]??(a==='le'||a==='lcnt'?0:'')});window.calcLeaveTotalX();const b=document.querySelector('#leavePlanEntryCard .btn.green');if(b)b.textContent='Update Leave Plan';$('leavePlanEntryCard').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){alert(e.message)}};
 window.loadLeavePlanTableX=async()=>{const box=$('leavel');if(!box)return;box.innerHTML='<div class="empty">Loading records…</div>';try{const snap=await getDocs(collection(db,'staff_leave_plan'));const rows=snap.docs.map(d=>({id:d.id,...d.data()}));const tm=x=>{const t=x.createdAt||x.updatedAt;return t&&typeof t.toMillis==='function'?t.toMillis():t&&typeof t.seconds==='number'?t.seconds*1000:0};rows.sort((a,b)=>tm(a)-tm(b)||String(a.id).localeCompare(String(b.id)));const heads=['S/No','Regt No','Rank','Name','Coy','Present Location','Leave Availed EL (Days)','Leave Availed CL (Days)','Total Leave Availed','Next Leave Date of Departure','Leave Type & Days','Remarks'];if(!rows.length){box.innerHTML='<div class="leave-sheet"><div class="leave-sheet-title">LEAVE PLAN OF MEDIC’S</div><div class="leave-sheet-sub">41 BN ITBP | MEDICAL STAFF LEAVE POSITION | 2026</div><div class="empty">No records available. Add a record using the form above.</div></div>';return}let h='<div class="leave-sheet"><div class="leave-sheet-title">LEAVE PLAN OF MEDIC’S</div><div class="leave-sheet-sub">41 BN ITBP | MEDICAL STAFF LEAVE POSITION | 2026</div><div class="report"><table><thead><tr>'+heads.map(x=>'<th>'+safeLeaveTextX(x)+'</th>').join('')+(window.role==='admin'?'<th>Action</th>':'')+'</tr></thead><tbody>';rows.forEach((x,i)=>{const el=Number(x.el)||0,cl=Number(x.cl)||0;const vals=[i+1,x.regt,x.rank,x.name,x.coy,x.location,el,cl,el+cl,x.nextLeave,x.leaveTypeDays,x.remarks];h+='<tr>'+vals.map(v=>'<td>'+safeLeaveTextX(v??'')+'</td>').join('')+(window.role==='admin'?'<td><button class="sec small" onclick="editLeavePlanFormX(\''+x.id+'\')">Edit</button> <button class="btn red small" onclick="deleteLeavePlanFormX(\''+x.id+'\')">Delete</button></td>':'')+'</tr>'});h+='</tbody></table></div><div class="leave-sheet-sub">Please verify dates and entries against the original leave register before official circulation.</div></div>';box.innerHTML=h}catch(e){box.innerHTML='<div class="notice">Leave Plan load failed: '+safeLeaveTextX(e.message)+'</div>'}};
 window.deleteLeavePlanFormX=async id=>{if(!ok()||!confirm('Delete this Leave Plan record?'))return;try{await deleteDoc(doc(db,'staff_leave_plan',id));await window.loadLeavePlanTableX()}catch(e){alert('Delete failed: '+e.message)}};
+
+// Medic Deployment only: dedicated loader; other modules remain untouched.
+window.loadMedicDeploymentX = async function() {
+  const box = document.getElementById('medicl');
+  if (!box) return;
+
+  box.innerHTML = '<div class="empty">Loading records…</div>';
+
+  try {
+    const snap = await getDocs(collection(db, 'medic_deployment'));
+    const rows = snap.docs.map(d => ({id: d.id, ...d.data()}));
+
+    const timeOf = x => {
+      const t = x.createdAt || x.updatedAt;
+      return t && typeof t.toMillis === 'function' ? t.toMillis()
+        : t && typeof t.seconds === 'number' ? t.seconds * 1000 : 0;
+    };
+
+    rows.sort((a, b) =>
+      timeOf(a) - timeOf(b) ||
+      String(a.id).localeCompare(String(b.id))
+    );
+
+    const esc = v => safeTextX(v == null ? '' : String(v));
+    const isAdmin = role === 'admin';
+
+    let html = '<h3>MEDIC DEPLOYMENT</h3><div class="report"><table><thead><tr>' +
+      '<th>S. No.</th><th>Regt. No.</th><th>Rank</th><th>Name</th>' +
+      '<th>Coy</th><th>Present Location</th>' +
+      (isAdmin ? '<th>Action</th>' : '') +
+      '</tr></thead><tbody>';
+
+    if (!rows.length) {
+      html += '<tr><td colspan="' + (isAdmin ? 7 : 6) +
+        '">No records available.</td></tr>';
+    }
+
+    rows.forEach((x, i) => {
+      html += '<tr><td>' + (i + 1) +
+        '</td><td>' + esc(x.regt) +
+        '</td><td>' + esc(x.rank || x.category) +
+        '</td><td>' + esc(x.name) +
+        '</td><td>' + esc(x.coy) +
+        '</td><td>' + esc(x.location) + '</td>' +
+        (isAdmin
+          ? '<td><button class="btn red small" onclick="delCol(\\'medic_deployment\\',\\'' +
+            esc(x.id) + '\\',\\'medicl\\')">Delete</button></td>'
+          : '') +
+        '</tr>';
+    });
+
+    box.innerHTML = html + '</tbody></table></div>';
+  } catch (err) {
+    box.innerHTML = '<div class="notice">Cannot load Medic Deployment: ' +
+      safeTextX(err.message || 'Unknown error') + '</div>';
+  }
+};
+
+// Preserve existing navigation and refresh Medic Deployment after opening it.
+const oldGoMedicOnlyX = window.go;
+window.go = function(id) {
+  oldGoMedicOnlyX(id);
+  if (id === 'medic') window.loadMedicDeploymentX();
+};
+
+
+// Personnel Management: isolated Other Staff module.
+window.saveOtherStaffX = async function() {
+  if (typeof role !== 'undefined' && role !== 'admin') return alert('Admin access required.');
+  const regt = document.getElementById('osRegt').value.trim();
+  const rank = document.getElementById('osRank').value.trim();
+  const name = document.getElementById('osName').value.trim();
+  const location = document.getElementById('osLocation').value.trim();
+  const remarks = document.getElementById('osRemarks').value.trim();
+  if (!regt || !rank || !name || !location) return alert('Regt No., Rank, Name aur Present Location bharo.');
+  try {
+    await addDoc(collection(db, 'other_staff_deployment'), {
+      regt, rank, name, location, remarks,
+      createdAt: serverTimestamp(), updatedAt: serverTimestamp()
+    });
+    ['osRegt','osRank','osName','osLocation','osRemarks'].forEach(id => document.getElementById(id).value = '');
+    await window.loadOtherStaffX();
+  } catch (e) { alert('Save nahi hua: ' + e.message); }
+};
+window.loadOtherStaffX = async function() {
+  const box = document.getElementById('otherStaffList');
+  if (!box) return;
+  box.innerHTML = '<div class="empty">Loading records…</div>';
+  try {
+    const snap = await getDocs(collection(db, 'other_staff_deployment'));
+    const rows = snap.docs.map(d => ({id:d.id, ...d.data()}));
+    const stamp = x => {
+      const t = x.createdAt || x.updatedAt;
+      return t && typeof t.toMillis === 'function' ? t.toMillis() : (t && typeof t.seconds === 'number' ? t.seconds * 1000 : 0);
+    };
+    rows.sort((a,b) => stamp(a)-stamp(b) || String(a.id).localeCompare(String(b.id)));
+    const esc = v => safeTextX(v == null ? '' : String(v));
+    let html = '<table><thead><tr><th>S. No.</th><th>Regt No.</th><th>Rank</th><th>Name</th><th>Present Location</th><th>Remarks</th>' +
+      (role === 'admin' ? '<th>Action</th>' : '') + '</tr></thead><tbody>';
+    if (!rows.length) html += '<tr><td colspan="' + (role === 'admin' ? 7 : 6) + '">No records available.</td></tr>';
+    rows.forEach((x,i) => {
+      html += '<tr><td>'+(i+1)+'.</td><td>'+esc(x.regt)+'</td><td>'+esc(x.rank)+'</td><td>'+esc(x.name)+'</td><td>'+esc(x.location)+'</td><td>'+esc(x.remarks)+'</td>' +
+        (role === 'admin' ? '<td><button class="btn red small" onclick="deleteOtherStaffX(\''+x.id+'\')">Delete</button></td>' : '') + '</tr>';
+    });
+    box.innerHTML = html + '</tbody></table>';
+  } catch (e) { box.innerHTML = '<div class="notice">Cannot load records: '+safeTextX(e.message)+'</div>'; }
+};
+window.deleteOtherStaffX = async function(id) {
+  if (role !== 'admin' || !confirm('Delete this Other Staff record?')) return;
+  try { await deleteDoc(doc(db, 'other_staff_deployment', id)); await window.loadOtherStaffX(); }
+  catch (e) { alert('Delete nahi hua: ' + e.message); }
+};
+const oldGoPersonnelX = window.go;
+window.go = function(id) {
+  oldGoPersonnelX(id);
+  if (id === 'otherstaff') window.loadOtherStaffX();
+};
+
 </script>
 <style>
 /* Official daily patient report sheet — scoped to the report listing only */
