@@ -240,6 +240,8 @@ window.renderDiseases=()=>{const q=($('dq').value||'').toLowerCase();$('refs').i
 const toolVisualX={'BMI':['⚖️','Body mass index'],'BMR':['🔥','Basal metabolism'],'Ideal Body Weight':['📏','Weight estimate'],'Body Fat Estimate':['💪','Body composition'],'Water Intake':['💧','Hydration estimate'],'Temperature':['🌡️','Temperature conversion'],'Weight / Length':['📐','Unit conversion'],'MAP':['🩺','Mean arterial pressure'],'Shock Index':['❤️','Pulse / systolic BP'],'GCS':['🧠','Neurological assessment'],'IV Drip Rate':['💉','Infusion calculation'],'Age Calculator':['🎂','Date calculation'],'Pulse / HR Reference':['💓','Vital-sign reference'],'Medication Dose':['💊','Safety reminder'],'SpO₂':['🫁','Oxygen saturation'],'Run Pace':['🏃','Running pace']};
 function addToolVisualsX(){document.querySelectorAll('#tools .tool').forEach((el,i)=>{if(el.querySelector('.visual-picture'))return;const title=el.querySelector('h4')?.textContent.trim()||'Medical tool';const v=toolVisualX[title]||['⚕️','Medical calculator'];const theme=visualThemesX[i%visualThemesX.length];const picture=document.createElement('div');picture.className='visual-picture';picture.style.setProperty('--pic1',theme[0]);picture.style.setProperty('--pic2',theme[1]);picture.setAttribute('role','img');picture.setAttribute('aria-label',title+' illustrative visual');const icon=document.createElement('span');icon.className='visual-icon';icon.textContent=v[0];const caption=document.createElement('span');caption.className='visual-caption';caption.textContent=v[1]+' · illustrative visual';picture.append(icon,caption);el.prepend(picture)})}
 addToolVisualsX();
+
+window.getDocs = getDocs;
 </script>
 <style>
 /* Official daily patient report sheet — scoped to the report listing only */
