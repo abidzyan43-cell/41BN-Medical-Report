@@ -73,19 +73,38 @@
   border-radius:16px;
   box-shadow:0 4px 12px #17365b30;
 }
-#dash .grid > button.dash:nth-of-type(1) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80');}
-#dash .grid > button.dash:nth-of-type(2) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=900&q=80');}
-#dash .grid > button.dash:nth-of-type(3) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=80');}
-#dash .grid > button.dash:nth-of-type(4) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80');}
-#dash .grid > button.dash:nth-of-type(5) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80');}
-#dash .grid > button.dash:nth-of-type(6) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80');}
-#dash .grid > button.dash:nth-of-type(7) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=900&q=80');}
-#dash .grid > button.dash:nth-of-type(8) {background-image:linear-gradient(0deg,#fff 0%,#ffffffb8 40%,transparent 100%),url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(1) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(2) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(3) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(4) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(5) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(6) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(7) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=900&q=80');}
+#dash .grid > button.dash:nth-of-type(8) {background-image:linear-gradient(0deg,rgba(4,18,48,.92) 0%,rgba(4,18,48,.20) 55%,rgba(4,18,48,.03) 100%),url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=900&q=80');}
 #dash .grid > button.dash .ico {display:none!important;}
 #dash .grid > button.dash > div {position:relative;z-index:1;}
 @media(max-width:600px){#dash .grid > button.dash{min-height:115px;}}
 </style>
 
+<style id="reference-dashboard-cards">
+#dash .grid > button.dash {
+  background-size: 100% 100% !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+#dash .grid > button.dash > * { visibility: hidden !important; }
+#dash .grid > button.dash:nth-of-type(1) { background-image: url('dashboard-cards/patient-reports.jpg') !important; }
+#dash .grid > button.dash:nth-of-type(2) { background-image: url('dashboard-cards/gunshot-treatment.jpg') !important; }
+#dash .grid > button.dash:nth-of-type(3) { background-image: url('dashboard-cards/ame-status.jpg') !important; }
+#dash .grid > button.dash:nth-of-type(4) { background-image: url('dashboard-cards/leave-hub.jpg') !important; }
+#dash .grid > button.dash:nth-of-type(5) { background-image: url('dashboard-cards/personnel-management.jpg') !important; }
+#dash .grid > button.dash:nth-of-type(6) { background-image: url('dashboard-cards/disease-reference.jpg') !important; }
+#dash .grid > button.dash:nth-of-type(7) { background-image: url('dashboard-cards/medical-tools.jpg') !important; }
+#dash .grid > button.dash:nth-of-type(8) { background-image: url('dashboard-cards/itbp-calendar.jpg') !important; }
+
+</style>
 </head><body>
 <header class="head"><div class="line"><span class="cross">✚</span></div><div class="unit">UNIT HOSPITAL</div><div class="bn">41 BN ITBP</div><div class="sub">MEDICAL REPORT • HEALTH • DEPLOYMENT • REFERENCE</div></header><main class="wrap">
 <section id="login" class="page on"><div class="card login"><h2>Secure Staff Login</h2><div class="f"><label>Email</label><input id="email" type="email"></div><div class="f" style="margin-top:8px"><label>Password</label><input id="pass" type="password"></div><button class="btn" style="width:100%;margin-top:10px" onclick="loginUser()">LOGIN</button><div id="lm" style="margin-top:9px"></div></div></section>
