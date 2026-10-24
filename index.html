@@ -84,6 +84,35 @@ header.hospital-banner .hospital-banner-img {
   }
 }
 
+
+/* Hospital banner: no white gaps */
+header.hospital-banner,
+header.head:has(img[src="hospital-banner.png"]) {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  line-height: 0 !important;
+  background: #082b55 !important;
+  border: 0 !important;
+}
+
+header.hospital-banner img,
+header.head img[src="hospital-banner.png"] {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+}
+
+/* END Hospital banner */
 </style>
 <style id="dashboard-photo-backgrounds">
 /* DASHBOARD PHOTO BACKGROUNDS V1 */
