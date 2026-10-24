@@ -52,6 +52,38 @@
 
 /* Leave Hub styles */
 .leave-tabs{display:flex;gap:8px;flex-wrap:wrap}.leave-panel{overflow:hidden}.leave-sheet-head{background:#19395f;color:#fff;text-align:center;padding:18px 10px;border-radius:9px;margin-bottom:12px}.leave-sheet-head h2{margin:0 0 5px;font-size:clamp(18px,3vw,28px);letter-spacing:.4px}.leave-sheet-head div{font-size:12px;opacity:.9}.leave-actions{justify-content:flex-end}.leave-table-wrap{width:100%;overflow-x:auto;margin-top:12px}.leave-table-wrap table{width:100%;min-width:1100px;border-collapse:collapse;font-size:11px}.leave-table-wrap th{background:#285e8b;color:#fff;padding:10px 7px;border:1px solid #d1dbe5;text-align:center}.leave-table-wrap td{padding:8px 6px;border:1px solid #cbd5e1;text-align:center;vertical-align:middle}.leave-table-wrap tbody tr:nth-child(even){background:#e7f0f8}.leave-table-wrap tbody tr:nth-child(odd){background:#fff}.leave-table-wrap td input,.leave-table-wrap td select{width:100%;min-width:75px;padding:5px;border:1px solid #cbd5e1;border-radius:4px}.leave-note{font-size:10px;color:#64748b;margin-top:10px}.leave-panel .card{box-shadow:none}.leave-panel .fg{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}@media(max-width:700px){.leave-table-wrap table{font-size:10px;min-width:1050px}.leave-sheet-head{padding:14px 6px}.leave-actions{justify-content:flex-start}}
+
+/* FIX: Remove white space around hospital banner */
+header.hospital-banner {
+  display: block !important;
+  width: 100% !important;
+  height: clamp(100px, 14vw, 190px) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: #082b55 !important;
+  line-height: 0 !important;
+  border: 0 !important;
+  box-sizing: border-box !important;
+}
+
+header.hospital-banner .hospital-banner-img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+@media (max-width: 600px) {
+  header.hospital-banner {
+    height: 115px !important;
+  }
+}
+
 </style>
 <style id="dashboard-photo-backgrounds">
 /* DASHBOARD PHOTO BACKGROUNDS V1 */
@@ -106,8 +138,8 @@
 
 </style>
 </head><body>
-<header class="head" style="padding:0;margin:0;width:100%;overflow:hidden;background:#082b55;">
-<img src="hospital-banner.png" alt="UNIT HOSPITAL - 41 BN ITBP" style="display:block;width:100%;height:auto;max-height:220px;object-fit:cover;object-position:center;">
+<header class="head hospital-banner">
+<img src="hospital-banner.png" alt="UNIT HOSPITAL - 41 BN ITBP" class="hospital-banner-img">
 </header><main class="wrap">
 <section id="login" class="page on"><div class="card login"><h2>Secure Staff Login</h2><div class="f"><label>Email</label><input id="email" type="email"></div><div class="f" style="margin-top:8px"><label>Password</label><input id="pass" type="password"></div><button class="btn" style="width:100%;margin-top:10px" onclick="loginUser()">LOGIN</button><div id="lm" style="margin-top:9px"></div></div></section>
 <section id="dash" class="page"><div class="userbar"><div><span id="role" class="badge"></span> <span id="ue" style="font-size:11px;color:#64748b"></span></div><button class="sec small" onclick="logoutUser()">Logout</button></div><div class="title">Medical Dashboard</div><div style="color:#64748b;font-size:12px;margin:-7px 0 13px">Select a module. Only the selected module opens.</div><div class="grid"><button class="dash" onclick="go('patienthub')"><div class="dt">Patient Reports</div><div class="ds">Daily and monthly admission registers</div></button><button class="dash" onclick="go('gunshot')"><div class="ico">🩹</div><div class="dt">Gunshot Treatment</div><div class="ds">Head-to-toe first-aid guide</div></button><button class="dash" onclick="go('ame')"><div class="ico">📋</div><div class="dt">AME STATUS</div><div class="ds">Year-wise monthly GOs / SOs / ORs</div></button><button class="dash" onclick="go('leave')"><div class="ico">🗓️</div><div class="dt">LEAVE HUB</div><div class="ds">Leave Plan & Medic on Leave</div></button><button class="dash" onclick="go('personnel')"><div class="ico">👥</div><div class="dt">Personnel Management</div><div class="ds">Doctor • Medic • Other Staff</div></button><button class="dash" onclick="go('disease')"><div class="ico">📚</div><div class="dt">Disease Reference</div><div class="ds">Quick medical reference</div></button><button class="dash" onclick="go('tools')"><div class="ico">🧮</div><div class="dt">Medical Tools</div><div class="ds">BMI, GCS, MAP, drip & more</div></button><button class="dash" onclick="go('calendar')"><div class="ico">📅</div><div class="dt">ITBP Calendar 2026</div><div class="ds">Original calendar, holidays and print</div></button></div></section>
