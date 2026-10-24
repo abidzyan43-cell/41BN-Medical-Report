@@ -87,7 +87,7 @@ header.hospital-banner .hospital-banner-img {
 
 /* Hospital banner: no white gaps */
 header.hospital-banner,
-header.head:has(img[src="hospital-banner.png"]) {
+header.head:has(img[src="hospital-banner-cropped.png"]) {
   display: block !important;
   width: 100% !important;
   height: auto !important;
@@ -102,7 +102,7 @@ header.head:has(img[src="hospital-banner.png"]) {
 }
 
 header.hospital-banner img,
-header.head img[src="hospital-banner.png"] {
+header.head img[src="hospital-banner-cropped.png"] {
   display: block !important;
   width: 100% !important;
   height: auto !important;
@@ -168,7 +168,7 @@ header.head img[src="hospital-banner.png"] {
 </style>
 </head><body>
 <header class="head hospital-banner">
-<img src="hospital-banner.png" alt="UNIT HOSPITAL - 41 BN ITBP" class="hospital-banner-img">
+<img src="hospital-banner-cropped.png" alt="UNIT HOSPITAL - 41 BN ITBP" class="hospital-banner-img">
 </header><main class="wrap">
 <section id="login" class="page on"><div class="card login"><h2>Secure Staff Login</h2><div class="f"><label>Email</label><input id="email" type="email"></div><div class="f" style="margin-top:8px"><label>Password</label><input id="pass" type="password"></div><button class="btn" style="width:100%;margin-top:10px" onclick="loginUser()">LOGIN</button><div id="lm" style="margin-top:9px"></div></div></section>
 <section id="dash" class="page"><div class="userbar"><div><span id="role" class="badge"></span> <span id="ue" style="font-size:11px;color:#64748b"></span></div><button class="sec small" onclick="logoutUser()">Logout</button></div><div class="title">Medical Dashboard</div><div style="color:#64748b;font-size:12px;margin:-7px 0 13px">Select a module. Only the selected module opens.</div><div class="grid"><button class="dash" onclick="go('patienthub')"><div class="dt">Patient Reports</div><div class="ds">Daily and monthly admission registers</div></button><button class="dash" onclick="go('gunshot')"><div class="ico">🩹</div><div class="dt">Gunshot Treatment</div><div class="ds">Head-to-toe first-aid guide</div></button><button class="dash" onclick="go('ame')"><div class="ico">📋</div><div class="dt">AME STATUS</div><div class="ds">Year-wise monthly GOs / SOs / ORs</div></button><button class="dash" onclick="go('leave')"><div class="ico">🗓️</div><div class="dt">LEAVE HUB</div><div class="ds">Leave Plan & Medic on Leave</div></button><button class="dash" onclick="go('personnel')"><div class="ico">👥</div><div class="dt">Personnel Management</div><div class="ds">Doctor • Medic • Other Staff</div></button><button class="dash" onclick="go('disease')"><div class="ico">📚</div><div class="dt">Disease Reference</div><div class="ds">Quick medical reference</div></button><button class="dash" onclick="go('tools')"><div class="ico">🧮</div><div class="dt">Medical Tools</div><div class="ds">BMI, GCS, MAP, drip & more</div></button><button class="dash" onclick="go('calendar')"><div class="ico">📅</div><div class="dt">ITBP Calendar 2026</div><div class="ds">Original calendar, holidays and print</div></button></div></section>
