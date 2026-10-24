@@ -146,7 +146,7 @@ header.head > img.hospital-banner-img {
 }
 
 
-/* HOSPITAL BANNER - WIDER HEIGHT */
+/* HOSPITAL BANNER - FULL WIDTH FIX */
 header.head {
     display: block !important;
     box-sizing: border-box !important;
@@ -162,21 +162,22 @@ header.head {
 
 header.head > img.hospital-banner-img {
     display: block !important;
+    box-sizing: border-box !important;
     width: 100% !important;
-    height: 170px !important;
-    object-fit: cover !important;
+    height: 145px !important;
+    object-fit: fill !important;
     object-position: center !important;
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
-    vertical-align: top !important;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 601px) {
     header.head > img.hospital-banner-img {
-        height: 145px !important;
+        height: 170px !important;
     }
 }
+
 
 </style>
 <style id="dashboard-photo-backgrounds">
