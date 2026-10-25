@@ -240,7 +240,107 @@ header.head > img.hospital-banner-img {
 <section id="dash" class="page"><div class="userbar"><div><span id="role" class="badge"></span> <span id="ue" style="font-size:11px;color:#64748b"></span></div><button class="sec small" onclick="logoutUser()">Logout</button></div><div class="title">Medical Dashboard</div><div style="color:#64748b;font-size:12px;margin:-7px 0 13px">Select a module. Only the selected module opens.</div><div class="grid"><button class="dash" onclick="go('patienthub')"><div class="dt">Patient Reports</div><div class="ds">Daily and monthly admission registers</div></button><button class="dash" onclick="go('gunshot')"><div class="ico">🩹</div><div class="dt">Gunshot Treatment</div><div class="ds">Head-to-toe first-aid guide</div></button><button class="dash" onclick="go('ame')"><div class="ico">📋</div><div class="dt">AME STATUS</div><div class="ds">Year-wise monthly GOs / SOs / ORs</div></button><button class="dash" onclick="go('leave')"><div class="ico">🗓️</div><div class="dt">LEAVE HUB</div><div class="ds">Leave Plan & Medic on Leave</div></button><button class="dash" onclick="go('personnel')"><div class="ico">👥</div><div class="dt">Personnel Management</div><div class="ds">Doctor • Medic • Other Staff</div></button><button class="dash" onclick="go('disease')"><div class="ico">📚</div><div class="dt">Disease Reference</div><div class="ds">Quick medical reference</div></button><button class="dash" onclick="go('tools')"><div class="ico">🧮</div><div class="dt">Medical Tools</div><div class="ds">BMI, GCS, MAP, drip & more</div></button><button class="dash" onclick="go('calendar')"><div class="ico">📅</div><div class="dt">ITBP Calendar 2026</div><div class="ds">Original calendar, holidays and print</div></button></div></section>
 <section id="patienthub" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Patient Reports</h2></div><div class="grid"><button class="dash" onclick="go('report')"><div class="ico">🩺</div><div class="dt">Daily Patient Reports</div></button><button class="dash" onclick="openMonthly('monthly_admissions','Patients Admitted During the Month')"><div class="ico">🏥</div><div class="dt">Patients Admitted During the Month</div></button><button class="dash" onclick="openMonthly('outside_hospital_admissions','Patients Admitted to Other Hospitals During the Month')"><div class="ico">🚑</div><div class="dt">Patients Admitted to Other Hospitals During the Month</div></button></div></section>
 <section id="monthly" class="page"><div class="headrow"><button class="back" onclick="go('patienthub')">← Patient Reports</button><h2 id="monthlyTitle">Monthly Register</h2></div><div class="card"><h3>UNIT HOSPITAL — 41 BN ITBP</h3><div class="fg"><div class="f"><label>Month</label><select id="monthPick"></select></div><div class="f"><label>Year</label><select id="monthYear"></select></div></div><div class="admin-only card" style="margin-top:12px"><h3>Admin — Add Patient Admission Record</h3><div class="fg"><div class="f"><label>Regt. No.</label><input id="mrRegt"></div><div class="f"><label>Rank</label><input id="mrRank"></div><div class="f"><label>Name</label><input id="mrName"></div><div class="f"><label>Age</label><input id="mrAge" type="number"></div><div class="f"><label>Coy</label><input id="mrCoy"></div><div class="f"><label>Diagnosis</label><input id="mrDiagnosis"></div><div class="f full"><label>Remarks</label><input id="mrRemarks"></div></div><div class="actions"><button class="btn green" onclick="saveMonthly()">Add Record</button></div></div><div class="actions"><button class="sec" onclick="print()">Print</button><button class="sec" onclick="loadMonthly()">Refresh</button></div><div id="monthlyList" class="report"></div><div id="monthlyMobile"></div></div></section>
-<section id="calendar" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>ITBP Calendar 2026</h2></div><div class="card"><div class="notice">Original ITBP Table Calendar 2026. Dates, holiday names and artwork are unchanged.</div><div class="actions"><a class="btn" href="itbp-calendar-2026.pdf" target="_blank" rel="noopener">Open Original Calendar PDF</a><a class="sec" href="itbp-calendar-2026.pdf" download>Download PDF</a><button class="sec" onclick="document.getElementById('calendarFrame').contentWindow.print()">Print Calendar</button></div><iframe id="calendarFrame" title="Original ITBP Calendar 2026" src="itbp-calendar-2026.pdf" style="width:100%;height:75vh;border:1px solid #d9e3ee;border-radius:12px;margin-top:12px"></iframe></div></section>
+<section id="calendar" class="page"><div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>ITBP Calendar 2026</h2></div><div class="card"><div class="notice">Original ITBP Table Calendar 2026. Dates, holiday names and artwork are unchanged.</div><div class="actions"><a class="btn" href="itbp-calendar-2026.pdf" target="_blank" rel="noopener">Open Original Calendar PDF</a><a class="sec" href="itbp-calendar-2026.pdf" download>Download PDF</a><button class="sec" onclick="document.getElementById('calendarFrame').contentWindow.print()">Print Calendar</button></div>
+<div id="pdfViewer" style="margin-top:12px;text-align:center;border:1px solid #d9e3ee;border-radius:12px;padding:10px;background:#f5f7fb">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px">
+    <button type="button" id="pdfPrev" class="sec">❮ Previous</button>
+    <span id="pdfPageInfo" style="font-weight:700">Loading calendar...</span>
+    <button type="button" id="pdfNext" class="sec">Next ❯</button>
+  </div>
+  <div id="pdfPageArea" style="overflow:auto;touch-action:pan-y pinch-zoom;background:white;border-radius:8px">
+    <canvas id="pdfCanvas" style="display:block;max-width:100%;height:auto;margin:auto"></canvas>
+  </div>
+  <div style="font-size:12px;color:#64748b;margin-top:8px">Swipe left/right to change pages</div>
+  <div id="pdfError" style="color:#b91c1c"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function(){
+  const pdfUrl = "itbp-calendar-2026.pdf";
+  const canvas = document.getElementById("pdfCanvas");
+  const ctx = canvas.getContext("2d");
+  const info = document.getElementById("pdfPageInfo");
+  const error = document.getElementById("pdfError");
+  const area = document.getElementById("pdfPageArea");
+  let pdf = null, pageNum = 1, rendering = false, pending = null;
+  let startX = 0, startY = 0;
+
+  if (!window.pdfjsLib) {
+    info.textContent = "Viewer could not load";
+    error.textContent = "PDF viewer library load nahi hui. Internet check karein.";
+    return;
+  }
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+  async function renderPage(n) {
+    if (!pdf || rendering) {
+      pending = n;
+      return;
+    }
+
+    rendering = true;
+    pageNum = Math.max(1, Math.min(n, pdf.numPages));
+
+    try {
+      const page = await pdf.getPage(pageNum);
+      const availableWidth = Math.max(250, area.clientWidth - 8);
+      const original = page.getViewport({scale: 1});
+      const scale = Math.min(2, availableWidth / original.width);
+      const viewport = page.getViewport({scale: scale * devicePixelRatio});
+
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.style.width = (viewport.width / devicePixelRatio) + "px";
+      canvas.style.height = (viewport.height / devicePixelRatio) + "px";
+
+      await page.render({canvasContext: ctx, viewport: viewport}).promise;
+      info.textContent = "Page " + pageNum + " / " + pdf.numPages;
+      document.getElementById("pdfPrev").disabled = pageNum <= 1;
+      document.getElementById("pdfNext").disabled = pageNum >= pdf.numPages;
+      area.scrollTop = 0;
+    } catch (e) {
+      error.textContent = "Page load nahi hua: " + e.message;
+    } finally {
+      rendering = false;
+      if (pending !== null) {
+        const next = pending;
+        pending = null;
+        renderPage(next);
+      }
+    }
+  }
+
+  document.getElementById("pdfPrev").onclick = () => renderPage(pageNum - 1);
+  document.getElementById("pdfNext").onclick = () => renderPage(pageNum + 1);
+
+  area.addEventListener("touchstart", e => {
+    startX = e.changedTouches[0].clientX;
+    startY = e.changedTouches[0].clientY;
+  }, {passive:true});
+
+  area.addEventListener("touchend", e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+      renderPage(pageNum + (dx < 0 ? 1 : -1));
+    }
+  }, {passive:true});
+
+  window.addEventListener("resize", () => renderPage(pageNum));
+
+  pdfjsLib.getDocument(pdfUrl).promise.then(doc => {
+    pdf = doc;
+    renderPage(1);
+  }).catch(e => {
+    info.textContent = "Calendar load failed";
+    error.textContent = "PDF load nahi hui. File path check karein: " + e.message;
+  });
+})();
+</script>
+</div></section>
 <section id="report" class="page">
 <div class="headrow"><button class="back" onclick="go('dash')">← Dashboard</button><h2>Daily Medical Report – All COBs &amp; THQs</h2></div>
 <div class="card" id="reportSheetCard">
